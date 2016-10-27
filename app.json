@@ -1,0 +1,68 @@
+{
+  "name": "itp",
+  "scripts": {
+  },
+  "env": {
+    "cloudinary_api_key": {
+      "required": true
+    },
+    "cloudinary_api_secret": {
+      "required": true
+    },
+    "cloudinary_cloud_name": {
+      "required": true
+    },
+    "DROPBOX_APP_KEY": {
+      "required": true
+    },
+    "DROPBOX_APP_SECRET": {
+      "required": true
+    },
+    "DROPBOX_TOKEN": {
+      "required": true
+    },
+    "DROPBOX_TOKEN_SECRET": {
+      "required": true
+    },
+    "DROPBOX_TOKEN_UID": {
+      "required": true
+    },
+    "elasticsearch_host": {
+      "required": true
+    },
+    "FACEBOOK_CLIENT_ID": {
+      "required": true
+    },
+    "FACEBOOK_CLIENT_SECRET": {
+      "required": true
+    },
+    "GOOGLE_CLIENT_ID": {
+      "required": true
+    },
+    "GOOGLE_CLIENT_SECRET": {
+      "required": true
+    },
+    "MONGODB_URL": {
+      "required": true
+    },
+    "ROLLBAR": {
+      "required": true
+    },
+    "sparkpost_key": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "sparkpost"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
