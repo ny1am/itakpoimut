@@ -1,0 +1,92 @@
+<section class="landing">
+	<div class="container">
+		<h1 class="main-header">
+			База компаній громадської ініціативи “И так поймут”
+		</h1>
+		<p class="info">
+			Тут ви можете перевірити, чи компанія використовує виключно українську мову, обслуговуючи своїх клієнтів в Україні.
+		</p>
+		<article class="main-search">
+			<form action="/companies" method="GET">
+				<div class="search-construct">
+					<div class="search-construct-input">
+						<input name="title" type="text" placeholder="Введіть назву компанії" data-ajax-autocomplete autocomplete="off" />
+						<div id="autocomplete-popup"></div>
+					</div>
+					<button type="submit" class="search-construct-button"></button>
+				</div>
+			</form>
+		</article>
+	</div>
+</section>
+
+<div class="pattern bottom-space">
+	<div class="container">
+		<section class="description">
+			<h1 class="description-title">
+				<q class="standalone-quote">И так поймут</q> Каталог <abbr title="Засоби масової інформації">ЗМІ</abbr> та бізнесу
+			</h1>
+			<p class="description-text">
+				Це сервіс, де можна перевірити, чи компанія обслуговує своїх клієнтів українською мовою: чи має україномовний сайт, інструкції, етикетки, різні супровідні документи та навіть сторінки у соцмережах. В залежності від наявності порушень та прагнення українізувати свій сервіс, кожна компанія промаркована відповідними позначками, за якими можна зручно ідентифікувати порушників та лояльних.
+
+			</p>
+		</section>
+		{{#if newCompanies}}
+			<section class="landing-container">
+				<header class="landing-header">
+					Нові компанії
+				</header>
+				<ul class="new-companies">
+					{{#each newCompanies}}
+						<li>
+							<article class="company-preview">
+								<a href="/company/{{_id}}" class="p-company-logo">
+									<img src="{{img}}" width=120>
+								</a>
+								<label class="p-company-title">
+									<a href="/company/{{_id}}">
+										{{title}}
+									</a>
+								</label>
+							</article>
+						</li>
+					{{/each}}
+				</ul>
+			</section>
+		{{/if}}
+		{{#if comments}}
+			<section class="landing-container">
+				<header class="landing-header">
+					Останні коментарі
+				</header>
+				<ul class="comments">
+					{{#each comments}}
+						<li data-href="/company/{{_company._id}}">
+							<article class="comment">
+								<div class="comment-image">
+									<img src={{picture _user.picture_url}}>
+								</div>
+								<div class="comment-body">
+									<div class="comment-meta">
+										<span class="comment-author">
+											{{_user.fname}} {{_user.lname}}
+										</span>
+										<span class="comment-time">
+											{{formatDate created}}
+										</span>
+										<a href="/company/{{_company._id}}" class="comment-theme">
+											до теми {{_company.title}}
+										</a>
+									</div>
+									<p class="comment-text">
+										{{text}}
+									</p>
+								</div>
+							</article>
+						</li>
+					{{/each}}
+				</ul>
+			</section>
+    	{{/if}}
+	</div>
+</div>

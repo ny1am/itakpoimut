@@ -1,0 +1,40 @@
+.userpic {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	padding: 20px 20px 26px 20px;
+	border: 4px dashed rgba(66, 66, 66, 0.5);
+	position: relative;
+	margin-bottom: 8px;
+	input[type="file"] {
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		opacity: 0;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+	}
+	&:before {
+		content: 'Змінити';
+		position: absolute;
+		left: 0;
+		bottom: 6px;
+		width: 100%;
+		cursor: pointer;
+		text-align: center;
+	}
+	img {
+		position: absolute;
+	}
+}
+
+.fu-error {
+	border-color: rgba(255, 0, 0, 0.5);
+}
+
+.fu-success {
+	border-color: rgba(0, 200, 0, 0.5);
+}

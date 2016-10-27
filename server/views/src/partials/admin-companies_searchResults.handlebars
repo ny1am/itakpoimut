@@ -1,0 +1,23 @@
+{{#each companies}}
+		<div class="admin-row {{#if published}}{{else}}admin-row-not-published{{/if}} {{#if proposals}}admin-row-proposed{{/if}}">
+			<div>
+				{{_id}}
+			</div>
+			<div>
+				{{title}}
+			</div>
+			<div>
+				<a href="/admin/company?_id={{_id}}">Редагувати</a>
+			</div>
+		</div>
+	{{/each}}
+
+	{{#pagination currentPage totalPages 5}}
+		<ul class="pagination">
+			{{#each pages~}}
+				<li class="page{{#if isCurrent}} active{{/if}}">
+					<button type="submit" formaction="/admin/companies?currentPage={{page}}" data-ajax-formsubmit>{{page}}</button>
+				</li>
+			{{~/each}}
+		</ul>
+	{{/pagination}}

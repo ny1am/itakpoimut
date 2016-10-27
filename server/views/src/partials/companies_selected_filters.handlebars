@@ -1,0 +1,22 @@
+<div id="selectedFiltersContainer">
+	{{#if selectedFilters}}
+		<div class="selected-filters-holder">
+			<ul class="selected-filters">
+				{{#each selectedFilters~}}
+					<li class="selected-filter-el">
+						{{text}}
+						{{#if id}}
+							<div class="rm-selected-filter" data-company-clear-filter={{id}}>
+							</div>
+						{{/if}}
+					</li>
+				{{~/each}}
+				<li class="selected-filter-all">
+					<a href="/companies" data-company-clear-filters>
+						Скинути всі
+					</a>
+				</li>
+			</ul>
+		</div>
+	{{/if}}
+</div>

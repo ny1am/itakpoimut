@@ -1,0 +1,56 @@
+<div id="dialog" class="dialog dialog--category dialog--left">
+    <div id="dialog_content" class="dialog_content">
+        <h1 class="dialog__h1">
+    		Додати сферу
+    	</h1>
+        <p>
+            Тут ви можете відзначити сфери, до яких належить компанія. Протягом кількох днів адміністратор перевірить інформацію і вона з'явиться на сайті.
+        </p>
+    	<form action="/addCategory" method="post">
+    		<input type="hidden" name="company_id" value="{{company_id}}" />
+            <div class="prev-categories-holder">
+                <span>Уже відмічені сфери</span>
+                <div class="prev-categories-block">
+                    {{~#if companyCategories~}}
+                        <ul class="prev-categories">
+                            {{#each companyCategories}}
+                                <li>
+                                    {{categoryByName this}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    {{~/if~}}
+                    <ul id="selectedMirror" class="selected-categories-mirror"></ul>
+                </div>
+            </div>
+            {{~#if categoriesList~}}
+                <div class="categories-holder">
+                    <span>Оберіть сфери зі списку:</span>
+                    <ul class="categories">
+                        {{#each categoriesList}}
+                            <li>
+                                <div class="check-row">
+                                    {{#checkbox (concat 'ctg_' this)}}
+                                        <input type="checkbox" 
+                                            id="ctg_{{this}}" 
+                                            name="selectedCategories[]" 
+                                            value="{{this}}" 
+                                            {{#contains this ../selectedCategories}}checked="checked"{{/contains}}
+                                            data-category-mirror
+                                        />
+                                    {{/checkbox}}
+                                    <label for="ctg_{{this}}">
+                                        {{categoryByName this}}
+                                    </label>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{~/if~}}
+    		<div class="right-content">
+                <button class="dialog__button" type="submit" data-ajax-submit-dialog="addCategory">Готово</button>
+            </div>
+    	</form>
+    </div>
+</div>

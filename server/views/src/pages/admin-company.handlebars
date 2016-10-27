@@ -1,0 +1,167 @@
+<div class="dialog dialog--company">
+    <div class="dialog_content">
+        <h1 class="dialog__h1">
+    		Компанія
+    	</h1>
+        {{#if _id}}
+            <a href="/company/{{_id}}" target="_blank" style="margin-bottom: 50px; display: block;">
+                Відкрити на порталі
+            </a>
+            <a href="/admin/deleteCompany?_id={{_id}}" style="margin-bottom: 50px; display: block;">
+                Видалити
+            </a>
+        {{/if}}
+        {{#if errors.dialog}}
+            <div class="dialog-error">
+                {{errors.dialog}}
+            </div>
+        {{/if}}
+        <form action="/admin/company" method="post" enctype="multipart/form-data">
+            {{#if _id}}
+                <input type="hidden" name="_id" value="{{_id}}">
+            {{/if}}
+            {{#if proposals}}
+                <input type="hidden" name="proposals" value="true">
+            {{/if}}
+            <div class="row">
+                <div class="check-row">
+                    {{#checkbox 'published'}}
+                        <input type="checkbox" 
+                            id="published" 
+                            name="published" 
+                            value="true" 
+                            {{#if published}}checked="checked"{{/if}}
+                        />
+                    {{/checkbox}}
+                    <label for="published">
+                        Відображати на порталі
+                    </label>
+                </div>
+            </div>
+            <div class="row {{#if errors.title}}row--error{{/if}}">
+                <label class="row__label" for="title">
+                    {{#if errors.title}}
+                        {{errors.title}}
+                    {{else}}
+                        Назва компанії
+                    {{/if}}
+                </label>
+                <input class="row__input" type="text" name="title" {{#if title}}value="{{title}}"{{/if}} />
+            </div>
+            <div style="display: flex; justify-content: center; flex-direction: column">   
+                <div class="userpic {{#if errors.attachment}}fu-error{{/if}}" style="align-self: center">
+                    <img src={{companyPicture img}} width="100" style="left: 20px;">
+                    <input type="file" name="attachment"/>
+                </div>
+                <div class="hint">
+                    JPEG або PNG,<br> розміром до 1 Mb
+                </div>
+            </div>
+            <div class="row {{#if errors.description}}row--error{{/if}}">
+                <label class="row__label" for="description">
+                    {{#if errors.description}}
+                        {{errors.description}}
+                    {{else}}
+                        Опис компанії
+                    {{/if}}
+                </label>
+                <textarea class="row__input" name="description" maxlength="300">{{#if description}}{{description}}{{/if}}</textarea>
+            </div>
+            <div class="row {{#if errors.company_site}}row--error{{/if}}">
+                <label class="row__label" for="company_site">
+                    {{#if errors.company_site}}
+                        {{errors.company_site}}
+                    {{else}}
+                        Посилання на сайт (якщо є)
+                    {{/if}}
+                </label>
+                <div class="http">
+                    <input class="http" type="text" name="company_site" maxlength="100" {{#if company_site}}value="{{company_site}}"{{/if}} />
+                </div>
+            </div>
+            <hr/>
+            <p>
+                Сфери
+            </p>
+            <ul class="violations">
+                {{#each categoriesList}}
+                    <li class="row">
+                        <div class="check-row">
+                            {{#checkbox (concat 'ctg_' name)}}
+                                <input type="checkbox" 
+                                    id="ctg_{{name}}" 
+                                    name="selectedCategories[]" 
+                                    value="{{name}}" 
+                                    {{#contains name ../selectedCategories}}checked="checked"{{/contains}}
+                                />
+                            {{/checkbox}}
+                            <label for="ctg_{{name}}">
+                                {{text}} {{#contains name ../proposedCategories}}<span class="admin-row-proposed"> - пропозиція від користувача</span>{{/contains}}
+                            </label>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+            <hr/>
+            <p>
+                Порушення
+            </p>
+
+            <ul class="violations">
+                {{#each violationsList}}
+                    <li class="row">
+                        <div class="check-row">
+                            {{#checkbox (concat 'vlt_' name)}}
+                                <input type="checkbox" 
+                                    id="vlt_{{name}}" 
+                                    name="selectedViolations[]" 
+                                    value="{{name}}" 
+                                    {{#contains name ../selectedViolations}}checked="checked"{{/contains}}
+                                />
+                            {{/checkbox}}
+                            <label for="vlt_{{name}}">
+                                {{text}} {{#contains name ../proposedViolations}}<span class="admin-row-proposed"> - пропозиція від користувача</span>{{/contains}}
+                            </label>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+            <div class="row {{#if errors.loyalty}}row--error{{/if}}">
+                <label class="row__label" for="loyalty">
+                    {{#if errors.loyalty}}
+                        {{errors.loyalty}}
+                    {{else}}
+                        Лояльність
+                    {{/if}}
+                </label>
+                <select class="row_input" name="loyalty">
+                    {{#each loyaltiesList}}
+                        <option value="{{name}}" {{#equals name ../loyalty}}selected="selected"{{/equals}}>
+                            {{text}}
+                        </option>
+                    {{/each}}
+                </select>
+            </div>
+            {{#if proposals}}
+            <div class="row">
+                <div class="check-row">
+                    {{#checkbox 'proposalsSeen'}}
+                        <input type="checkbox" 
+                            id="proposalsSeen" 
+                            name="proposalsSeen" 
+                            value="true" 
+                            {{#if proposalsSeen}}checked="checked"{{/if}}
+                        />
+                    {{/checkbox}}
+                    <label for="proposalsSeen">
+                        Запропоновані зміни переглянуто
+                    </label>
+                </div>
+            </div>
+            {{/if}}
+            <div class="right-content">
+                <button class="dialog__button" type="submit">Зберегти</button>
+            </div>
+        </form>
+    </div>
+</div>

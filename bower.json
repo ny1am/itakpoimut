@@ -1,0 +1,22 @@
+{
+  "name": "js",
+  "homepage": "https://github.com/heroku/node-js-getting-started",
+  "authors": [
+    "Nazar Yavnyy <ny1am.lviv.ua@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.12.2",
+    "jquery-throttle-debounce": "*",
+    "chosen": "^1.5.1"
+  }
+}

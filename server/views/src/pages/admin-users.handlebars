@@ -1,0 +1,51 @@
+{{#each users}}
+	<div class="admin-row">
+		<div class="admin-row-proposed">
+			{{email}}
+		</div>
+		<div>
+			{{username}}
+		</div>
+		<div>
+			{{fname}}
+		</div>
+		<div>
+			{{lname}}
+		</div>
+		{{#roleAdmin this}}
+			<div class="admin-row-proposed">
+				admin
+			</div>
+		{{else}}
+			{{#roleModerator this}}
+				<div class="admin-row-proposed">
+					moderator
+				</div>
+				<div>
+					<a href="admin/removeModeratorRole?id={{_id}}">
+						Забрати можливість модерувати
+					</a>
+				</div>
+			{{else}}
+				<div class="admin-row-proposed">
+					user
+				</div>
+				<div>
+					<a href="admin/addModeratorRole?id={{_id}}">
+						Надати можливість модерувати
+					</a>
+				</div>
+			{{/roleModerator}}
+		{{/roleAdmin}}
+	</div>
+{{/each}}
+
+{{#pagination currentPage totalPages 5}}
+	<ul class="pagination">
+		{{#each pages~}}
+			<li class="page{{#if isCurrent}} active{{/if}}">
+				<a href="/admin/users?currentPage={{page}}">{{page}}</a>
+			</li>
+		{{~/each}}
+	</ul>
+{{/pagination}}

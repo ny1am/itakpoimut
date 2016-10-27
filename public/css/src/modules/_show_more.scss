@@ -1,0 +1,46 @@
+.js-sm-trigger {
+	box-sizing: border-box;
+	height: 40px;
+	border: 1px solid rgb(149, 149, 149);
+	border-radius: 5px;
+	text-align: center;
+	color: rgb(102, 102, 102);
+	font-size: 0.875rem;
+	padding: 12px 15px;
+	cursor: pointer;
+	margin-top: -20px;
+	margin-bottom: 40px;
+	&:after {
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 15px;
+		width: 10px;
+		height: 5px;
+	}
+	&[open]:after {
+		background: url('../img/arrow-up-small.png') no-repeat;
+	}
+	&[close]:after {
+		background: url('../img/arrow-down-small.png') no-repeat;
+	}
+	&[open]:before {
+		content: 'Згорнути';
+	}
+	&[close]:before {
+		content: 'Показати';
+	}
+	@media (max-width: $mobile-container-width) {
+		margin-top: -10px;
+	}
+
+}
+
+.js-sm-holder {
+	display: flex;
+	flex-direction: column;
+}
+
+.js-sm-shown-on-top {
+	order: -1;
+}

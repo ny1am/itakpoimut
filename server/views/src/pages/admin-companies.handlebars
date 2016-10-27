@@ -1,0 +1,19 @@
+<div class="admin-action">
+	<a href="/admin/company">
+		Додати компанію
+	</a>
+</div>
+<form action="/admin/companies" method="post" data-ajax-zone="search-results" data-ajax-tmpl="admin-companies_searchResults">
+	<div class="search-construct search-construct--highlight" style="margin-bottom: 50px">
+		<div class="search-construct-input">
+			<input type="text" name="title" placeholder="Введіть назву компанії" {{#if title}}value="{{title}}"{{/if}} />
+		</div>
+		<button type="submit" data-ajax-formsubmit class="search-construct-button" ></button>	
+	</div>
+
+	<div id="search-results" class="search-results">
+		{{> admin-companies_searchResults}}
+	</div>
+
+	
+</form>

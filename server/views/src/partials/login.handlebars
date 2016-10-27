@@ -1,0 +1,59 @@
+<div id="dialog" class="dialog">
+    <div id="dialog_content" class="dialog_content">
+        <h1 class="dialog__h1">
+    		Вхід
+    	</h1>
+        {{#if message}}
+            <div class="notification-message">
+                {{message}}
+            </div>
+        {{/if}}
+        <div class="dialog-socials">
+            <a href="/auth/facebook" class="login-fb">
+                Вхід через Facebook
+            </a>
+            <a href="/auth/google" class="login-google">
+                Вхід через Google+
+            </a>
+        </div>
+        <div class="login-separator">
+            або
+        </div>
+        <form action="/login" method="post">
+            <div class="row {{#if errors.username}}row--error{{/if}}">
+                <label class="row__label" for="username">
+                    {{#if errors.username}}
+                        {{errors.username}}
+                    {{else}}
+                        E-mail
+                    {{/if}}
+                </label>
+                <input class="row__input higher" type="email" name="username" {{#if username}}value="{{username}}"{{/if}} maxlength="50" />
+            </div>
+            <div class="row {{#if errors.password}}row--error{{/if}}">
+                <label class="row__label" for="password">
+                    {{#if errors.password}}
+                        {{errors.password}}
+                    {{else}}
+                        Пароль
+                    {{/if}}
+                </label>
+                <div class="password-holder">
+                    <input id="loginPassword" class="row__input higher password" type="password" name="password" {{#if password}}value="{{password}}"{{/if}} maxlength="25" />
+                    <div class="password-toggle" title="Показати пароль" data-title="Показати пароль" data-shown-title="Сховати пароль" data-password-toggle="loginPassword"></div>
+                </div>
+                <aside class="row--aside">
+                    {{#checkbox 'rememberme'}}
+                        <input id="rememberme" type="checkbox" name="rememberme" value="true" {{#if rememberme}}checked="checked"{{/if}} />
+                    {{/checkbox}}<label for="rememberme" class="label--small">Пам'ятати мене</label> <!-- todo: revise markup -->
+                    <a href="/forgot" class="right-link" data-ajax-dialog="forgot">Забули пароль?</a>
+                </aside>
+            </div>
+
+            <button class="dialog__button" type="submit" data-ajax-submit-dialog="login">Ввійти</button>
+        </form>
+        <aside class="dialog__aside">
+            <a href="/signup" data-ajax-dialog="signup">Реєстрація</a>
+        </aside>
+    </div>
+</div>

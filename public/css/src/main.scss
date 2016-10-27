@@ -1,0 +1,405 @@
+@import "reset";
+
+$menu-height: 70px;
+$container-width: 1170px;
+$sl-container-width: 800px;
+$mobile-container-width: 640px;
+$mobile-mini-container-width: 480px;
+$screen-width: 1366px;
+$mobile-container-percentage: 92%;
+$error-color: #9e0b0f;
+$simple-button-height: 40px;
+
+button.simple {
+	$height: 40px;
+	display: inline-block;
+	padding: 0 16px;
+	height: $height;
+	line-height: $height;
+	border: 1px solid white;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background-color: transparent;
+	color: white;
+	&:hover, &:active {
+		background-color: white;
+		color: black;
+	}
+}
+
+button.plain {
+	background-color: transparent;
+	color: inherit;
+	font-family: inherit;
+}
+
+.sort-asc {
+	$icon-width: 10px;
+	box-sizing: border-box;
+	padding-right: 8px + $icon-width;
+	background: url('../img/arrow-up-small.png') no-repeat;
+	background-size: $icon-width 5px;
+	background-position: center right;
+}
+
+.sort-desc {
+	$icon-width: 10px;
+	box-sizing: border-box;
+	padding-right: 8px + $icon-width;
+	background: url('../img/arrow-down-small.png') no-repeat;
+	background-size: $icon-width 5px;
+	background-position: center right;
+}
+
+@mixin menu-gap {
+	margin-top: -3*$menu-height;
+	padding-top: 3*$menu-height;
+	@media (max-width: $mobile-container-width) {
+		margin-top: 0;
+		padding-top: 0;
+		overflow: auto;
+	}
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/Lato-Regular.woff2') format('woff2'),
+       url('../fonts/Lato-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  src: url('../fonts/Lato-Italic.woff2') format('woff2'),
+       url('../fonts/Lato-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 600;
+  src: url('../fonts/Lato-Regular.woff2') format('woff2'),
+       url('../fonts/Lato-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: bold;
+  src: url('../fonts/Lato-Bold.woff2') format('woff2'),
+       url('../fonts/Lato-Bold.woff') format('woff');
+}
+
+html {
+	font-size: 16px;
+}
+
+
+body {
+	font-family: "Lato";
+	color: rgb(67, 80, 90);
+	line-height: 1;
+}
+
+q {
+	quotes: "“" "”";
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.standalone-quote {
+	position: relative;
+	&:before {
+		position: absolute;
+		right: 100%;
+	}
+}
+
+.container {
+	height: 100%;
+	max-width: $container-width;
+	margin: 0 auto;
+	position: relative;
+	@media (max-width: $screen-width) {
+		max-width: none;
+		width: $mobile-container-percentage;
+	}
+}
+
+div.pattern-content {
+	@include menu-gap;
+	background: url('../img/pattern-new.png') top;
+	padding-bottom: 40px;
+	@media (max-width: $mobile-container-width) {
+		background: none;
+	}
+	div.dialog {
+		position: static;
+		margin-top: 40px;
+	}
+}
+
+button {
+	cursor: pointer;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+
+.clearfix {
+	&:after {
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;
+	}
+}
+
+p {
+	margin: 20px auto;
+    font-style: italic;
+	line-height: 1.5;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+hr {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+$input_height: 40px;
+$input_border: 1px solid #d7d7d7;
+$input_padding: 17px;
+input[type="text"], input[type="email"], input[type="password"], textarea {
+	font-size: 0.75rem;
+	font-family: "Lato";
+	height: $input_height;
+	border: $input_border;
+	border-radius: 5px;
+	padding: $input_padding;
+	color: #b7b7b7;
+	&.higher {
+		height: 47px;
+	}
+}
+textarea {
+	height: 100px;
+}
+$icon-right-shift: 13px;
+$icon-width: 19px;
+input.password {
+	padding-right: $icon-right-shift + $icon-width + $icon-right-shift;
+	background-color: white;
+}
+.password-holder {
+	position: relative;
+}
+
+.password-toggle {
+	$height: 17px;
+	position: absolute;
+	right: $icon-right-shift;
+	top: ($input_height - $height/2)/2;
+	background: url('../img/password-icon.png') no-repeat;
+	width: $icon-width;
+	height: $height;
+	cursor: pointer;
+}
+.password-toggle.shown {
+	background: url('../img/password-shown-icon.png') no-repeat;
+}
+
+$http_width: 72px;
+div.http {
+	width: 100%;
+	height: $input_height;
+	box-sizing: border-box;
+	position: relative;
+	&:before {
+		content: 'http://';
+		width: $http_width;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background-color: #ebebeb;
+		border-radius: 5px 0 0 5px;
+		text-align: center;
+		z-index: 1;
+		color: #004a80;
+		font-size: 12px;
+		line-height: $input_height;
+		border: $input_border;
+		border-right: 0;
+		box-sizing: border-box;
+	}
+	&.error {
+		&:before {
+			color: $error-color;
+			background-color: rgba(158,12,16,0.25);
+		}
+		&:before, input.http {
+			border-color: $error-color;
+		}
+	}
+}
+input.http {
+	width: 100%;
+	padding-left: $http_width + $input_padding;
+}
+
+/*textarea {
+	background-color: #fffffe;
+	border: 1px solid #e1e1e1;
+	border-radius: 5px;
+	padding: 20px 26px;
+	color: #d5d5d5;
+	font-family: Arial;
+	font-size: 1.25rem;
+	font-weight: 400;
+	height: 100px;
+}*/
+
+.notification-message {
+	background-color: #d9edf7;
+	border-color: #98cce7;
+	color: #3a87ad;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.bottom-space {
+	padding-bottom: 100px;
+}
+
+ul.pagination {
+	text-align: center;
+	margin-top: 36px;
+	& > li {
+		display: inline-block;
+		box-sizing: border-box;
+		vertical-align: middle;
+		$size: 28px;
+		margin: 0 7px;
+		width: $size;
+		height: $size;
+		&.page {
+			line-height: $size - 2px;
+			border: 1px solid #b7b7b7;
+			border-radius: 5px;
+			color: #999;
+			font-size: 16px;
+			font-weight: 600;
+			&.active {
+				background-color: #004a80;
+				color: white;
+				border-color: #004a80; 
+			}
+		}
+		&.prev {
+			margin: 0;
+			background: url('../img/arrow-left.png') center no-repeat;
+		}
+		&.next {
+			margin: 0;
+			background: url('../img/arrow-right.png') center no-repeat;
+		}
+	}
+	& > li a, & > li button {
+		height: 100%;
+		width: 100%;
+		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: transparent;
+		color: inherit;
+		font-size: inherit;
+		font-family: inherit;
+		font-weight: inherit;
+	}
+}
+
+select[multiple] {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-family: "Lato";
+	border: $input_border;
+	border-radius: 5px;
+	padding: 0;
+	color: #b7b7b7;
+	option {
+		padding: 5px 17px;
+	}
+}
+
+a.form-link {
+	color: #004a80;
+}
+
+.hint {
+	color: rgb(107, 107, 107);
+	font-family: Lato;
+	font-size: 0.625rem;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+}
+
+li.row {
+	margin-bottom: 0;
+	margin-top: 16px;
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+.block {
+	display: block;
+}
+
+.js-enabled [data-href] {
+	cursor: pointer;
+}
+
+@import "modules/page";
+@import "modules/helpers";
+@import "modules/checkbox";
+@import "modules/radio";
+@import "modules/header";
+@import "modules/mobile_header";
+@import "modules/main_menu";
+@import "modules/mobile_main_menu";
+@import "modules/footer";
+@import "modules/dialog";
+@import "modules/loading";
+@import "modules/search_construct";
+@import "modules/autocomplete";
+@import "modules/show_more";
+@import "pages/landing";
+@import "pages/company";
+@import "pages/companies";
+@import "pages/user_profile";
+@import "pages/http_errors";
+@import "pages/static";
+@import "pages/admin";
+
+@import "overrides/chosen";

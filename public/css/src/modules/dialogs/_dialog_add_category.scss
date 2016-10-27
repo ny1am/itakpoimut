@@ -1,0 +1,93 @@
+div.dialog--category {
+	$width: 800px;
+	width: $width;
+	& > .dialog_content {
+		max-width: 100%;
+	}
+	@include full-on-width($width);
+}
+
+.prev-categories-holder {
+	margin-top: 24px;
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+	box-sizing: border-box;
+	padding-right: 20px;
+}
+
+.prev-categories-block {
+	margin-top: 20px;
+	max-height: 364px;
+	overflow-y: auto;
+}
+
+.prev-categories {
+	display: inline-block;
+	vertical-align: top;
+	li {
+		display: inline-block;
+		margin: 0 10px 10px 0;
+		min-height: 40px;
+		background-color: rgb(110, 157, 58);
+		border-radius: 5px;
+		box-sizing: border-box;
+		padding: 12px;
+		color: white;
+		font-size: 1rem;
+	}
+}
+
+.selected-categories-mirror {
+	display: inline-block;
+	vertical-align: top;
+	li {
+		display: inline-block;
+		margin: 0 10px 10px 0;
+		min-height: 40px;
+		border-radius: 5px;
+		box-sizing: border-box;
+		padding: 12px;
+		font-size: 1rem;
+		border: 1px solid rgb(225, 225, 225);
+		position: relative;
+	}
+}
+
+.selected-category-title {
+	display: inline-block;
+	margin-right: 22px;
+}
+
+.delete-category {
+	position: absolute;
+	right: 11px;
+	top: 16px;
+	display: inline-block;
+	cursor: pointer;
+	width: 11px;
+	height: 11px;
+	background: url('../img/delete11.png');
+}
+
+.categories-holder {
+	margin-top: 24px;
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+
+.categories {
+	margin-top: 20px;
+	max-height: 364px;
+	overflow-y: auto;
+	border: 1px solid rgb(235, 235, 235);
+	border-radius: 5px;
+	li {
+		display: block;
+		padding: 12px 20px;
+		box-sizing: border-box;
+		font-size: 1rem;
+		font-weight: 600;
+	}
+}

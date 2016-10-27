@@ -1,0 +1,76 @@
+<section id="company-comments" class="company-comments">
+	<header class="company-comments__header">
+		<h1>
+			Коментарі
+		</h1>
+		<span>
+			{{commentsCount}} коментарів
+		</span>
+	</header>
+	{{#if comments}}
+		<ul class="company-comments__ul">
+			{{#each comments}}
+				<li>
+					<article class="comment">
+						<div class="comment-image">
+							<img src={{picture _user.picture_url}}>
+						</div>
+						<div class="comment-body">
+							<div class="comment-meta">
+								<span class="comment-author">
+									{{_user.fname}} {{_user.lname}}
+								</span>
+								<span class="comment-time">
+									{{formatDate created}}
+								</span>
+							</div>
+							<p class="comment-text">
+								{{text}}
+							</p>
+						</div>
+					</article>
+				</li>
+			{{/each}}
+		</ul>
+
+		{{#pagination currentPage totalPages 5}}
+			<ul class="pagination">
+				<li class="prev">
+					<a data-ajax="company_comments" data-ajax-zone="company-comments" href="/company/{{../company._id}}?currentPage={{prevPage}}#company-comments" title="Попередня сторінка"></a>
+				</li>
+				{{#each pages~}}
+					<li class="page{{#if isCurrent}} active{{/if}}">
+						<a data-ajax="company_comments" data-ajax-zone="company-comments" href="/company/{{../../company._id}}?currentPage={{page}}#company-comments">
+							{{page}}
+						</a>
+					</li>
+				{{~/each}}
+				<li class="next">
+					<a data-ajax="company_comments" data-ajax-zone="company-comments" href="/company/{{../company._id}}?currentPage={{nextPage}}#company-comments" title="Наступна сторінка"></a>
+				</li>
+			</ul>
+		{{/pagination}}
+
+	{{/if}}
+</section>
+{{#if loggedUser}}
+	<form action="/addComment" class="add-comment" method="post" data-ajax-zone="company-comments" data-ajax-tmpl="company_comments" data-ajax-anchor="company-comments">
+		<input type="hidden" name="_company" value="{{company._id}}"></input>
+		<h2>
+			Додати коментар
+		</h2>
+		<div class="comment-row">
+			<div class="add-comment-image">
+				<img src={{picture loggedUser.picture_url}}>
+			</div>
+			<textarea placeholder="Введіть ваш коментар" name="text" maxlength="500"></textarea>
+		</div>
+		<div class="right-content">
+        	<button class="dialog__button" type="submit" data-ajax-formsubmit>Додати коментар</button>
+    	</div>
+	</form>
+{{else}}
+	<div class="guest-add-comment">
+		Для того, щоб залишити коментар, вам необхідно <a href="/login" data-ajax-dialog="login">ввійти</a>
+	</div>
+{{/if}}

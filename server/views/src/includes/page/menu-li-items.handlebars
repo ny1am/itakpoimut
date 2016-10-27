@@ -1,0 +1,22 @@
+<li>
+	<a href="/">
+		Головна
+	</a>
+</li>
+<li>
+	<a href="/companies">
+		Всі компанії
+	</a>
+</li>
+<li>
+	<a href="/about">
+		Про нас
+	</a>
+</li>
+{{#roleModerator loggedUser}}
+	<li>
+		<a href="/admin">
+			Адмінка
+		</a>
+	</li>
+{{/roleModerator}}
