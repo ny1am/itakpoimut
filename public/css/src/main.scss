@@ -105,6 +105,10 @@ q {
 	quotes: "“" "”";
 }
 
+:lang(uk) q {
+	quotes: "«" "»";
+}
+
 summary::-webkit-details-marker {
     display: none;
 }
