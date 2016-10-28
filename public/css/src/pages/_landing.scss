@@ -207,16 +207,19 @@ ul.new-companies {
 			margin-right: 0;
 		}
 	}
-	@media (max-width: $mobile-container-width) {
+	@media (max-width: $container-width) {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		& > li {
-			margin-right: 0;
+			margin-left: 10px;
+			margin-right: 10px;
 		}
 	}
 	@media (max-width: $mobile-mini-container-width) {
 		justify-content: space-around;
+		margin-left: 0;
+		margin-right: 0;
 	}
 }
 
