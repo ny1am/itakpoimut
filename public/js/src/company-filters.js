@@ -19,6 +19,7 @@ var $ = require('jquery');
                 selectedFilters: selectedFilters
             })
         );
+        $('#search-results')[0].scrollIntoView();
     });
 
     //todo: revise this shit
