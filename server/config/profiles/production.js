@@ -1,5 +1,5 @@
 module.exports = {
-	baseUrl: 'http://www.itakpoimut.info',
+	baseUrl: 'https://www.itakpoimut.info',
 
 	cloudinary: {
 		cloud_name: process.env.cloudinary_cloud_name,
