@@ -8,7 +8,6 @@ var url = require('url');
 
     function redirect(request, response) {
         var redirectUrl = '/';
-        /*
         var referer = request.headers['referer'];
         //todo: its google auth redirect hook, revise if possible
         if (referer && referer.indexOf(VARS.baseUrl) > -1 && referer.indexOf(VARS.baseUrl+'/AccountChooser') === -1) {
@@ -17,7 +16,6 @@ var url = require('url');
         if (redirectUrl === '/login') {
             redirectUrl = '/';
         }
-        */
         response.redirect(redirectUrl);
     };
 
