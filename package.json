@@ -8,7 +8,6 @@
     "heroku-postbuild": "bower install && gulp prod"
   },
   "cacheDirectories": [
-    "node_modules",
     "public/js/libs"
   ],
   "browser": {
