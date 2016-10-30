@@ -13,9 +13,19 @@ var autocomplete = require('../controllers/autocomplete');
 var rememberMe = require('../config/passport-remember-me.js');
 var forgotPassword = require('../controllers/forgotPassword');
 var resetPassword = require('../controllers/resetPassword');
+var VARS = require('./variables.js');
 
 
 module.exports = function (app) {
+
+
+    app.get('*',function(req, res, next) {
+        if(req.headers['x-forwarded-proto'] != 'https') {
+            res.redirect(VARS.baseUrl+req.url);
+        } else {
+            next();
+        }
+    });
 
     app.get('/', landing.get);
 
