@@ -23,7 +23,12 @@ var loyalties = require('./loyalties.js');
         },
 
         'http': function http(url) {
-            return 'http://'+url;
+            //todo revise this hotfix
+            if (url.indexOf('http') === 0) {
+                return url;
+            } else {
+                return 'http://'+url;
+            }
         },
 
         'picture': function(picture_url) {
