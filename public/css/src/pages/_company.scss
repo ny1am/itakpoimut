@@ -182,7 +182,7 @@ section.company-comments {
 }
 
 header.company-comments__header {
-	padding: 43px 35px 15px 35px;
+	padding-top: 43px;
 	color: #666;
 	font-weight: 600;
 	position: relative;
@@ -220,6 +220,12 @@ ul.company-comments__ul {
 		margin: 0 3px;
 		&:hover {
 			background-color: rgba(225, 225, 225, 0.2);
+			border-radius: 5px;
+		}
+		&:first-child {
+			&:hover {
+				border-radius: 0 0 5px 5px;
+			}
 		}
 		@media (max-width: $mobile-container-width) {
 			padding: 20px 0;
