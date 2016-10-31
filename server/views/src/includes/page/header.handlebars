@@ -36,9 +36,14 @@
 <header class="mobile-header">
 	<a href="{{page_url}}#mobile-menu" class="menu-button"></a>
 	<div class="mobile-header-buttons">
-		<button class="mobile-add-company" data-ajax-dialog="createCompany" data-ajax-url="/createCompany"></button>
-		<button class="mobile-search"></button>
-		<button data-ajax-dialog="login" class="mobile-user"></button>
+		<a href="/createCompany" class="mobile-add-company" data-ajax-dialog="createCompany" data-ajax-url="/createCompany"></a>
+		<a href="/companies" class="mobile-search"></a>
+		{{#if loggedUser}}
+			<a href="/userProfile" class="mobile-user"></a>
+			<a href="/logout" class="mobile-logout"></a>
+		{{else}}
+			<a href="/login" data-ajax-dialog="login" class="mobile-user"></a>
+		{{/if}}
 	</div>
 </header>
 
