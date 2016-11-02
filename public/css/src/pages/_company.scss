@@ -2,6 +2,10 @@
 	margin-top: 30px;
 	padding: 0 30px;
 	background-color: rgba(255, 255, 255, 0.78);
+	@media (max-width: $mobile-container-width) {
+		padding: 0;
+		margin-top: 10px;
+	}
 }
 
 .company-profile {
@@ -16,12 +20,22 @@ article.company-info {
 	}
 	@extend .clearfix;
 	.col-1 {
-		width: 20%;
-
+		max-width: 220px;
 	}
 	.col-2 {
-		width: 80%;
+		/*fallback*/
+		/*todo: flexbox here*/
+		width: 100%;
+		width: calc(100% - 220px);
 		padding: 0 3.5%;
+	}
+	@media (max-width: $mobile-container-width) {
+		.col-1 {
+			max-width: 180px;
+		}
+		.col-2 {
+			width: calc(100% - 180px);
+		}
 	}
 }
 
