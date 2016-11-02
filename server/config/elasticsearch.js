@@ -33,12 +33,12 @@ module.exports = function () {
 
 	elasticsearch.autocomplete = function(params, callback) {
 		var query = {
-	    "filtered": { 
-	      "query": {
-	        "match": {
-						"title": {
-							"query": params.term,
-							"analyzer": "standard"
+	    filtered: { 
+	      query: {
+	        match: {
+						title: {
+							query: params.term,
+							analyzer: 'standard'
 						}
 					}
 	      }
@@ -92,38 +92,38 @@ module.exports = function () {
 		client.indices.create({
 			index: 'company',
 			body: {
-				"settings": {
-					"analysis": {
-						"filter": {
-							"autocomplete_filter": {
-								"type": "edge_ngram",
-								"min_gram": 1,
-								"max_gram": 10
+				settings: {
+					analysis: {
+						filter: {
+							autocomplete_filter: {
+								type: 'edge_ngram',
+								min_gram: 1,
+								max_gram: 10
 							}
 						},
-						"analyzer": {
-							"autocomplete": {
-								"type": "custom",
-								"tokenizer": "standard",
-								"filter": [
-								"lowercase",
-								"autocomplete_filter"
+						analyzer: {
+							autocomplete: {
+								type: 'custom',
+								tokenizer: 'standard',
+								filter: [
+								'lowercase',
+								'autocomplete_filter'
 								]
 							}
 						}
 					}
 				},
-				"mappings": {
-					"company": {
-						"properties": {
-							"title": {
-								"type": "string",
-								"analyzer": "autocomplete",
-								"search_analyzer": "standard"
+				mappings: {
+					company: {
+						properties: {
+							title: {
+								type: 'string',
+								analyzer: 'autocomplete',
+								search_analyzer: 'standard'
 							},
-							"categories": {
-								"type": "string",
-								"index": "not_analyzed"
+							categories: {
+								type: 'string',
+								index: 'not_analyzed'
 							}
 						}
 					}
