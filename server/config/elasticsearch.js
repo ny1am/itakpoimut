@@ -67,7 +67,7 @@ module.exports = function () {
 		});
 	}
 
-	reIndex();
+	// reIndex();
 
 	function deleteIndex(callback) {
 		client.indices.delete({
