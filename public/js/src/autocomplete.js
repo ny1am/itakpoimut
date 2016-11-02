@@ -7,7 +7,7 @@ var $ = require('jquery');
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: '/autocomplete?term='+value,
+            url: '/autocomplete?category=&term='+value,
             success: function(data, textStatus, jqXHR) {
               var newHtml = templates['autocomplete'](data);
               $('#autocomplete-popup').html(newHtml);

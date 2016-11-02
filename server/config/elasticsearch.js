@@ -32,20 +32,30 @@ module.exports = function () {
 	};
 
 	elasticsearch.autocomplete = function(params, callback) {
-		client.search({
-			index: 'company',
-			type: 'company',
-			size: 4,
-			body: {
-				"query": {
-					"match": {
+		var query = {
+	    "filtered": { 
+	      "query": {
+	        "match": {
 						"title": {
 							"query": params.term,
 							"analyzer": "standard"
 						}
 					}
-				}
-			}
+	      }
+	    }
+	  };
+		if (params.category) {
+			query.filtered.filter = {
+      	match: {
+      		categories: params.category
+      	}
+	    };
+		};
+		client.search({
+			index: 'company',
+			type: 'company',
+			size: 4,
+			body: {query: query}
 		}).then(function (resp) {
 			var results = resp.hits.hits.map(function(hit){
 				return {
