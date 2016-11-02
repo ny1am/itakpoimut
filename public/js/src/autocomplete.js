@@ -9,8 +9,8 @@ var $ = require('jquery');
             dataType: 'json',
             url: '/autocomplete?term='+value,
             success: function(data, textStatus, jqXHR) {
-               var newHtml = templates['autocomplete'](data);
-               $('#autocomplete-popup').html(newHtml);
+              var newHtml = templates['autocomplete'](data);
+              $('#autocomplete-popup').html(newHtml);
            },
            contentType: 'application/json'
        });

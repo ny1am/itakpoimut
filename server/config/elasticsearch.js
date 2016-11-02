@@ -13,7 +13,8 @@ module.exports = function () {
 			type: 'company',
 			id: company._id,
 			body: {
-				title: company.title
+				title: company.title,
+				categories: company.categories
 			}
 		}, function (error, response) {
 			callback(error, response);
@@ -30,7 +31,7 @@ module.exports = function () {
 		});
 	};
 
-	elasticsearch.autocomplete = function(term, callback) {
+	elasticsearch.autocomplete = function(params, callback) {
 		client.search({
 			index: 'company',
 			type: 'company',
@@ -39,7 +40,7 @@ module.exports = function () {
 				"query": {
 					"match": {
 						"title": {
-							"query": term,
+							"query": params.term,
 							"analyzer": "standard"
 						}
 					}
@@ -66,7 +67,7 @@ module.exports = function () {
 		});
 	}
 
-	//reIndex();
+	reIndex();
 
 	function deleteIndex(callback) {
 		client.indices.delete({
@@ -109,6 +110,10 @@ module.exports = function () {
 								"type": "string",
 								"analyzer": "autocomplete",
 								"search_analyzer": "standard"
+							},
+							"categories": {
+								"type": "string",
+								"index": "not_analyzed"
 							}
 						}
 					}
@@ -131,7 +136,8 @@ module.exports = function () {
 					type: 'company',
 					id: doc._id,
 					body: {
-						title: doc.title
+						title: doc.title,
+						categories: doc.categories
 					}
 				}, function(error, response) {
 					console.log(response);
