@@ -18,6 +18,4 @@ module.exports = function() {
     require('../models/RememberMeToken');
     require('../models/ResetPasswordToken');
     require('../models/Proposed');
-
-    require('./dbupdates');
 };

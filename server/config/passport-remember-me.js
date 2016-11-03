@@ -26,10 +26,12 @@ exports.setup = function(app) {
 exports.addCookieMiddleware = function(request, response, next) {
 	if (request.body.rememberme) {
 		tokenSevice.save(request.user._id, function(err, doc) {
-			if (err) { return next(err); }
-                response.cookie(cookieName, doc.token, { path: '/', httpOnly: true, maxAge: 604800000 }); // 7 days
-                next();
-            });
+			if (err) {
+				return next(err);
+			}
+			response.cookie(cookieName, doc.token, { path: '/', httpOnly: true, maxAge: 604800000 }); // 7 days
+			next();
+		});
 	} else {
 		next();
 	}

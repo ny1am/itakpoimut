@@ -1,10 +1,12 @@
 module.exports = {
 	baseUrl: 'http://localhost:5000',
 
+	sessionSecret: 'they will guess',
+
 	cloudinary: {
 		cloud_name: 'itakpoimut',
-        api_key: '181275726616715',
-        api_secret: 'jB3OlVxKO3hpgsyibDfo-UzOzog'
+		api_key: '181275726616715',
+		api_secret: 'jB3OlVxKO3hpgsyibDfo-UzOzog'
 	},
 
 	elasticsearch: {

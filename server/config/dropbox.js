@@ -1,5 +1,5 @@
 var VARS = require('./variables.js');
-var dbox = require("dbox");
+var dbox = require('dbox');
 var rollbar = require('rollbar');
 var fs = require('fs');
 

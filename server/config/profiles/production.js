@@ -1,6 +1,8 @@
 module.exports = {
 	baseUrl: 'https://www.itakpoimut.info',
 
+	sessionSecret: process.env.EXPRESS_SESSION_SECRET,
+
 	cloudinary: {
 		cloud_name: process.env.cloudinary_cloud_name,
     api_key: process.env.cloudinary_api_key,

@@ -25,7 +25,7 @@ module.exports = function (app, config) {
         extended: true
     }));
     app.use(session({
-        secret: 'they will guess',
+        secret: VARS.sessionSecret,
         resave: false,
         saveUninitialized: false
     }));

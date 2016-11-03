@@ -22,7 +22,8 @@ module.exports = function(app) {
 		}
 	));
 
-	passport.use(new FacebookStrategy({
+	passport.use(new FacebookStrategy(
+		{
 			clientID: VARS.facebook.clientID,
 			clientSecret: VARS.facebook.clientSecret,
 			callbackURL: VARS.baseUrl + "/auth/facebook/callback",
@@ -40,19 +41,19 @@ module.exports = function(app) {
 	));
 
 	passport.use(new GoogleStrategy({
-			clientID: VARS.google.clientID,
-			clientSecret: VARS.google.clientSecret,
-			callbackURL: VARS.baseUrl + "/auth/google/callback"
-		},
-		function(accessToken, refreshToken, profile, done) {
-			User.findOne({google_id:profile.id}).exec(function(err, user) {
-				if (user) {
-					return done(null, user);
-				} else {
-					userService.createGoogleUser(profile, done);
-				}
-			});
-		}
+		clientID: VARS.google.clientID,
+		clientSecret: VARS.google.clientSecret,
+		callbackURL: VARS.baseUrl + "/auth/google/callback"
+	},
+	function(accessToken, refreshToken, profile, done) {
+		User.findOne({google_id:profile.id}).exec(function(err, user) {
+			if (user) {
+				return done(null, user);
+			} else {
+				userService.createGoogleUser(profile, done);
+			}
+		});
+	}
 	));
 
 	passport.serializeUser(function(user, done) {
@@ -72,8 +73,8 @@ module.exports = function(app) {
 	});
 
 	app.use(passport.initialize());
-    app.use(passport.session());
-    require('./passport-remember-me.js').setup(app);
+	app.use(passport.session());
+	require('./passport-remember-me.js').setup(app);
 
 	app.use(function(request, response, next) {
 		var _render = response.render;

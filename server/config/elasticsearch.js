@@ -5,7 +5,6 @@ var VARS = require('./variables.js');
 module.exports = function () {
 	
 	var client = new elasticsearch.Client(VARS.elasticsearch);
-
 	
 	elasticsearch.indexCompany = function (company, callback) {
 		client.index({
@@ -33,23 +32,23 @@ module.exports = function () {
 
 	elasticsearch.autocomplete = function(params, callback) {
 		var query = {
-	    filtered: { 
-	      query: {
-	        match: {
+			filtered: { 
+				query: {
+					match: {
 						title: {
 							query: params.term,
 							analyzer: 'standard'
 						}
 					}
-	      }
-	    }
-	  };
+				}
+			}
+		};
 		if (params.category) {
 			query.filtered.filter = {
-      	match: {
-      		categories: params.category
-      	}
-	    };
+				match: {
+					categories: params.category
+				}
+			};
 		};
 		client.search({
 			index: 'company',
