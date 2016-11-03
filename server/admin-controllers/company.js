@@ -3,7 +3,6 @@ var Proposed = require('mongoose').model('Proposed');
 var Comment = require('mongoose').model('Comment');
 var fs = require('fs');
 var cloudinary = require('cloudinary');
-var helper = require('../utils/helper');
 var _ = require('lodash');
 var violations = require('../../shared/js/violations.js');
 var categories = require('../../shared/js/categories.js');
