@@ -13,6 +13,9 @@ section.landing {
 
 .landing-container {
 	margin-top: 130px;
+	@media (max-width: $mobile-container-width) {
+		margin-top: 80px;
+	}
 }
 
 h1.main-header {
@@ -69,19 +72,53 @@ div.pattern {
 
 section.description {
 	$img-size: 217px;
-	margin: 138px auto 160px auto;
-	max-width: 960px;
-	box-sizing: border-box;
 	padding-left: $img-size + 92px;
 	min-height: $img-size;
 	background-image: url('../img/description.png');
 	background-size: $img-size;
 	background-position: top left;
 	background-repeat: no-repeat;
+}
+
+section.search-by-name {
+	$img-size: 300px;
+	padding-right: $img-size + 92px;
+	min-height: $img-size;
+	background-image: url('../img/search-by-name.png');
+	background-size: $img-size;
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+section.search-by-category {
+	$img-size: 300px;
+	padding-left: $img-size + 92px;
+	min-height: $img-size;
+	background-image: url('../img/search-by-category.png');
+	background-size: $img-size;
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+
+section.add-company {
+	$img-size: 300px;
+	padding-right: $img-size + 92px;
+	min-height: $img-size;
+	background-image: url('../img/add-company.png');
+	background-size: $img-size;
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+section.description, section.search-by-name, section.search-by-category, section.add-company {
+	max-width: 960px;
+	margin: 138px auto 10px auto;
+	box-sizing: border-box;
 	@media (max-width: $mobile-container-width) {
 		background: none;
 		padding: 0;
 		margin-top: 40px;
+		min-height: auto;
 	}
 }
 
