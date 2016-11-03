@@ -10,8 +10,18 @@
 			<form action="/companies" method="GET">
 				<div class="search-construct">
 					<div class="search-construct-input">
-						<input name="title" type="text" placeholder="Введіть назву компанії" data-ajax-autocomplete autocomplete="off" />
+						<input name="title" type="text" placeholder="Введіть назву компанії" data-ajax-autocomplete="langing-auto" autocomplete="off" />
 						<div id="autocomplete-popup"></div>
+					</div>
+					<div class="search-construct-select">
+						<select id="selectedCategory" name="selectedCategory" data-trigger-ajax-autocomplete="langing-auto">
+							<option value="">Всі сфери</option>
+							{{#each categoriesList}}
+								<option value="{{name}}">
+									{{text}}
+								</option>
+							{{/each}}
+						</select>
 					</div>
 					<button type="submit" class="search-construct-button"></button>
 				</div>

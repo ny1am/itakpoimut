@@ -3,7 +3,11 @@ var Company = require('mongoose').model('Company');
 
 exports.get = function(params, callback) {
     if (!params.term) {
-        Company.find({'published': true})
+        var findQuery = {'published': true};
+        if (params.category) {
+            findQuery.categories = params.category;
+        }
+        Company.find(findQuery)
         .sort({sort_title: 'asc'})
         .select('_id title img loyalty')
         .limit(5).exec(callback);

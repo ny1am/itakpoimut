@@ -2,6 +2,8 @@ var Comment = require('mongoose').model('Comment');
 var Company = require('mongoose').model('Company');
 var asyncjs = require('async');
 
+var categories = require('../../shared/js/categories.js');
+
 exports.get = function(params, callback) {
 	asyncjs.parallel({
 		newCompanies: function(next) {
@@ -19,6 +21,9 @@ exports.get = function(params, callback) {
 			.exec(function (err, doc) {
 				next(err, doc);
 			});
+		},
+		categoriesList: function(next) {
+			next(null, categories.list());
 		}
 	},
 	callback);
