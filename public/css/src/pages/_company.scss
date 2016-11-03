@@ -24,6 +24,7 @@ article.company-info {
 	@extend .clearfix;
 	.col-1 {
 		width: 220px;
+		min-width: 220px;
 	}
 	.col-2 {
 		/*fallback*/
@@ -39,6 +40,7 @@ article.company-info {
 	@media (max-width: $mobile-container-width) {
 		.col-1 {
 			width: 180px;
+			min-width: 180px;
 		}
 		.col-2 {
 			width: calc(100% - 180px);
