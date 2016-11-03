@@ -13,6 +13,9 @@
 }
 
 article.company-info {
+	@supports (display: flex) {
+		display: flex;
+	}
 	&>div {
 		float: left;
 		overflow: hidden;
@@ -20,7 +23,7 @@ article.company-info {
 	}
 	@extend .clearfix;
 	.col-1 {
-		max-width: 220px;
+		width: 220px;
 	}
 	.col-2 {
 		/*fallback*/
@@ -28,13 +31,21 @@ article.company-info {
 		width: 100%;
 		width: calc(100% - 220px);
 		padding: 0 3.5%;
+		@supports (display: flex) {
+			flex-grow: 1;
+			width: auto;
+		}
 	}
 	@media (max-width: $mobile-container-width) {
 		.col-1 {
-			max-width: 180px;
+			width: 180px;
 		}
 		.col-2 {
 			width: calc(100% - 180px);
+			@supports (display: flex) {
+				flex-grow: 1;
+				width: auto;
+			}
 		}
 	}
 }
