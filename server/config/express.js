@@ -30,20 +30,4 @@ module.exports = function (app, config) {
         saveUninitialized: false
     }));
     app.use(flash());
-
-    // todo: remove, i don't like this
-    app.use(function (request, response, next) {
-        var _render = response.render;
-        response.render = function (view, model, callback) {
-            var baseUrl = VARS.baseUrl;
-            if (baseUrl === undefined) {
-                baseUrl = request.protocol + '://' + request.get('host');
-            }
-            _.extend(model, {
-                base_url: baseUrl
-            });
-            _render.call(this, view, model);
-        };
-        next();
-    });
 };

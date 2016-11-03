@@ -11,6 +11,9 @@ var source = require('vinyl-source-stream');
 var runSequence = require('run-sequence');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var inject = require('gulp-inject-string');
+
+var baseUrl = require('./server/config/variables.js').baseUrl;
 
 gulp.task('browserify', function() {
 	return browserify('./public/js/src/browserify.js')
@@ -26,8 +29,9 @@ gulp.task('uglify', function() {
     .pipe(gulp.dest('./public/js'));
 });
 
-gulp.task('html-minify', function() {
+gulp.task('html', function() {
 	return gulp.src('./server/views/src/**/*.handlebars')
+			.pipe(inject.replace('#injected:{base_url}', baseUrl))
 	    .pipe(compressor({'remove-intertag-spaces': true}))
 	    .pipe(gulp.dest('./server/views/dist'));
 });
@@ -56,7 +60,7 @@ gulp.task('handlebars', function() {
 gulp.task('process', function() {
 	runSequence(
 		'handlebars',
-        ['browserify', 'html-minify', 'sass'],
+        ['browserify', 'html', 'sass'],
         'uglify'
     );
 });
@@ -69,7 +73,7 @@ gulp.task('watch', function(){
 		gulp.start('browserify');
 	});
 	watch('./server/views/src/**/*.handlebars', function() {
-		gulp.start('html-minify');
+		gulp.start('html');
 	});
 	watch('./public/css/src/**/*.scss', function() {
 		gulp.start('sass');
