@@ -62,7 +62,7 @@ gulp.task('handlebars', function() {
 		.pipe(gulp.dest('./public/js/src/'));
 });
 
-gulp.task('sprite', function () {
+gulp.task('sprite-icon', function () {
   var spriteData = gulp.src('./public/img/icons/*.png').pipe(spritesmith({
     imgName: 'icons-sprite.png',
     imgPath: '../img/icons-sprite.png',
@@ -76,6 +76,22 @@ gulp.task('sprite', function () {
   return merge(imgStream, cssStream);
 });
 
+gulp.task('sprite-landing', function () {
+  var spriteData = gulp.src('./public/img/landing/*.png').pipe(spritesmith({
+    imgName: 'landing-sprite.png',
+    imgPath: '../img/landing-sprite.png',
+    cssName: 'landing-sprite.scss',
+    cssVarMap: function (sprite) {
+		  sprite.name = 'sprite-landing-' + sprite.name;
+		}
+  }));
+  var imgStream = spriteData.img.pipe(gulp.dest('./public/img/'));
+  var cssStream = spriteData.css.pipe(rename('_landing-sprite.scss')).pipe(gulp.dest('./public/css/src/'));
+  return merge(imgStream, cssStream);
+});
+
+gulp.task('sprite', ['sprite-icon', 'sprite-landing']);
+
 gulp.task('process', function() {
 	runSequence(
 		['sprite', 'handlebars'],
@@ -88,7 +104,10 @@ gulp.task('process', function() {
 
 gulp.task('watch', function(){
 	watch('./public/img/icons/*.png', function() {
-		gulp.start('sprite');
+		gulp.start('sprite-icon');
+	});
+	watch('./public/img/landing/*.png', function() {
+		gulp.start('sprite-landing');
 	});
 	watch('./public/js/src/**/*.js', function() {
 		gulp.start('browserify');
