@@ -12,6 +12,8 @@ var runSequence = require('run-sequence');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var inject = require('gulp-inject-string');
+var spritesmith = require('gulp.spritesmith');
+var merge = require('merge-stream');
 
 var baseUrl = require('./server/config/variables.js').baseUrl;
 var hash = process.env.NODE_ENV === 'production' ? Math.random().toString(36).substr(2, 5) : '';
@@ -60,9 +62,24 @@ gulp.task('handlebars', function() {
 		.pipe(gulp.dest('./public/js/src/'));
 });
 
+gulp.task('sprite', function () {
+  var spriteData = gulp.src('./public/img/icons/*.png').pipe(spritesmith({
+    imgName: 'icons-sprite.png',
+    imgPath: '../img/icons-sprite.png',
+    cssName: 'icons-sprite.scss',
+    cssVarMap: function (sprite) {
+		  sprite.name = 'sprite-icon-' + sprite.name;
+		}
+  }));
+  var imgStream = spriteData.img.pipe(gulp.dest('./public/img/'));
+  var cssStream = spriteData.css.pipe(rename('_icons-sprite.scss')).pipe(gulp.dest('./public/css/src/'));
+  return merge(imgStream, cssStream);
+});
+
 gulp.task('process', function() {
 	runSequence(
-		['handlebars', 'css'],
+		['sprite', 'handlebars'],
+		'css',
 		'browserify',
 		'uglify',
 		'html'

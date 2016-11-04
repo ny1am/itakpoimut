@@ -1,6 +1,8 @@
+/*todo: it makes @import*/
 @import '../../js/libs/chosen/chosen.css';
 
 @import 'reset';
+@import 'icons-sprite';
 
 $menu-height: 70px;
 $container-width: 1170px;
@@ -38,21 +40,21 @@ button.plain {
 }
 
 .sort-asc {
-	$icon-width: 10px;
-	box-sizing: border-box;
-	padding-right: 8px + $icon-width;
-	background: url('../img/icons/arrow-up-small.png') no-repeat;
-	background-size: $icon-width 5px;
-	background-position: center right;
+	&:after {
+		content: '';
+		display: inline-block;
+		margin-left: 8px;
+		@include sprite($sprite-icon-arrow-up-small);
+	}
 }
 
 .sort-desc {
-	$icon-width: 10px;
-	box-sizing: border-box;
-	padding-right: 8px + $icon-width;
-	background: url('../img/icons/arrow-down-small.png') no-repeat;
-	background-size: $icon-width 5px;
-	background-position: center right;
+	&:after {
+		content: '';
+		display: inline-block;
+		margin-left: 8px;
+		@include sprite($sprite-icon-arrow-down-small);
+	}
 }
 
 @mixin menu-gap {
