@@ -19,10 +19,10 @@
 		height: 5px;
 	}
 	&[open]:after {
-		background: url('../img/arrow-up-small.png') no-repeat;
+		background: url('../img/icons/arrow-up-small.png') no-repeat;
 	}
 	&[close]:after {
-		background: url('../img/arrow-down-small.png') no-repeat;
+		background: url('../img/icons/arrow-down-small.png') no-repeat;
 	}
 	&[open]:before {
 		content: 'Згорнути';

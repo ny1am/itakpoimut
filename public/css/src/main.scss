@@ -41,7 +41,7 @@ button.plain {
 	$icon-width: 10px;
 	box-sizing: border-box;
 	padding-right: 8px + $icon-width;
-	background: url('../img/arrow-up-small.png') no-repeat;
+	background: url('../img/icons/arrow-up-small.png') no-repeat;
 	background-size: $icon-width 5px;
 	background-position: center right;
 }
@@ -50,7 +50,7 @@ button.plain {
 	$icon-width: 10px;
 	box-sizing: border-box;
 	padding-right: 8px + $icon-width;
-	background: url('../img/arrow-down-small.png') no-repeat;
+	background: url('../img/icons/arrow-down-small.png') no-repeat;
 	background-size: $icon-width 5px;
 	background-position: center right;
 }
@@ -224,13 +224,13 @@ input.password {
 	position: absolute;
 	right: $icon-right-shift;
 	top: ($input_height - $height/2)/2;
-	background: url('../img/password-icon.png') no-repeat;
+	background: url('../img/icons/password-icon.png') no-repeat;
 	width: $icon-width;
 	height: $height;
 	cursor: pointer;
 }
 .password-toggle.shown {
-	background: url('../img/password-shown-icon.png') no-repeat;
+	background: url('../img/icons/password-shown-icon.png') no-repeat;
 }
 
 $http_width: 72px;
@@ -322,11 +322,11 @@ ul.pagination {
 		}
 		&.prev {
 			margin: 0;
-			background: url('../img/arrow-left.png') center no-repeat;
+			background: url('../img/icons/arrow-left.png') center no-repeat;
 		}
 		&.next {
 			margin: 0;
-			background: url('../img/arrow-right.png') center no-repeat;
+			background: url('../img/icons/arrow-right.png') center no-repeat;
 		}
 	}
 	& > li a, & > li button {

@@ -19,7 +19,7 @@ $userpic-size: 48px;
 
 .header-logo {
 	display: inline-block;
-	background-image: url('../img/logo.png');
+	background-image: url('../img/icons/logo.png');
 	background-size: $icon-size;
 	background-repeat: no-repeat;
 	background-position: center left;
@@ -55,7 +55,7 @@ $userpic-size: 48px;
 $logout-size: 28px;
 .header-logout {
 	display: inline-block;
-	background-image: url('../img/log-out.png');
+	background-image: url('../img/icons/log-out.png');
 	background-size: $logout-size;
 	background-repeat: no-repeat;
 	height: $logout-size;

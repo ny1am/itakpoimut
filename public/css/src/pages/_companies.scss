@@ -45,11 +45,11 @@ html.details details.search-params {
 		width: 14px;
 		height: 9px;
 		cursor: pointer;
-		background-image: url('../img/arrow-white-down.png');
+		background-image: url('../img/icons/arrow-white-down.png');
 	}
 	&[open] {
 		summary.search-params-header:after {
-			background-image: url('../img/arrow-white-up.png');
+			background-image: url('../img/icons/arrow-white-up.png');
 		}
 	}
 }
@@ -65,7 +65,7 @@ html.details details.search-params {
 		border-radius: 6px 6px 0 0;
 		color: white;
 		font-size: 1.25rem;
-		background-image: url('../img/filter-icon.png');
+		background-image: url('../img/icons/filter-icon.png');
 		background-position: $icon-left-gap center;
 		background-repeat: no-repeat;
 		background-size: $icon-size;
@@ -281,7 +281,7 @@ $loyalty-shown-width: 760px;
 	}
 	.search-construct-button {
 		width: 69px;
-		background-image: url('../img/search-white-small.png');
+		background-image: url('../img/icons/search-white-small.png');
 		background-size: 34px;
 	}
 }
