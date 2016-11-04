@@ -51,6 +51,16 @@ div.footer-helpers {
 		&:hover {
 			opacity: 1;
 		}
+		display: inline-block;
+		width: 46px;
+		height: 46px;
+		background-repeat: no-repeat;
+		&.facebook {
+			background-image: url('../img/facebook.png');
+		}
+		&.up {
+			background-image: url('../img/up.png');
+		}
 	}
 	a+a {
 		margin-left: 25px;
