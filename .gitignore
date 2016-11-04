@@ -1,9 +1,8 @@
 node_modules
 public/js/libs
 public/js/src/templates.js
-public/js/main.js
-public/js/main.min.js
-public/css/main.css
+public/js/main*.js
+public/css/main*.css
 server/views/dist
 .env
 Dockerfile

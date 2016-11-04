@@ -14,55 +14,59 @@ var rename = require('gulp-rename');
 var inject = require('gulp-inject-string');
 
 var baseUrl = require('./server/config/variables.js').baseUrl;
+var hash = process.env.NODE_ENV === 'production' ? Math.random().toString(36).substr(2, 5) : '';
 
 gulp.task('browserify', function() {
 	return browserify('./public/js/src/browserify.js')
 		.bundle()
-	    .pipe(source('main.js'))
-	    .pipe(gulp.dest('./public/js'));
+		.pipe(source('main.js'))
+		.pipe(gulp.dest('./public/js'));
 });
 
 gulp.task('uglify', function() {
-  return gulp.src('./public/js/main.js')
-    .pipe(uglify())
-    .pipe(rename('main.min.js'))
-    .pipe(gulp.dest('./public/js'));
+	return gulp.src('./public/js/main.js')
+		.pipe(uglify())
+		.pipe(rename('main-'+hash+'.js'))
+		.pipe(gulp.dest('./public/js'));
 });
 
 gulp.task('html', function() {
 	return gulp.src('./server/views/src/**/*.handlebars')
-			.pipe(inject.replace('#injected:{base_url}', baseUrl))
-	    .pipe(compressor({'remove-intertag-spaces': true}))
-	    .pipe(gulp.dest('./server/views/dist'));
+		.pipe(inject.replace('#injected:{base_url}', baseUrl))
+		.pipe(inject.replace('#injected:{hash-version}', hash))
+		.pipe(compressor({'remove-intertag-spaces': true}))
+		.pipe(gulp.dest('./server/views/dist'));
 });
 
-gulp.task('sass', function () {
-  return gulp.src('./public/css/src/main.scss')
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(gulp.dest('./public/css'));
+gulp.task('css', function () {
+	return gulp.src('./public/css/src/main.scss')
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(rename('main-'+hash+'.css'))
+		.pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('handlebars', function() {
 	gulp.src('./server/views/src/partials/**/*.handlebars')
-	    .pipe(handlebars({
+		.pipe(handlebars({
 			handlebars: require('handlebars')
 		}))
-	    .pipe(wrap('Handlebars.template(<%= contents %>)'))
-	    .pipe(declare({
+		.pipe(wrap('Handlebars.template(<%= contents %>)'))
+		.pipe(declare({
 			root: 'exports',
-			noRedeclare: true // Avoid duplicate declarations
-	    }))
-	    .pipe(concat('templates.js'))
-	    .pipe(wrap('var Handlebars = require("handlebars");\n <%= contents %>'))
-	    .pipe(gulp.dest('./public/js/src/'));
+				noRedeclare: true // Avoid duplicate declarations
+			}))
+		.pipe(concat('templates.js'))
+		.pipe(wrap('var Handlebars = require("handlebars");\n <%= contents %>'))
+		.pipe(gulp.dest('./public/js/src/'));
 });
 
 gulp.task('process', function() {
 	runSequence(
-		'handlebars',
-        ['browserify', 'html', 'sass'],
-        'uglify'
-    );
+		['handlebars', 'css'],
+		'browserify',
+		'uglify',
+		'html'
+	);
 });
 
 gulp.task('watch', function(){
@@ -76,7 +80,7 @@ gulp.task('watch', function(){
 		gulp.start('html');
 	});
 	watch('./public/css/src/**/*.scss', function() {
-		gulp.start('sass');
+		gulp.start('css');
 	});
 	watch('./server/views/src/partials/**/*.handlebars', function() {
 		gulp.start('handlebars');
