@@ -79,7 +79,7 @@
 					Нові компанії
 				</header>
 				<ul class="new-companies">
-					{{#each newCompanies}}
+					{{#each newCompanies~}}
 						<li>
 							<article class="company-preview">
 								<a href="/company/{{_id}}" class="p-company-logo">
@@ -92,7 +92,7 @@
 								</label>
 							</article>
 						</li>
-					{{/each}}
+					{{~/each}}
 				</ul>
 			</section>
 		{{/if}}
