@@ -29,13 +29,11 @@ $att-width: 147px;
 	border: 3px dashed rgb(225, 225, 225);
 	box-sizing: border-box;
 	display: inline-block;
-	background-image: url('../img/icons/photo-camera.png');
-	background-repeat: no-repeat;
-	background-position: center 20px;
 	cursor: pointer;
 	overflow: hidden;
 	position: relative;
 	margin-bottom: 12px;
+	text-align: center;
 	&:before {
 		content: 'Лого компанії';
 		position: absolute;
@@ -46,6 +44,12 @@ $att-width: 147px;
 		font-size: 0.75rem;
 		font-weight: 700;
 		width: 100%;
+	}
+	&:after {
+		content: '';
+		display: inline-block;
+		margin-top: 20px;
+		@include sprite($sprite-icon-photo-camera);
 	}
 	input[type="file"] {
 		position: absolute;

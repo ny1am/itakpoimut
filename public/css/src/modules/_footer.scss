@@ -52,14 +52,11 @@ div.footer-helpers {
 			opacity: 1;
 		}
 		display: inline-block;
-		width: 46px;
-		height: 46px;
-		background-repeat: no-repeat;
 		&.facebook {
-			background-image: url('../img/icons/facebook.png');
+			@include sprite($sprite-icon-facebook);
 		}
 		&.up {
-			background-image: url('../img/icons/up.png');
+			@include sprite($sprite-icon-up);
 		}
 	}
 	a+a {

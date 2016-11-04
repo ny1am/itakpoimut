@@ -87,6 +87,9 @@ gulp.task('process', function() {
 });
 
 gulp.task('watch', function(){
+	watch('./public/img/icons/*.png', function() {
+		gulp.start('sprite');
+	});
 	watch('./public/js/src/**/*.js', function() {
 		gulp.start('browserify');
 	});

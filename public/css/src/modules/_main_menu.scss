@@ -49,13 +49,8 @@ ul.menu {
 }
 
 .search-ico {
-	$icon-size: 27px;
 	display: inline-block;
-	background-image: url('../img/icons/search.png');
-	background-size: $icon-size;
-	background-repeat: no-repeat;
-	height: $icon-size;
-	width: $icon-size;
+	@include sprite($sprite-icon-search);
 	vertical-align: middle;
 	margin-right: 28px;
 }

@@ -27,11 +27,7 @@ header.mobile-menu__header {
 	position: relative;
 	.close {
 		background-color: transparent;
-		background-image: url('../img/icons/mobile-menu-close.png');
-		background-size: contain;
-		background-repeat: no-repeat;
-		width: $close-icon-width;
-		height: $close-icon-width;
+		@include sprite($sprite-icon-mobile-menu-close);
 		position: absolute;
 		left: 0;
 		top: 0;

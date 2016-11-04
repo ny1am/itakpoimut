@@ -50,21 +50,15 @@ div.dialog {
 }
 
 button.dialog_close {
-	width: 12px;
-	height: 12px;
+	@include sprite($sprite-icon-delete12);
 	background-color: transparent;
-	background-image: url('../img/icons/delete12.png');
-	background-size: contain;
-	background-repeat: no-repeat;
 	position: absolute;
 	right: 10px;
 	top: 10px;
 	@media (max-width: $mobile-container-width) {
 		top: 12px;
 		right: 5%;
-		width: 30px;
-		height: 30px;
-		background-image: url('../img/icons/delete30.png');
+		@include sprite($sprite-icon-delete30);
 	}
 }
 
@@ -193,18 +187,22 @@ div.right-content {
 }
 
 .success-figure {
-	height: 82px;
-	background-image: url('../img/icons/action-completed.png');
-	background-repeat: no-repeat;
-	background-position: center;
+	text-align: center;
+	&:before {
+		content: '';
+		display: inline-block;
+		@include sprite($sprite-icon-action-completed);	
+	}
 }
 
 .forbidden-figure {
-	height: 60px;
-	background-image: url('../img/icons/attention-sign.png');
-	background-repeat: no-repeat;
-	background-position: center;
+	text-align: center;
 	margin-bottom: 30px;
+	&:before {
+		content: '';
+		display: inline-block;
+		@include sprite($sprite-icon-attention-sign);	
+	}
 }
 
 .dialog-socials {
@@ -212,10 +210,11 @@ div.right-content {
 	margin-bottom: 33px;
 }
 
+$button-height: 40px;
 .login-fb, .login-google {
 	min-width: 150px;
-	height: 40px;
-	line-height: 40px;
+	height: $button-height;
+	line-height: $button-height;
 	border-radius: 5px;
 	color: white;
 	font-size: 0.75rem;
@@ -226,20 +225,32 @@ div.right-content {
 
 .login-fb {
 	float: left;
-	padding-left: 16px;
+	position: relative;
+	padding-left: 8px;
 	background-color: rgb(0, 52, 113);
-	background-image: url('../img/icons/facebook-small.png');
-	background-repeat: no-repeat;
-	background-position: center left 9px;
+	&:before {
+		content: '';
+		display: inline-block;
+		position: absolute;
+		top: ($button-height - 15px)/2;
+		left: 9px;
+		@include sprite($sprite-icon-facebook-small);
+	}
 }
 
 .login-google {
 	float: right;
+	position: relative;
 	padding-left: 13px;
 	background-color: rgb(158, 11, 15);
-	background-image: url('../img/icons/google-small.png');
-	background-repeat: no-repeat;
-	background-position: center left 12px;
+	&:before {
+		content: '';
+		display: inline-block;
+		position: absolute;
+		top: ($button-height - 13px)/2;
+		left: 12px;
+		@include sprite($sprite-icon-google-small);
+	}
 }
 
 .login-separator {

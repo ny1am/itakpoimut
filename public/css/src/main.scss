@@ -226,13 +226,11 @@ input.password {
 	position: absolute;
 	right: $icon-right-shift;
 	top: ($input_height - $height/2)/2;
-	background: url('../img/icons/password-icon.png') no-repeat;
-	width: $icon-width;
-	height: $height;
+	@include sprite($sprite-icon-password);
 	cursor: pointer;
 }
 .password-toggle.shown {
-	background: url('../img/icons/password-shown-icon.png') no-repeat;
+	@include sprite($sprite-icon-password-shown);
 }
 
 $http_width: 72px;
@@ -324,11 +322,11 @@ ul.pagination {
 		}
 		&.prev {
 			margin: 0;
-			background: url('../img/icons/arrow-left.png') center no-repeat;
+			@include sprite($sprite-icon-arrow-left);
 		}
 		&.next {
 			margin: 0;
-			background: url('../img/icons/arrow-right.png') center no-repeat;
+			@include sprite($sprite-icon-arrow-right);
 		}
 	}
 	& > li a, & > li button {

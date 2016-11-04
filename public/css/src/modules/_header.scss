@@ -19,13 +19,17 @@ $userpic-size: 48px;
 
 .header-logo {
 	display: inline-block;
-	background-image: url('../img/icons/logo.png');
-	background-size: $icon-size;
-	background-repeat: no-repeat;
-	background-position: center left;
-	height: $userpic-size;
 	line-height: $userpic-size;
-	padding-left: $icon-size + 24px;
+	vertical-align: middle;
+	&:before {
+		content: '';
+		position: relative;
+		top: -2px;
+		display: inline-block;
+		vertical-align: middle;
+		@include sprite($sprite-icon-logo);
+		margin-right: 24px;
+	}
 }
 
 .header-right {
@@ -52,14 +56,9 @@ $userpic-size: 48px;
 	line-height: $icon-size;
 }
 
-$logout-size: 28px;
 .header-logout {
 	display: inline-block;
-	background-image: url('../img/icons/log-out.png');
-	background-size: $logout-size;
-	background-repeat: no-repeat;
-	height: $logout-size;
-	width: $logout-size;
+	@include sprite($sprite-icon-log-out);
 	vertical-align: middle;
 	margin-left: 16px;
 }

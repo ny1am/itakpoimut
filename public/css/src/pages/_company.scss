@@ -347,11 +347,8 @@ ul.evidances {
 }
 
 .rm-selected-filter {
-	width: 8px;
-	height: 9px;
 	display: inline-block;
-	vertical-align: baseline;
-	background-image: url('../img/icons/delete8.png');
+	@include sprite($sprite-icon-delete8);
 	margin-left: 10px;
 	margin-right: 5px;
 	cursor: pointer;

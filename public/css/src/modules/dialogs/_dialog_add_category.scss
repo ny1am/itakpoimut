@@ -65,9 +65,7 @@ div.dialog--category {
 	top: 16px;
 	display: inline-block;
 	cursor: pointer;
-	width: 11px;
-	height: 11px;
-	background: url('../img/icons/delete11.png');
+	@include sprite($sprite-icon-delete11);
 }
 
 .categories-holder {

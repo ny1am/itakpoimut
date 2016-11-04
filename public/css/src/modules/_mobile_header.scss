@@ -16,9 +16,7 @@ header.mobile-header {
 }
 
 .menu-button {
-	height: 25px;
-	width: 38px;
-	background-image: url('../img/icons/mobile-menu.png');
+	@include sprite($sprite-icon-mobile-menu);
 	background-color: transparent;
 }
 
@@ -34,29 +32,21 @@ div.mobile-header-buttons {
 }
 
 .mobile-add-company {
-	height: 30px;
-	width: 30px;
-	background-image: url('../img/icons/mobile-add.png');
+	@include sprite($sprite-icon-mobile-add);
 	background-color: transparent;
 }
 
 .mobile-search {
-	height: 30px;
-	width: 31px;
-	background-image: url('../img/icons/mobile-search.png');
+	@include sprite($sprite-icon-mobile-search);
 	background-color: transparent;
 }
 
 .mobile-user {
-	height: 30px;
-	width: 31px;
-	background-image: url('../img/icons/mobile-user.png');
+	@include sprite($sprite-icon-mobile-user);
 	background-color: transparent;
 }
 
 .mobile-logout {
-	height: 28px;
-	width: 28px;
-	background-image: url('../img/icons/log-out.png');
+	@include sprite($sprite-icon-log-out);
 	background-color: transparent;
 }

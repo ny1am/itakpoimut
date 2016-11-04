@@ -15,14 +15,13 @@
 		display: inline-block;
 		vertical-align: middle;
 		margin-left: 15px;
-		width: 10px;
-		height: 5px;
 	}
 	&[open]:after {
-		background: url('../img/icons/arrow-up-small.png') no-repeat;
+		@include sprite($sprite-icon-arrow-up-small);
+
 	}
 	&[close]:after {
-		background: url('../img/icons/arrow-down-small.png') no-repeat;
+		@include sprite($sprite-icon-arrow-down-small);
 	}
 	&[open]:before {
 		content: 'Згорнути';
