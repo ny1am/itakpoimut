@@ -4,6 +4,7 @@ for (var prop in hbsHelpers) {
 	Handlebars.registerHelper(prop, hbsHelpers[prop]);
 };
 
+require('modernizr');
 require('jquery.chosen');
 require('jquery.throttle-debounce');
 require('../thirdparty/jquery.serialize-object.js');
