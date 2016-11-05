@@ -35,8 +35,12 @@ var loyalties = require('./loyalties.js');
             return picture_url || '/img/no-user-image.png';
         },
 
-        'picture-small': function(picture_url) {
-            return picture_url || '/img/no-user-image-small.png';
+        'picture-48': function(picture_url) {
+            return picture_url || '/img/no-user-image-48.png';
+        },
+
+        'picture-90': function(picture_url) {
+            return picture_url || '/img/no-user-image-90.png';
         },
 
         'companyPicture': function(picture_url) {
