@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "jquery": "~1.12.2",
-    "jquery-throttle-debounce": "*",
-    "chosen": "^1.5.1"
+    "jquery-throttle-debounce": "*"
   }
 }

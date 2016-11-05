@@ -14,7 +14,7 @@
   "browser": {
     "modernizr": "./public/js/thirdparty/modernizr-custom.js",
     "jquery": "./public/js/libs/jquery/dist/jquery.min.js",
-    "jquery.chosen": "./public/js/libs/chosen/chosen.jquery.js",
+    "jquery.chosen": "./public/js/thirdparty/chosen.jquery.js",
     "jquery.throttle-debounce": "./public/js/libs/jquery-throttle-debounce/jquery.ba-throttle-debounce.min.js"
   },
   "browserify-shim": {
