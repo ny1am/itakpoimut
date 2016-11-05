@@ -235,6 +235,7 @@ span.comment-time {
 	text-align: right;
 	color: rgb(183, 183, 183);
 	font-style: italic;
+	word-break: break-word;
 	@media (max-width: $mobile-mini-container-width) {
 		flex-grow: 0;
 	}
@@ -314,6 +315,7 @@ article.company-preview {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	word-break: break-word;
 
 	/*flexbox fallback*/
 	text-align: center;
