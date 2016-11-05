@@ -6,7 +6,7 @@
 		<div class="header-right">
 			{{#if loggedUser}}
 				<a href="/userProfile">
-					<img class="header-userpic" src="{{picture loggedUser.picture_url}}">
+					<img class="header-userpic" src="{{picture-small loggedUser.picture_url}}">
 				</a>
 				<a href="/userProfile" class="header-name">{{loggedUser.fname}}</a>
 				<a href="/logout" class="header-logout"></a>
