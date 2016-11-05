@@ -81,7 +81,7 @@ div.company-title {
 	font-size: 3.5rem;
 	line-height: 1.1;
 	color: rgb(68, 68, 68);
-	word-break: break-all;
+	word-break: break-word;
 	@media (max-width: $sl-container-width) {
 		font-size: 3rem;
 	}
