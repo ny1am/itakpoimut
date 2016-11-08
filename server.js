@@ -19,8 +19,9 @@ require('./server/config/elasticsearch.js')();
 
 require('./server/config/sparkpost.js')();
 
-require('./server/config/routes.js')(app);
+require('./server/config/routes-https-redirect.js')(app);
 require('./server/config/routes-admin.js')(app);
+require('./server/config/routes.js')(app);
 
 require('./server/config/rollbar.js')(app);
 

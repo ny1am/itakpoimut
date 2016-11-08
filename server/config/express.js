@@ -2,11 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var passport = require('passport');
 var compress = require('compression');
 var flash = require('connect-flash');
 var favicon = require('serve-favicon');
-var _ = require('lodash');
 var VARS = require('./variables.js');
 
 module.exports = function (app, config) {

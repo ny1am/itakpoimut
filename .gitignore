@@ -11,3 +11,4 @@ Dockerfile
 docker-compose.yml
 .sass-cache
 public/uploads
+npm-debug.log

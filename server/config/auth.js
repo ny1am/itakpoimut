@@ -16,6 +16,18 @@ function redirect(request, response) {
 	response.redirect(redirectUrl);
 };
 
+exports.show = function (req, res) {
+	res.render('partials/login', {message: req.flash('message')});
+};
+
+exports.logout = [
+	rememberMe.clearCookieMiddleware,
+	function out(req, res) {
+		req.logout();
+		res.redirect('/');
+	}
+];
+
 exports.authenticate = [
 	function validate(request, response, next) {
 		var userData = request.body;
