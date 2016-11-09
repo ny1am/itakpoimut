@@ -16,6 +16,7 @@ module.exports = function (app, config) {
     app.use(favicon(config.rootPath + '/public/img/favicon.ico'));
 
     require('./handlebars.js')(app, config);
+    // require('./react.js')(app, config);
 
     app.use(cookieParser());
     app.use(bodyParser.json());
