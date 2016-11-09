@@ -1,0 +1,23 @@
+{{#if results}}
+	<div class="autocomplete-popup">
+		<ul class="autocomplete-results">
+			{{#each results}}
+				<li class="ac-results-row-h">
+					<a href="/company/{{_id}}" class="ac-results-row">
+						<div class="ac-row-logo">
+							<img src="{{img}}">
+						</div>
+						<div class="ac-row-title">
+							{{title}}
+						</div>
+						<div class="ac-row-loyalty">
+							<div class="loyalty-mark {{loyalty}}">
+								{{loyaltySingleByName loyalty}}
+							</div>
+						</div>
+					</a>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+{{/if}}

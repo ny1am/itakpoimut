@@ -32,10 +32,10 @@ gulp.task('uglify', function() {
 });
 
 gulp.task('html', function() {
-	return gulp.src('./server/views/src/**/*.handlebars')
+	return gulp.src('./server/hbs-views/src/**/*.handlebars')
 		.pipe(inject.replace('#injected:{base_url}', baseUrl))
 		.pipe(inject.replace('#injected:{hash-version}', hash))
-		.pipe(gulp.dest('./server/views/dist'));
+		.pipe(gulp.dest('./server/hbs-views/dist'));
 });
 
 gulp.task('css', function () {
@@ -46,7 +46,7 @@ gulp.task('css', function () {
 });
 
 gulp.task('handlebars', function() {
-	gulp.src('./server/views/src/partials/**/*.handlebars')
+	gulp.src('./server/hbs-views/src/partials/**/*.handlebars')
 		.pipe(handlebars({
 			handlebars: require('handlebars')
 		}))
@@ -113,13 +113,13 @@ gulp.task('watch', function(){
 	watch('./shared/js/**/*.js', function() {
 		gulp.start('browserify');
 	});
-	watch('./server/views/src/**/*.handlebars', function() {
+	watch('./server/hbs-views/src/**/*.handlebars', function() {
 		gulp.start('html');
 	});
 	watch('./public/css/src/**/*.scss', function() {
 		gulp.start('css');
 	});
-	watch('./server/views/src/partials/**/*.handlebars', function() {
+	watch('./server/hbs-views/src/partials/**/*.handlebars', function() {
 		gulp.start('handlebars');
 	});
 	watch('./public/js/main.js', function() {
