@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
+import Comments from '../components/Comments';
 
-class HelloMessage extends Component {
+class LandingPage extends Component {
 	render() {
-		return <div>Hello es6</div>;
+		return (
+			<div>
+				<Comments comments={this.props.comments} />
+			</div>
+		);
 	}
 }
 
-export default HelloMessage;
+export default LandingPage;
