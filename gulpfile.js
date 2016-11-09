@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var compressor = require('gulp-compressor');
 var sass = require('gulp-sass');
 var handlebars = require('gulp-handlebars');
 var wrap = require('gulp-wrap');
@@ -36,7 +35,6 @@ gulp.task('html', function() {
 	return gulp.src('./server/views/src/**/*.handlebars')
 		.pipe(inject.replace('#injected:{base_url}', baseUrl))
 		.pipe(inject.replace('#injected:{hash-version}', hash))
-		.pipe(compressor({'remove-intertag-spaces': true}))
 		.pipe(gulp.dest('./server/views/dist'));
 });
 

@@ -60,7 +60,6 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.13.0",
     "gulp": "^3.9.1",
-    "gulp-compressor": "^0.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-declare": "^0.3.0",
     "gulp-handlebars": "^4.0.0",
@@ -90,7 +89,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "engines": {
-    "node": "0.12.7"
+    "node": "7.0.0",
+    "npm": "3.10.x"
   },
   "keywords": [
     "node",
