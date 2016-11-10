@@ -7,10 +7,12 @@ function leadingZero(number) {
 }
 
 //formats date DD/MM/YYYY
-export default function formatDate(dateString) {
+function formatDate(dateString) {
 	var d = new Date(dateString);
 	var dformat = [leadingZero(d.getDate()),
 	leadingZero(d.getMonth()+1),
 	d.getFullYear()].join('.');
 	return dformat;
 }
+
+export default formatDate;

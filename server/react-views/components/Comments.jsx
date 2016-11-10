@@ -8,10 +8,16 @@ class Comments extends Component {
 		));
 	}
 	render() {
+		if (this.props.comments.length === 0) return null;
 		return (
-			<div>
-				{this.renderComments()}
-			</div>
+			<section className="landing-container">
+				<header className="landing-header">
+					Останні коментарі
+				</header>
+				<ul className="comments">
+					{this.renderComments()}
+				</ul>
+			</section>
 		);
 	}
 }
