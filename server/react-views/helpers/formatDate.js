@@ -3,7 +3,7 @@ function leadingZero(number) {
 		return '0' + number.toString();
 	} else {
 		return number.toString();
-	};
+	}
 }
 
 //formats date DD/MM/YYYY

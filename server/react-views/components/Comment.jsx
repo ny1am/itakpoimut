@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import formatDate from '../helpers/formatDate';
+import avatar from '../helpers/avatar';
 
 class Comment extends Component {
 	render() {
@@ -10,8 +11,7 @@ class Comment extends Component {
 			<li data-href="/company/{company._id}">
 				<article className="comment">
 					<div className="comment-image">
-						{/*<img src={{picture-90 _user.picture_url}}>*/}
-						<img src={user.picture_url} />
+						<img src={avatar(user.picture_url, 90)} />
 					</div>
 					<div className="comment-body">
 						<div className="comment-meta">
