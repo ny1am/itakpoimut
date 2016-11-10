@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import formatDate from '../helpers/formatDate';
 
 class Comment extends Component {
 	render() {
@@ -18,7 +19,7 @@ class Comment extends Component {
 								{user.fname} {user.lname}
 							</span>
 							<span className="comment-time">
-								{/*{{formatDate created}}*/}
+								{formatDate(comment.created)}
 							</span>
 							<a href="/company/{company._id}" className="comment-theme">
 								до теми {company.title}
