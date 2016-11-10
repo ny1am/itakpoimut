@@ -1,6 +1,8 @@
 module.exports = {
 	baseUrl: 'https://www.itakpoimut.info',
 
+	renderingEngine: require('../handlebars.js'),
+
 	sessionSecret: process.env.EXPRESS_SESSION_SECRET,
 
 	cloudinary: {

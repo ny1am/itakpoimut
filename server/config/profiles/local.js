@@ -1,6 +1,8 @@
 module.exports = {
 	baseUrl: 'http://localhost:5000',
 
+	renderingEngine: require('../react.js'),
+
 	sessionSecret: 'they will guess',
 
 	cloudinary: {
