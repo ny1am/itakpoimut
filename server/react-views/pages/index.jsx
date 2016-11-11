@@ -6,7 +6,7 @@ import Comments from '../components/Comments';
 
 class LandingPage extends Component {
 	render() {
-		//property cascading somehow?
+		//get rid of page_url somehow
 		return (
 			<Layout page_url={this.props.page_url} loggedUser={this.props.loggedUser}>
 				<div className="pattern bottom-space">

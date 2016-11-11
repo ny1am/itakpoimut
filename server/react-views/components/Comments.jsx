@@ -4,7 +4,9 @@ import Comment from './Comment';
 class Comments extends Component {
 	renderComments() {
 		return this.props.comments.map(item => (
-			<Comment comment={item} />
+			<li data-href="/company/{item._company._id}">
+				<Comment comment={item} />
+			</li>
 		));
 	}
 	render() {
