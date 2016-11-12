@@ -23,7 +23,7 @@ class MainLayout extends Component {
 					<meta property="og:type" content="website" />
 					<meta property="og:image" content={VARS.baseUrl+"/img/social.png"} />
 				</head>
-				<body className="site" id="top">
+				<body className={this.props.bodyClass} id="top">
 					<DesktopHeader loggedUser={this.props.loggedUser} />
 					<MainMenu loggedUser={this.props.loggedUser} />
 					<MobileHeader loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
@@ -38,6 +38,10 @@ class MainLayout extends Component {
 			</html>
 		);
 	}
+}
+
+MainLayout.defaultProps = {
+	bodyClass: 'site'
 }
 
 export default MainLayout;
