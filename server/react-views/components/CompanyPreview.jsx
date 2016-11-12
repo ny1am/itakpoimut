@@ -6,8 +6,7 @@ class CompanyPreview extends Component {
 		return (
 			<article className="company-preview">
 				<a href={"/company/"+company._id} className="p-company-logo">
-					{/*move width attr to css*/}
-					<img src={company.img} width=120 />
+					<img src={company.img} />
 				</a>
 				<label className="p-company-title">
 					<a href={"/company/"+company._id}>
