@@ -5,7 +5,7 @@ public/js/main*.js
 public/css/main*.css
 public/css/src/*-sprite.*
 public/img/*-sprite.*
-server/views/dist
+server/hbs-views/dist
 .env
 Dockerfile
 docker-compose.yml

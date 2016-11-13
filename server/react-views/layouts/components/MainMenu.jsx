@@ -11,7 +11,7 @@ class MainMenu extends Component {
 					<div className="menu-right">
 						<a className="search-ico" href="/companies"></a>
 						<button className="simple" data-ajax-dialog="createCompany" data-ajax-url="/createCompany">
-							Додати компанію
+							Запропонувати компанію
 						</button>
 					</div>	
 				</div>

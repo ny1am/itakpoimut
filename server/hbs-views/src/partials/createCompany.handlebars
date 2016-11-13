@@ -1,13 +1,16 @@
 <div id="dialog" class="dialog dialog--company dialog--left">
     <div id="dialog_content" class="dialog_content">
         <h1 class="dialog__h1">
-    		Додати компанію
+    		Запропонувати компанію
     	</h1>
         {{#if errors.dialog}}
             <div class="dialog-error">
                 {{errors.dialog}}
             </div>
         {{/if}}
+        <p>
+            Зазначимо, що ви тільки пропонуєте компанію на розгляд. Після того її затверджує модератор, і система сама присвоює компанії статус лояльної/порушника на основі наявності/відсутності порушень.
+        </p>
         <form action="/createCompany" method="post" enctype="multipart/form-data">
             <div class="row--logo">
                 <div class="company-attachment-h">
