@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Layout from '../layouts/FullPage';
 
-class LandingPage extends Component {
+class AboutPage extends Component {
 	render() {
 		return (
 			<Layout page_url={this.props.page_url} loggedUser={this.props.loggedUser}>
@@ -50,4 +50,4 @@ class LandingPage extends Component {
 	}
 }
 
-export default LandingPage;
+export default AboutPage;
