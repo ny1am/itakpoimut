@@ -3,9 +3,12 @@
 	width: 100px;
 	height: 100px;
 	padding: 20px 20px 26px 20px;
-	border: 4px dashed rgba(66, 66, 66, 0.5);
+	border: 3px dashed rgb(225, 225, 225);
 	position: relative;
 	margin-bottom: 8px;
+	&:hover {
+		border-color: rgb(180, 180, 180);
+	}
 	input[type="file"] {
 		position: absolute;
 		z-index: 1;
@@ -37,4 +40,9 @@
 
 .fu-success {
 	border-color: rgba(0, 200, 0, 0.5);
+}
+
+/*animations*/
+.userpic {
+	transition: border-color 0.2s;
 }

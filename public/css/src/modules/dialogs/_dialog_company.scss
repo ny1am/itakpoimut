@@ -11,7 +11,7 @@ $att-width: 147px;
 
 .company-attachment-h {
 	width: $att-width;
-	margin: 20px 0 30px 0;
+	margin: 0 0 30px 0;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -26,7 +26,7 @@ $att-width: 147px;
 	width: $att-width;
 	display: inline-block;
 	height: 127px;
-	border: 3px dashed rgb(225, 225, 225);
+	border: 2px dashed rgb(225, 225, 225);
 	box-sizing: border-box;
 	display: inline-block;
 	cursor: pointer;
@@ -34,21 +34,13 @@ $att-width: 147px;
 	position: relative;
 	margin-bottom: 12px;
 	text-align: center;
-	&:before {
-		content: 'Лого компанії';
-		position: absolute;
-		bottom: 14px;
-		left: 0;
-		text-align: center;
-		color: rgb(107, 107, 107);
-		font-size: 0.75rem;
-		font-weight: 700;
-		width: 100%;
+	&:hover {
+		border-color: rgb(180, 180, 180);
 	}
 	&:after {
 		content: '';
 		display: inline-block;
-		margin-top: 20px;
+		margin-top: 30px;
 		@include sprite($sprite-icon-photo-camera);
 	}
 	input[type="file"] {
@@ -111,4 +103,9 @@ ul.violations {
 
 div.evidance_row {
 	margin-top: 10px;
+}
+
+/*animations*/
+.company-attachment {
+	transition: border-color 0.2s;
 }

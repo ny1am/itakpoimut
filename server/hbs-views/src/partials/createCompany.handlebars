@@ -14,6 +14,9 @@
         <form action="/createCompany" method="post" enctype="multipart/form-data">
             <div class="row--logo">
                 <div class="company-attachment-h">
+                    <label class="row__label">
+                        Лого компанії
+                    </label>
                     <div class="company-attachment {{#if errors.attachment}}fu-error{{/if}}">
                         <input type="file" name="attachment" title="Завантажте лого"/>
                     </div>
