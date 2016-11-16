@@ -131,3 +131,34 @@ gulp.task('prod', ['process']);
 gulp.task('dev', ['process', 'watch']);
 
 gulp.task('default', ['dev']);
+
+
+//react config here
+
+gulp.task('watch-react', function(){
+	watch('./public/img/icons/*.png', function() {
+		gulp.start('sprite-icon');
+	});
+	watch('./public/img/landing/*.png', function() {
+		gulp.start('sprite-landing');
+	});
+	watch('./public/js/src/**/*.js', function() {
+		gulp.start('browserify');
+	});
+	watch('./shared/js/**/*.js', function() {
+		gulp.start('browserify');
+	});
+	watch('./public/css/src/**/*.scss', function() {
+		gulp.start('css');
+	});
+});
+
+gulp.task('process-react', function() {
+	runSequence(
+		'sprite',
+		['css', 'browserify']
+		
+	);
+});
+
+gulp.task('dev-react', ['process-react', 'watch-react']);

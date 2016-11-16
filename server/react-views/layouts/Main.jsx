@@ -33,7 +33,7 @@ class MainLayout extends Component {
 						{this.props.children}
 					</main>
 					<Footer loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
-					<script src="js/main-.js"></script>
+					<script src="js/main.js"></script>
 				</body>
 			</html>
 		);
