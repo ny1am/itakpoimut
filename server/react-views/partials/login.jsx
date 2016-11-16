@@ -49,6 +49,7 @@ class LoginDialog extends React.Component {
 								<div className="password-toggle" title="Показати пароль" data-title="Показати пароль" data-shown-title="Сховати пароль" data-password-toggle="loginPassword"></div>
 							</div>
 							<aside className="row--aside">
+								{/*todo: revise checkbox*/}
 								<input id="rememberme" type="checkbox" name="rememberme" value="true" defaultChecked={this.props.rememberme||false} />
 		            <label htmlFor="rememberme" className="label--small">
 		            	Пам'ятати мене

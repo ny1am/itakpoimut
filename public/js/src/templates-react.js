@@ -2,6 +2,7 @@ var ReactDOM = require('react-dom');
 var React = require('react');
 
 var LoginDialog = require('../../../server/react-views/partials/login.jsx');
+var SignupDialog = require('../../../server/react-views/partials/signup.jsx');
 var Loading = require('../../../server/react-views/partials/loading.jsx');
 
 function render(reactClass, model, domElement) {
@@ -18,5 +19,8 @@ module.exports = {
 	},
 	login: function(domElement, model) {
 		render(LoginDialog, model, domElement);
+	},
+	signup: function(domElement, model) {
+		render(SignupDialog, model, domElement);
 	}
 };
