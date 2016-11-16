@@ -135,6 +135,13 @@ gulp.task('default', ['dev']);
 
 //react config here
 
+gulp.task('browserify-react', function() {
+	return browserify('./public/js/src/browserify-react.js')
+		.bundle()
+		.pipe(source('main.js'))
+		.pipe(gulp.dest('./public/js'));
+});
+
 gulp.task('watch-react', function(){
 	watch('./public/img/icons/*.png', function() {
 		gulp.start('sprite-icon');
@@ -142,11 +149,11 @@ gulp.task('watch-react', function(){
 	watch('./public/img/landing/*.png', function() {
 		gulp.start('sprite-landing');
 	});
-	watch('./public/js/src/**/*.js', function() {
-		gulp.start('browserify');
+	watch('./public/js/src/**/*.js*', function() {
+		gulp.start('browserify-react');
 	});
-	watch('./shared/js/**/*.js', function() {
-		gulp.start('browserify');
+	watch('./server/react-views/**/*.js*', function() {
+		gulp.start('browserify-react');
 	});
 	watch('./public/css/src/**/*.scss', function() {
 		gulp.start('css');
@@ -156,7 +163,7 @@ gulp.task('watch-react', function(){
 gulp.task('process-react', function() {
 	runSequence(
 		'sprite',
-		['css', 'browserify']
+		['css', 'browserify-react']
 		
 	);
 });

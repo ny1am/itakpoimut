@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import CompanyPreview from './CompanyPreview';
 
-class NewCompanies extends Component {
+class NewCompanies extends React.Component {
 	renderPreviews() {
 		return this.props.companies.map(item => (
 			<li>

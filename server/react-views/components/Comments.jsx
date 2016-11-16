@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Comment from './Comment';
 
-class Comments extends Component {
+class Comments extends React.Component {
 	renderComments() {
 		return this.props.comments.map(item => (
 			<li data-href={"/company/"+item._company._id}>

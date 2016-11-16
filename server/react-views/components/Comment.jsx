@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import formatDate from '../helpers/formatDate';
 import avatar from '../helpers/avatar';
 
-class Comment extends Component {
+class Comment extends React.Component {
 	render() {
 		let comment = this.props.comment;
 		let company = comment._company;

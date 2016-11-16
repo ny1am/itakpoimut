@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import avatar from '../../helpers/avatar';
 
-class DesktopHeader extends Component {
+class DesktopHeader extends React.Component {
 	renderUserLinks() {
 		const loggedUser = this.props.loggedUser;
 		if (loggedUser) {

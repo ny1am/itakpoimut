@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import MenuItems from './MenuItems';
 
-class Footer extends Component {
+class Footer extends React.Component {
 	render() {
 		return (
 			<footer>

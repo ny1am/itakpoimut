@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class AutocompleteSearch extends Component {
+class AutocompleteSearch extends React.Component {
 	renderCategoriesOptions() {
 		return this.props.categories.map(item => (
 			<option value={item.name}>

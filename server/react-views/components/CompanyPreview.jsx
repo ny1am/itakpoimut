@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class CompanyPreview extends Component {
+class CompanyPreview extends React.Component {
 	render() {
 		const company = this.props.company;
 		return (
