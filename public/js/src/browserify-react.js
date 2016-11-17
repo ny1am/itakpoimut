@@ -13,8 +13,7 @@ require('./show-more.js');
 require('./file_upload.js');
 require('./ajax-react.js');
 
-//todo: implement in react way
-
 require('./autocomplete-react.js');
+//todo: implement in react way
 // require('./company-filters.js');
 // require('./category-mirror.js');
