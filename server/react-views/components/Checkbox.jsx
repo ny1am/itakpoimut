@@ -2,9 +2,9 @@ import React from 'react';
 
 class Checkbox extends React.Component {
 	renderCheckbox() {
-		return React.cloneElement(
-		  this.props.children,
-			{id: this.props.id}
+		return React.createElement(
+			'input',
+			Object.assign({type: 'checkbox'}, this.props)
 		)
 	}
 	render() {
