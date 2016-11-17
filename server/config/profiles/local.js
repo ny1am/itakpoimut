@@ -3,6 +3,8 @@ module.exports = {
 
 	renderingEngine: require('../react.js'),
 
+	isomorphic: require('../isomorphic-react.js'),
+
 	sessionSecret: 'they will guess',
 
 	cloudinary: {

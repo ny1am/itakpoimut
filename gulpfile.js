@@ -130,7 +130,7 @@ gulp.task('watch', function(){
 gulp.task('prod', ['process']);
 gulp.task('dev', ['process', 'watch']);
 
-gulp.task('default', ['dev']);
+gulp.task('default', ['dev-react']);
 
 
 //react config here

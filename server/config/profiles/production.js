@@ -3,6 +3,8 @@ module.exports = {
 
 	renderingEngine: require('../handlebars.js'),
 
+	isomorphic: require('../isomorphic.js'),
+
 	sessionSecret: process.env.EXPRESS_SESSION_SECRET,
 
 	cloudinary: {
