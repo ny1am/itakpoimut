@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import LoginDialog from '../../../server/react-views/partials/login.jsx';
 import SignupDialog from '../../../server/react-views/partials/signup.jsx';
 import ForgotPasswordDialog from '../../../server/react-views/partials/forgot.jsx';
+import ResetPasswordDialog from '../../../server/react-views/partials/reset.jsx';
 import SuccessDialog from '../../../server/react-views/partials/success.jsx';
 import Loading from '../../../server/react-views/partials/loading.jsx';
 
@@ -27,6 +28,9 @@ module.exports = {
 	},
 	forgot: function(domElement, model) {
 		render(ForgotPasswordDialog, model, domElement);
+	},
+	reset: function(domElement, model) {
+		render(ResetPasswordDialog, model, domElement);
 	},
 	success: function(domElement, model) {
 		render(SuccessDialog, model, domElement);
