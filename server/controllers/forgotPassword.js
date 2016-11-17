@@ -17,7 +17,7 @@ exports.post = function(req, res, next) {
         } else {
             return res.render('partials/success', {result: 'dialog', template: 'success', 
                 dialog_title: 'Запит надіслано',
-                dialog_body: 'Запит на зміну паролю надіслано.<br>Перевірте, будь ласка, поштову скриньку.'
+                dialog_body: 'Запит на зміну паролю надіслано. &#13;&#10; Перевірте, будь ласка, поштову скриньку.'
             });
         }
     });
