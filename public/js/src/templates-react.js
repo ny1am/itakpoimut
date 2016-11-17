@@ -1,9 +1,9 @@
-var ReactDOM = require('react-dom');
-var React = require('react');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-var LoginDialog = require('../../../server/react-views/partials/login.jsx');
-var SignupDialog = require('../../../server/react-views/partials/signup.jsx');
-var Loading = require('../../../server/react-views/partials/loading.jsx');
+import LoginDialog from '../../../server/react-views/partials/login.jsx';
+import SignupDialog from '../../../server/react-views/partials/signup.jsx';
+import Loading from '../../../server/react-views/partials/loading.jsx';
 
 function render(reactClass, model, domElement) {
 	var temp = document.createElement('div');

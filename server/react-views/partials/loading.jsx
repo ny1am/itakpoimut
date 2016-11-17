@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 class Loading extends React.Component {
 	render() {
@@ -15,4 +15,4 @@ class Loading extends React.Component {
 	}
 }
 
-module.exports = Loading;
+export default Loading;

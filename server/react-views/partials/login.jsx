@@ -1,5 +1,5 @@
-var React = require('react');
-var Checkbox = require('../components/Checkbox.jsx');
+import React from 'react';
+import Checkbox from '../components/Checkbox.jsx';
 
 class LoginDialog extends React.Component {
 	renderMessage() {
@@ -76,4 +76,4 @@ LoginDialog.defaultProps = {
 	errors: {}
 }
 
-module.exports=LoginDialog;
+export default LoginDialog;
