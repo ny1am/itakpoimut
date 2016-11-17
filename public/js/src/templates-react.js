@@ -8,7 +8,7 @@ var Loading = require('../../../server/react-views/partials/loading.jsx');
 function render(reactClass, model, domElement) {
 	var temp = document.createElement('div');
 	ReactDOM.render(React.createElement(reactClass, model), temp);
-	document.getElementById('content').replaceChild(temp.childNodes[0], domElement);
+	domElement.parentNode.replaceChild(temp.childNodes[0], domElement);
 }
 
 module.exports = {

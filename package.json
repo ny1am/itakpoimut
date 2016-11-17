@@ -39,13 +39,21 @@
   },
   "browserify": {
     "transform": [
-      ["reactify", {"es6": true}],
-      ["browserify-shim"]
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ],
+      [
+        "browserify-shim"
+      ]
     ]
   },
   "dependencies": {
     "async": "^2.0.0-rc.2",
     "aws-sdk": "^2.3.13",
+    "babel-register": "^6.18.0",
     "body-parser": "^1.15.0",
     "bower": "^1.7.9",
     "browserify": "^13.0.1",

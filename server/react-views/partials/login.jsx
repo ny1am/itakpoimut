@@ -2,7 +2,7 @@ var React = require('react');
 
 class LoginDialog extends React.Component {
 	renderMessage() {
-		if (this.props.message) {
+		if (this.props.message && this.props.message.length !== 0) {
 			return (
 				<div className="notification-message">
 					{this.props.message}

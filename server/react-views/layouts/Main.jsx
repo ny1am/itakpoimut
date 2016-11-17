@@ -9,6 +9,13 @@ import Footer from './components/Footer';
 import VARS from '../../config/variables.js';
 
 class MainLayout extends Component {
+	renderDialog() {
+		if (this.props.dialog) {
+			return <div id="dialog" className="dialog hidden"></div>
+		} else {
+			return null;
+		}
+	}
 	render() {
 		return (
 			<html lang="uk">
@@ -29,7 +36,7 @@ class MainLayout extends Component {
 					<MobileHeader loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
 					<MobileMenu loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
 					<main className="site-content" id="content">
-						<div id="dialog" className="dialog hidden"></div>
+						{this.renderDialog()};
 						{this.props.children}
 					</main>
 					<Footer loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
@@ -41,7 +48,8 @@ class MainLayout extends Component {
 }
 
 MainLayout.defaultProps = {
-	bodyClass: 'site'
+	bodyClass: 'site',
+	dialog: true
 }
 
 export default MainLayout;

@@ -10,7 +10,9 @@ require('./server/config/express.js')(app, {
 
 require('./server/config/validation.js').setup(app);
 
-VARS.isomorphic.setup(app);
+VARS.isomorphic.setup(app, {
+	rootPath: __dirname
+});
 
 require('./server/config/mongoose.js')();
 
