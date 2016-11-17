@@ -36,7 +36,7 @@ class MainLayout extends Component {
 					<MobileHeader loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
 					<MobileMenu loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
 					<main className="site-content" id="content">
-						{this.renderDialog()};
+						{this.renderDialog()}
 						{this.props.children}
 					</main>
 					<Footer loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
