@@ -6,6 +6,7 @@ import SignupDialog from '../../../server/react-views/partials/signup.jsx';
 import ForgotPasswordDialog from '../../../server/react-views/partials/forgot.jsx';
 import ResetPasswordDialog from '../../../server/react-views/partials/reset.jsx';
 import SuccessDialog from '../../../server/react-views/partials/success.jsx';
+import PleaseSignupDialog from '../../../server/react-views/partials/pleaseSignup.jsx';
 import Loading from '../../../server/react-views/partials/loading.jsx';
 
 function render(reactClass, model, domElement) {
@@ -34,5 +35,8 @@ module.exports = {
 	},
 	success: function(domElement, model) {
 		render(SuccessDialog, model, domElement);
+	},
+	pleaseSignup: function(domElement, model) {
+		render(PleaseSignupDialog, model, domElement);
 	}
 };
