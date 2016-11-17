@@ -19,7 +19,9 @@ class LandingPage extends Component {
 						<p className="info">
 							Тут ви можете перевірити, чи компанія використовує виключно українську мову, обслуговуючи своїх клієнтів в Україні.
 						</p>
-						<AutocompleteSearch categories={this.props.categoriesList} />
+						<div id="todo-remove-autocomplete">
+							<AutocompleteSearch categories={this.props.categoriesList} />
+						</div>
 					</div>
 				</section>
 				<div className="pattern bottom-space">
