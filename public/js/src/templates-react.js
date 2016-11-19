@@ -6,6 +6,7 @@ import SignupDialog from '../../../server/react-views/partials/signup.jsx';
 import ForgotPasswordDialog from '../../../server/react-views/partials/forgot.jsx';
 import ResetPasswordDialog from '../../../server/react-views/partials/reset.jsx';
 import ChangePasswordDialog from '../../../server/react-views/partials/changePassword.jsx';
+import AddViolationDialog from '../../../server/react-views/partials/addViolation.jsx';
 import SuccessDialog from '../../../server/react-views/partials/success.jsx';
 import PleaseSignupDialog from '../../../server/react-views/partials/pleaseSignup.jsx';
 import Loading from '../../../server/react-views/partials/loading.jsx';
@@ -36,6 +37,9 @@ module.exports = {
 	},
 	changePassword: function(domElement, model) {
 		render(ChangePasswordDialog, model, domElement);
+	},
+	addViolation: function(domElement, model) {
+		render(AddViolationDialog, model, domElement);
 	},
 	success: function(domElement, model) {
 		render(SuccessDialog, model, domElement);

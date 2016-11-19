@@ -6,10 +6,10 @@ var $ = require('jquery');
 	function initHolder($holder) {
 		$holder = $holder || $(document.body);
 		$holder.find('select[multiple]').chosen({
-            width: "100%",
-            placeholder_text_multiple: ' ',
-            no_results_text: 'Не знайдено'
-        });
+			width: "100%",
+			placeholder_text_multiple: ' ',
+			no_results_text: 'Не знайдено'
+		});
 	};
 
 	$(function() {
