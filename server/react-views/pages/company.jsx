@@ -103,7 +103,7 @@ class CompanyPage extends React.Component {
 									<ul className="company-categories">
 										{this.renderCategories()}
 										<li className="add">
-											<a href="/addCategory?company_id={{company._id}}" data-ajax-dialog="addCategory" data-ajax-url="/addCategory?company_id={{company._id}}">
+											<a href={"/addCategory?company_id="+company._id} data-ajax-dialog="addCategory" data-ajax-url={"/addCategory?company_id="+company._id}>
 												Додати сферу
 											</a>
 										</li>

@@ -16,4 +16,3 @@ require('./ajax-react.js');
 require('./autocomplete-react.js');
 //todo: implement in react way
 // require('./company-filters.js');
-// require('./category-mirror.js');

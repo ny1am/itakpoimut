@@ -15,7 +15,7 @@ import AutocompleteSearch from '../../../server/react-views/components/Autocompl
 	//todo: omg this epic shit needs to be revised
 	$(document.body).on('click', function(evt) {
     var $target = $(evt.target);
-    if (!$target.is('[data-ajax-autocomplete]')) {
+    if (window.location.pathname === '/' && !$target.is('[data-ajax-autocomplete]')) {
       ReactDOM.render(
 				<AutocompleteSearch shown={false} />,
 				document.getElementById('todo-remove-autocomplete')
