@@ -8,6 +8,7 @@ import ResetPasswordDialog from '../../../server/react-views/partials/reset.jsx'
 import ChangePasswordDialog from '../../../server/react-views/partials/changePassword.jsx';
 import AddViolationDialog from '../../../server/react-views/partials/addViolation.jsx';
 import AddCategoryDialog from '../../../server/react-views/partials/addCategory.jsx';
+import CreateCompanyDialog from '../../../server/react-views/partials/createCompany.jsx';
 import SuccessDialog from '../../../server/react-views/partials/success.jsx';
 import PleaseSignupDialog from '../../../server/react-views/partials/pleaseSignup.jsx';
 import Loading from '../../../server/react-views/partials/loading.jsx';
@@ -44,6 +45,9 @@ module.exports = {
 	},
 	addCategory: function(domElement, model) {
 		render(AddCategoryDialog, model, domElement);
+	},
+	createCompany: function(domElement, model) {
+		render(CreateCompanyDialog, model, domElement);
 	},
 	success: function(domElement, model) {
 		render(SuccessDialog, model, domElement);
