@@ -6,6 +6,7 @@ import http from '../helpers/http';
 import loyaltySingleByName from '../helpers/loyaltySingleByName';
 import violationByName from '../helpers/violationByName';
 import categoryByName from '../helpers/categoryByName';
+import CompanyComments from '../partials/company_comments';
 
 class CompanyPage extends React.Component {
 	renderSite() {
@@ -111,9 +112,7 @@ class CompanyPage extends React.Component {
 								</div>
 							</section>
 							<div class="bottom-space">
-								<div id="company-comments" class="container">
-									{/*comments component here*/}
-								</div>
+								<CompanyComments loggedUser={this.props.loggedUser} commentsCount={this.props.commentsCount} comments={this.props.comments} company={this.props.company} />
 							</div>
 						</div>
 					</div>

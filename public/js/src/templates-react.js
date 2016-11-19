@@ -13,6 +13,9 @@ import SuccessDialog from '../../../server/react-views/partials/success.jsx';
 import PleaseSignupDialog from '../../../server/react-views/partials/pleaseSignup.jsx';
 import Loading from '../../../server/react-views/partials/loading.jsx';
 
+import CompanyComments from '../../../server/react-views/partials/company_comments.jsx';
+
+
 function render(reactClass, model, domElement) {
 	var temp = document.createElement('div');
 	ReactDOM.render(React.createElement(reactClass, model), temp);
@@ -54,5 +57,9 @@ module.exports = {
 	},
 	pleaseSignup: function(domElement, model) {
 		render(PleaseSignupDialog, model, domElement);
+	},
+
+	company_comments: function(domElement, model) {
+		render(CompanyComments, model, domElement);
 	}
 };
