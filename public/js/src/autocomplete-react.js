@@ -2,13 +2,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import categories from '../../../shared/js/categories.js';
 import AutocompleteSearch from '../../../server/react-views/components/AutocompleteSearch.jsx';
 
 (function() {
 	if (window.location.pathname === '/') {
 		ReactDOM.render(
-			<AutocompleteSearch categories={categories.list()} />,
+			<AutocompleteSearch />,
 			document.getElementById('todo-remove-autocomplete')
 		);
 	}
@@ -18,7 +17,7 @@ import AutocompleteSearch from '../../../server/react-views/components/Autocompl
     var $target = $(evt.target);
     if (!$target.is('[data-ajax-autocomplete]')) {
       ReactDOM.render(
-				<AutocompleteSearch categories={categories.list()} shown={false} />,
+				<AutocompleteSearch shown={false} />,
 				document.getElementById('todo-remove-autocomplete')
 			);
     }

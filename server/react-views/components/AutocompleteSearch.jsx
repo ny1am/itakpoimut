@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import categories from '../../../shared/js/categories.js';
 import loyaltySingleByName from '../helpers/loyaltySingleByName';
 
 class AutocompletePopup extends React.Component {
@@ -114,6 +115,7 @@ class AutocompleteSearch extends React.Component {
 }
 
 AutocompleteSearch.defaultProps = {
+	categories: categories.list(),
 	shown: true
 };
 
