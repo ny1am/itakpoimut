@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import Layout from '../layouts/Main';
 
@@ -6,7 +6,7 @@ import Comments from '../components/Comments';
 import NewCompanies from '../components/NewCompanies';
 import AutocompleteSearch from '../components/AutocompleteSearch';
 
-class LandingPage extends Component {
+class LandingPage extends React.Component {
 	render() {
 		//get rid of page_url somehow
 		return (

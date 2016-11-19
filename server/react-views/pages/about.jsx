@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import Layout from '../layouts/FullPage';
 
-class AboutPage extends Component {
+class AboutPage extends React.Component {
 	render() {
 		return (
 			<Layout page_url={this.props.page_url} loggedUser={this.props.loggedUser}>

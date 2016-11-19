@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import Layout from '../layouts/Main';
 
@@ -7,7 +7,7 @@ import loyaltySingleByName from '../helpers/loyaltySingleByName';
 import violationByName from '../helpers/violationByName';
 import categoryByName from '../helpers/categoryByName';
 
-class CompanyPage extends Component {
+class CompanyPage extends React.Component {
 	renderSite() {
 		let company = this.props.company;
 		if (company.company_site) {
