@@ -20,7 +20,7 @@ class Comment extends React.Component {
 						<span className="comment-time">
 							{formatDate(comment.created)}
 						</span>
-						<a href="/company/{company._id}" className="comment-theme">
+						<a href={'/company/'+company._id} className="comment-theme">
 							до теми {company.title}
 						</a>
 					</div>
