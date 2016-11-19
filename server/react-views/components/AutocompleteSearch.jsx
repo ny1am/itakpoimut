@@ -24,9 +24,8 @@ class AutocompletePopup extends React.Component {
 	}
 	render() {
 		if (this.props.companies.length > 0 && this.props.shown) {
-			//todo: revise this shit. id is needed to hide popup on blur
 			return (
-				<div id="autocomplete-popup" className="autocomplete-popup">
+				<div className="autocomplete-popup">
 					<ul className="autocomplete-results">
 						{this.renderCompanies()}
 					</ul>
