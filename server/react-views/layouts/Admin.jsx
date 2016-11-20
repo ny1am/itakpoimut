@@ -1,7 +1,7 @@
 import React from 'react';
 import MainLayout from './Main';
 
-import roleModerator from '../helpers/roleModerator';
+import roleAdmin from '../helpers/roleAdmin';
 
 class AdminLayout extends React.Component {
 	renderAdminLinks() {
