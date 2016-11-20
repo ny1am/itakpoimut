@@ -14,6 +14,7 @@ import PleaseSignupDialog from '../../../server/react-views/partials/pleaseSignu
 import Loading from '../../../server/react-views/partials/loading.jsx';
 
 import CompanyComments from '../../../server/react-views/partials/company_comments.jsx';
+import AdminCompanySearchResults from '../../../server/react-views/partials/admin-companies_searchResults.jsx';
 
 
 function render(reactClass, model, domElement) {
@@ -61,5 +62,8 @@ module.exports = {
 
 	company_comments: function(domElement, model) {
 		render(CompanyComments, model, domElement);
+	},
+	'admin-companies_searchResults': function(domElement, model) {
+		render(AdminCompanySearchResults, model, domElement);
 	}
 };
