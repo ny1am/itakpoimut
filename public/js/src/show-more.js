@@ -4,12 +4,12 @@ var $ = require('jquery');
 
 	function triggerShowMore() {
 		var $this = $(this);
-		if ($this.is('[open]')) {
-			$this.removeAttr('open');
-			$this.attr('close', '');
+		if ($this.is('[data-open]')) {
+			$this.removeAttr('data-open');
+			$this.attr('data-close', '');
 		} else {
-			$this.removeAttr('close');
-			$this.attr('open', '');
+			$this.removeAttr('data-close');
+			$this.attr('data-open', '');
 		}
 		initShowMore.call(this);
 	};
@@ -19,7 +19,7 @@ var $ = require('jquery');
 		var elementId = $this.attr('data-show-more');
 		var itemsToShow = parseInt($this.attr('data-show-more-value'));
 		var $element = $('#'+elementId);
-		if ($this.is('[open]')) {
+		if ($this.is('[data-open]')) {
 			$element.children().removeClass('hidden');
 		} else {
 			$element.children().removeClass('hidden');

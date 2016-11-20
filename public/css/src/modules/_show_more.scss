@@ -16,17 +16,17 @@
 		vertical-align: middle;
 		margin-left: 15px;
 	}
-	&[open]:after {
+	&[data-open]:after {
 		@include sprite($sprite-icon-arrow-up-small);
 
 	}
-	&[close]:after {
+	&[data-close]:after {
 		@include sprite($sprite-icon-arrow-down-small);
 	}
-	&[open]:before {
+	&[data-open]:before {
 		content: 'Згорнути';
 	}
-	&[close]:before {
+	&[data-close]:before {
 		content: 'Показати';
 	}
 	@media (max-width: $mobile-container-width) {
