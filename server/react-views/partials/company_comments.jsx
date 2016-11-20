@@ -1,4 +1,5 @@
 import React from 'react';
+import Pagination from '../components/Pagination.jsx';
 import avatar from '../helpers/avatar';
 import formatDate from '../helpers/formatDate';
 
@@ -67,7 +68,7 @@ class CompanyComments extends React.Component {
 	}
 	render() {
 		return (
-			<div id="company-comments" class="container">
+			<div id="company-comments" className="container">
 				<section className="company-comments">
 					<header className="company-comments__header">
 						<h1>
@@ -78,9 +79,11 @@ class CompanyComments extends React.Component {
 						</span>
 					</header>
 					{this.renderComments()}
-					{/*pagination here*/}
-					{this.renderCommentsForm()}
+					<Pagination currentPage={this.props.currentPage} totalPages={this.props.totalPages}>
+						<a data-ajax="company_comments" data-ajax-zone="company-comments" href={"/company/"+this.props.company._id+"?currentPage={{page}}#company-comments"} />
+					</Pagination>
 				</section>
+				{this.renderCommentsForm()}
 			</div>
 		);
 	}
@@ -88,7 +91,9 @@ class CompanyComments extends React.Component {
 
 CompanyComments.defaultProps = {
 	commentsCount: 0,
-	comments: []
+	comments: [],
+	currentPage: 1,
+	totalPages: 0
 }
 
 export default CompanyComments;

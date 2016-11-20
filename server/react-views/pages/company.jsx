@@ -111,8 +111,15 @@ class CompanyPage extends React.Component {
 									</ul>
 								</div>
 							</section>
-							<div class="bottom-space">
-								<CompanyComments loggedUser={this.props.loggedUser} commentsCount={this.props.commentsCount} comments={this.props.comments} company={this.props.company} />
+							<div className="bottom-space">
+								<CompanyComments 
+									loggedUser={this.props.loggedUser} 
+									commentsCount={this.props.commentsCount} 
+									comments={this.props.comments} 
+									company={this.props.company}
+									currentPage={this.props.currentPage}
+									totalPages={this.props.totalPages}
+								/>
 							</div>
 						</div>
 					</div>
