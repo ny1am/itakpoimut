@@ -4,7 +4,9 @@ function fixProps(props, page) {
 	let result = Object.assign({}, props);
 	for (let name in result) {
 		if (props.hasOwnProperty(name)) {
-			result[name] = result[name].replace(/{{page}}/g, page);
+			if (typeof result[name] === 'string' || result[name] instanceof String) {
+				result[name] = result[name].replace(/{{page}}/g, page);
+			}
 		}
 	}
 	return result;
