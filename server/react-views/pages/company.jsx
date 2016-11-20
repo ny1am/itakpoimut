@@ -50,7 +50,7 @@ class CompanyPage extends React.Component {
 		return company.violations.map(item => (
 			<li>
 				<label>
-					{violationByName(name)}
+					{violationByName(item.name)}
 				</label>
 			</li>
 		));
