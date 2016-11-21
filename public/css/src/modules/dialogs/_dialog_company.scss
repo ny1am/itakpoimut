@@ -73,7 +73,7 @@ div.row--logo {
 
 div.check-row {
 	position: relative;
-	div.checkbox, div.radio {
+	div.checkbox, div.radio, &>input[type="radio"] {
 		position: absolute;
 		top: 2px;
 		left: 0;
