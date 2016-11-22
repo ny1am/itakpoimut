@@ -3,6 +3,7 @@ import React from 'react';
 import Layout from '../layouts/Main';
 import Checkbox from '../components/Checkbox.jsx';
 import CompaniesSearchResults from '../partials/companies_searchResults.jsx';
+import CompaniesSelectedFilters from '../partials/companies_selected_filters.jsx';
 
 class CompaniesPage extends React.Component {
 	renderLoyaltiesList() {
@@ -54,7 +55,7 @@ class CompaniesPage extends React.Component {
 									</div>
 									<button type="submit" className="search-construct-button" data-ajax-formsubmit></button>	
 								</div>
-								{/*{> companies_selected_filters selectedFilters=selectedFilters}*/}
+								<CompaniesSelectedFilters selectedFilters={this.props.selectedFilters} />
 							</div>
 							<div className="search-body">
 								<details className="search-params" open>

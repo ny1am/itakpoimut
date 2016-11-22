@@ -14,5 +14,4 @@ require('./file_upload.js');
 require('./ajax-react.js');
 
 require('./autocomplete-react.js');
-//todo: implement in react way
-// require('./company-filters.js');
+require('./company-filters-react.js');

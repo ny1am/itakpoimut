@@ -15,6 +15,7 @@ import Loading from '../../../server/react-views/partials/loading.jsx';
 
 import CompanyComments from '../../../server/react-views/partials/company_comments.jsx';
 import CompaniesSearchResults from '../../../server/react-views/partials/companies_searchResults.jsx';
+import CompaniesSelectedFilters from '../../../server/react-views/partials/companies_selected_filters.jsx';
 import AdminCompanySearchResults from '../../../server/react-views/partials/admin-companies_searchResults.jsx';
 
 
@@ -66,6 +67,9 @@ module.exports = {
 	},
 	companies_searchResults: function(domElement, model) {
 		render(CompaniesSearchResults, model, domElement);
+	},
+	companies_selected_filters: function(domElement, model) {
+		render(CompaniesSelectedFilters, model, domElement);
 	},
 	'admin-companies_searchResults': function(domElement, model) {
 		render(AdminCompanySearchResults, model, domElement);
