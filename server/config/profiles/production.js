@@ -1,7 +1,7 @@
 module.exports = {
 	baseUrl: 'https://www.itakpoimut.info',
 
-	versionHash: '',
+	versionHash: '#injected:{versionHash}',
 
 	sessionSecret: process.env.EXPRESS_SESSION_SECRET,
 

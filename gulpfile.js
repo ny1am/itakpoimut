@@ -13,12 +13,19 @@ var inject = require('gulp-inject-string');
 var spritesmith = require('gulp.spritesmith');
 var merge = require('merge-stream');
 
-var hash = '';
+var hash = process.env.NODE_ENV === 'production' ? Math.random().toString(36).substr(2, 5) : '';
+
 
 gulp.task('copy-profiles', function() {
 	var profile = process.env.NODE_ENV === 'production' ? 'production' : 'local';
 	return gulp.src('./server/config/profiles/'+profile+'.js')
 		.pipe(rename('variables.js'))
+		.pipe(gulp.dest('./server/config/'));
+});
+
+gulp.task('replace-version', function() {
+	return gulp.src('./server/config/variables.js')
+		.pipe(inject.replace('#injected:{versionHash}', hash))
 		.pipe(gulp.dest('./server/config/'));
 });
 
@@ -76,7 +83,8 @@ gulp.task('sprite', ['sprite-icon', 'sprite-landing']);
 
 gulp.task('process', function() {
 	runSequence(
-		['copy-profiles', 'sprite'],
+		'copy-profiles',
+		['sprite', 'replace-version'],
 		['css', 'browserify'],
 		'uglify'
 	);
