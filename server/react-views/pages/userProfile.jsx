@@ -48,7 +48,7 @@ class UserProfilePage extends React.Component {
 						<div className="page-content">
 							{this.renderMessage()}
 							{this.renderError()}
-							<form action="/userProfile" method="post" enctype="multipart/form-data">
+							<form action="/userProfile" method="post" encType="multipart/form-data">
 								<section className="page-block">
 									<h1 className="page__h1">
 										Ваші особисті дані
