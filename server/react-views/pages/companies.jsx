@@ -2,6 +2,7 @@ import React from 'react';
 
 import Layout from '../layouts/Main';
 import Checkbox from '../components/Checkbox.jsx';
+import Radio from '../components/Radio.jsx';
 import CompaniesSearchResults from '../partials/companies_searchResults.jsx';
 import CompaniesSelectedFilters from '../partials/companies_selected_filters.jsx';
 
@@ -10,7 +11,7 @@ class CompaniesPage extends React.Component {
 		return this.props.loyaltiesList.map(loyalty => (
 			<li className="row">
 				<div className="check-row">
-					<input id={"rnk_"+loyalty.name} name="selectedLoyalty" type="radio" value={loyalty.name} defaultChecked={loyalty.name===this.props.selectedLoyalty} data-ajax-formsubmit data-ajax-callback-event="companiesRefreshed" data-company-filter />
+					<Radio id={"rnk_"+loyalty.name} name="selectedLoyalty" value={loyalty.name} defaultChecked={loyalty.name===this.props.selectedLoyalty} data-ajax-formsubmit data-ajax-callback-event="companiesRefreshed" data-company-filter />
 					<label htmlFor={"rnk_"+loyalty.name} className={"loyalty-color "+loyalty.name}>
 						{loyalty.text}
 					</label>
@@ -22,7 +23,7 @@ class CompaniesPage extends React.Component {
 		return this.props.categoriesList.map(category => (
 			<li className="row">
 				<div className="check-row">
-					<input id={"ctg_"+category.name} name="selectedCategory" value={category.name} type="radio" defaultChecked={category.name===this.props.selectedCategory} data-ajax-formsubmit data-ajax-callback-event="companiesRefreshed" data-company-filter />
+					<Radio id={"ctg_"+category.name} name="selectedCategory" value={category.name} defaultChecked={category.name===this.props.selectedCategory} data-ajax-formsubmit data-ajax-callback-event="companiesRefreshed" data-company-filter />
 					<label htmlFor={"ctg_"+category.name}>
 						{category.text}
 					</label>
