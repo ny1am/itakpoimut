@@ -329,13 +329,14 @@ ul.evidances {
 	li.selected-filter-el {
 		margin: 10px 10px 0 0;
 		box-sizing: border-box;
-		height: 31px;
+		min-height: 31px;
 		background-color: white;
 		border-radius: 5px;
 		color: rgb(102, 102, 102);
 		font-size: 0.75rem;
 		font-weight: 400;
-		padding: 10px;
+		padding: 10px 24px 10px 10px;
+		position: relative;
 	}
 	li.selected-filter-all {
 		vertical-align: baseline;
@@ -346,10 +347,11 @@ ul.evidances {
 }
 
 .rm-selected-filter {
+	position: absolute;
+	top: 12px;
+	right: 8px;
 	display: inline-block;
 	@include sprite($sprite-icon-delete8);
-	margin-left: 10px;
-	margin-right: 5px;
 	cursor: pointer;
 }
 
