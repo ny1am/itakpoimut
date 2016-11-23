@@ -1,14 +1,13 @@
 node_modules
 public/js/libs
-public/js/src/templates.js
 public/js/main*.js
 public/css/main*.css
 public/css/src/*-sprite.*
 public/img/*-sprite.*
-server/hbs-views/dist
 .env
 Dockerfile
 docker-compose.yml
 .sass-cache
 public/uploads
 npm-debug.log
+server/config/variables.js

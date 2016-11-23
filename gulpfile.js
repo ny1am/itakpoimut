@@ -15,6 +15,13 @@ var merge = require('merge-stream');
 
 var hash = '';
 
+gulp.task('copy-profiles', function() {
+	var profile = process.env.NODE_ENV === 'production' ? 'production' : 'local';
+	return gulp.src('./server/config/profiles/'+profile+'.js')
+		.pipe(rename('variables.js'))
+		.pipe(gulp.dest('./server/config/'));
+});
+
 gulp.task('browserify', function() {
 	return browserify('./public/js/src/browserify-react.js')
 		.bundle()
@@ -69,7 +76,7 @@ gulp.task('sprite', ['sprite-icon', 'sprite-landing']);
 
 gulp.task('process', function() {
 	runSequence(
-		'sprite',
+		['copy-profiles', 'sprite'],
 		['css', 'browserify'],
 		'uglify'
 	);
