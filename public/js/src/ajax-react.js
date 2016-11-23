@@ -10,7 +10,7 @@ var $ = require('jquery');
 		var $content = $('#content');
 		if ($content.find('#shade').length === 0) {
 			var $shade = $('<div id="shade" class="shade"></div>');
-			$content.append($shade);
+			$('#dialog').after($shade);
 		}
 	}
 

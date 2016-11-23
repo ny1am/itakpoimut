@@ -147,6 +147,12 @@ div.pattern-content {
 		position: static;
 		margin-top: 40px;
 	}
+	div.shade {
+		display: none;
+	}
+	button.dialog_close {
+		display: none;
+	}
 }
 
 button {
