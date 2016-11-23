@@ -13,8 +13,6 @@ var inject = require('gulp-inject-string');
 var spritesmith = require('gulp.spritesmith');
 var merge = require('merge-stream');
 
-var hash = process.env.NODE_ENV === 'production' ? Math.random().toString(36).substr(2, 5) : '';
-
 
 gulp.task('copy-profiles', function() {
 	var profile = process.env.NODE_ENV === 'production' ? 'production' : 'local';
@@ -24,6 +22,7 @@ gulp.task('copy-profiles', function() {
 });
 
 gulp.task('replace-version', function() {
+	var hash = Math.random().toString(36).substr(2, 5);
 	return gulp.src('./server/config/variables.js')
 		.pipe(inject.replace('#injected:{versionHash}', hash))
 		.pipe(gulp.dest('./server/config/'));
@@ -37,6 +36,7 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('uglify', function() {
+	var hash = require('./server/config/variables.js').versionHash;
 	return gulp.src('./public/js/main.js')
 		.pipe(uglify())
 		.pipe(rename('main-'+hash+'.js'))
@@ -45,6 +45,7 @@ gulp.task('uglify', function() {
 
 
 gulp.task('css', function () {
+	var hash = require('./server/config/variables.js').versionHash;
 	return gulp.src('./public/css/src/main.scss')
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 		.pipe(rename('main-'+hash+'.css'))
