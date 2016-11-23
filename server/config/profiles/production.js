@@ -1,9 +1,7 @@
 module.exports = {
 	baseUrl: 'https://www.itakpoimut.info',
 
-	renderingEngine: require('../handlebars.js'),
-
-	isomorphic: require('../isomorphic.js'),
+	versionHash: '',
 
 	sessionSecret: process.env.EXPRESS_SESSION_SECRET,
 

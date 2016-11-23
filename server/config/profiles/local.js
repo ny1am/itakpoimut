@@ -1,9 +1,7 @@
 module.exports = {
 	baseUrl: 'http://localhost:5000',
 
-	renderingEngine: require('../react.js'),
-
-	isomorphic: require('../isomorphic-react.js'),
+	versionHash: '',
 
 	sessionSecret: 'they will guess',
 

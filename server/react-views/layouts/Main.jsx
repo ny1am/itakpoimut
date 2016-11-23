@@ -25,7 +25,7 @@ class MainLayout extends Component {
 					<title>&laquo;И так поймут&raquo; каталог ЗМІ та бізнесу</title>
 					<base href={VARS.baseUrl+"/"} />
 					<link rel="shortcut icon" href="/favicon.ico" />
-					<link rel="stylesheet" type="text/css" href="css/main-.css" />
+					<link rel="stylesheet" type="text/css" href={"css/main-"+VARS.versionHash+".css"} />
 					<meta property="og:title" content='&laquo;И так поймут&raquo; каталог ЗМІ та бізнесу' />
 					<meta property="og:type" content="website" />
 					<meta property="og:image" content={VARS.baseUrl+"/img/social.png"} />
@@ -40,7 +40,7 @@ class MainLayout extends Component {
 						{this.props.children}
 					</main>
 					<Footer loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
-					<script src="js/main.js"></script>
+					<script src={"js/main-"+VARS.versionHash+".js"}></script>
 				</body>
 			</html>
 		);

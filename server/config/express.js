@@ -6,6 +6,7 @@ var compress = require('compression');
 var flash = require('connect-flash');
 var favicon = require('serve-favicon');
 var VARS = require('./variables.js');
+var react = require('./react.js');
 
 module.exports = function (app, config) {
 
@@ -15,7 +16,7 @@ module.exports = function (app, config) {
     app.use(express.static(config.rootPath + '/shared', { maxAge: 2592000000 }));
     app.use(favicon(config.rootPath + '/public/img/favicon.ico'));
 
-    VARS.renderingEngine(app, config);
+    react(app, config);
 
     app.use(cookieParser());
     app.use(bodyParser.json());

@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var VARS = require('./server/config/variables.js');
+var isomorphic = require('./server/config/isomorphic-react.js');
 
 require('./server/config/cloudinary.js')();
 
@@ -10,7 +10,7 @@ require('./server/config/express.js')(app, {
 
 require('./server/config/validation.js').setup(app);
 
-VARS.isomorphic.setup(app, {
+isomorphic.setup(app, {
 	rootPath: __dirname
 });
 

@@ -6,7 +6,7 @@ require('../thirdparty/jquery.serialize-object.js');
 require('./js-enabled.js');
 require('./href.js');
 require('./checkbox.js');
-require('./radio.js');
+// require('./radio.js');
 require('./multiple-select.js');
 require('./password.js');
 require('./show-more.js');
