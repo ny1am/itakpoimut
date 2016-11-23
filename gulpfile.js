@@ -35,12 +35,19 @@ gulp.task('browserify', function() {
 		.pipe(gulp.dest('./public/js'));
 });
 
+//todo: revise this
 gulp.task('uglify', function() {
 	var hash = require('./server/config/variables.js').versionHash;
-	return gulp.src('./public/js/main.js')
-		.pipe(uglify())
-		.pipe(rename('main-'+hash+'.js'))
-		.pipe(gulp.dest('./public/js'));
+	if (process.env.NODE_ENV === 'production') {
+		return gulp.src('./public/js/main.js')
+			.pipe(uglify())
+			.pipe(rename('main-'+hash+'.js'))
+			.pipe(gulp.dest('./public/js'));
+	} else {
+		return gulp.src('./public/js/main.js')
+			.pipe(rename('main-'+hash+'.js'))
+			.pipe(gulp.dest('./public/js'));
+	}
 });
 
 
@@ -99,13 +106,16 @@ gulp.task('watch', function(){
 		gulp.start('sprite-landing');
 	});
 	watch('./public/js/src/**/*.js*', function() {
-		gulp.start('browserify-react');
+		gulp.start('browserify');
 	});
 	watch('./server/react-views/**/*.js*', function() {
-		gulp.start('browserify-react');
+		gulp.start('browserify');
 	});
 	watch('./public/css/src/**/*.scss', function() {
 		gulp.start('css');
+	});
+	watch('./public/js/main.js', function() {
+		gulp.start('uglify');
 	});
 });
 
