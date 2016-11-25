@@ -17,7 +17,7 @@ class AdminLayout extends React.Component {
 	}
 	render() {
 		return (
-			<MainLayout loggedUser={this.props.loggedUser} page_url={this.props.page_url} bodyClass="site" dialog={false}>
+			<MainLayout loggedUser={this.props.loggedUser} page_url={this.props.page_url}>
 				<nav className="admin-menu">
 					<div className="container">
 						<ul>

@@ -24,4 +24,8 @@ class NewCompanies extends React.Component {
 	}
 }
 
+NewCompanies.defaultProps = {
+	companies: []
+}
+
 export default NewCompanies;

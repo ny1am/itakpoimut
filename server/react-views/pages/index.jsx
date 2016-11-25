@@ -76,4 +76,9 @@ class LandingPage extends React.Component {
 	}
 }
 
+LandingPage.defaultProps = {
+	newCompanies: [],
+	comments: []
+}
+
 export default LandingPage;

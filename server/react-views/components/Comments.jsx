@@ -24,4 +24,8 @@ class Comments extends React.Component {
 	}
 }
 
+Comments.defaultProps = {
+	comments: []
+}
+
 export default Comments;
