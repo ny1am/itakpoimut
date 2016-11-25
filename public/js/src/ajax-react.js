@@ -49,11 +49,13 @@ var $ = require('jquery');
 		return $dialog;
 	}
 
-	function hideDialog() {
-		var $dialog = $('#dialog');
-		$dialog.empty();
-		$dialog.hide();
-		hideShade();
+	function hideDialog(event, dialog) {
+		var $dialog = dialog?$(dialog):$('#dialog');
+		if($.contains(document, $dialog[0])) {
+			$dialog.empty();
+			$dialog.hide();
+			hideShade();
+		}
 	}
 
 	$(document.body).on('click', '[data-ajax-dialog]', function(evt) {
@@ -177,7 +179,10 @@ var $ = require('jquery');
 				});
 			}
 			if (data.template && data.template === 'success') {
-				setTimeout(hideDialog, 5000);
+				var dialog = document.getElementById('dialog');
+				setTimeout(function() {
+					hideDialog(null, dialog)
+				}, 5000);
 			}
 			if (config.anchorId) {
 				$('#'+config.anchorId)[0].scrollIntoView();
