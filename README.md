@@ -1,4 +1,4 @@
-Project requires npm and node (todo: spicify versions)
+Project requires npm (min v 3.10) and node (min v 7.0.0)
 
 For dev purposes run commands:
 1. npm start
