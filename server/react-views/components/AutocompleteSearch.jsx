@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+import debounce from 'throttle-debounce/debounce';
 import categories from '../../../shared/js/categories.js';
 import loyaltySingleByName from '../helpers/loyaltySingleByName';
 
@@ -50,9 +50,7 @@ class AutocompleteSearch extends React.Component {
 		this.changeTitle = this.changeTitle.bind(this);
 		this.changeCategory = this.changeCategory.bind(this);
 		this.search = this.search.bind(this);
-		if ($.debounce) {
-			this.delayedSearch = $.debounce(250, ()=>{this.search()});
-		}
+		this.delayedSearch = debounce(250, ()=>{this.search()});
 	}
 	componentWillReceiveProps(newProps) {
 		this.setState({shown: newProps.shown});
