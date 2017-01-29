@@ -55,14 +55,14 @@
 	};
 
 	exports.text = function(name) {
-  		var result = exports.getByName(name);
+		var result = exports.getByName(name);
 		if (result) {
 			return result.text;
 		}
 	};
 
 	exports.singleText = function(name) {
-  		var result = exports.getByName(name);
+		var result = exports.getByName(name);
 		if (result) {
 			return result.single_text;
 		}

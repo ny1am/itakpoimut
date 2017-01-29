@@ -18,4 +18,8 @@ class CompanyPreview extends React.Component {
 	}
 }
 
+CompanyPreview.propTypes = {
+	company: React.PropTypes.object.isRequired
+}
+
 export default CompanyPreview;

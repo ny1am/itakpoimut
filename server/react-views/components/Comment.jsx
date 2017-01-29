@@ -1,13 +1,13 @@
 import React from 'react';
+
 import formatDate from '../helpers/formatDate';
 import avatar from '../helpers/avatar';
 
-class Comment extends React.Component {
 
+class Comment extends React.Component {
 	render() {
 		const comment = this.props.comment;
 		const company = this.props.company;
-		const user = comment._user;
 		return (
 			<article className="comment">
 				<div className="comment-image">
@@ -16,7 +16,7 @@ class Comment extends React.Component {
 				<div className="comment-body">
 					<div className="comment-meta">
 						<span className="comment-author">
-							{user.fname} {user.lname}
+							{comment._user.fname} {comment._user.lname}
 						</span>
 						<span className="comment-time">
 							{formatDate(comment.created)}
