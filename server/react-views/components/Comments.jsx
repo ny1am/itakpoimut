@@ -2,13 +2,6 @@ import React from 'react';
 import Comment from './Comment';
 
 class Comments extends React.Component {
-	renderComments() {
-		return this.props.comments.map(item => (
-			<li data-href={"/company/"+item._company._id}>
-				<Comment comment={item} />
-			</li>
-		));
-	}
 	render() {
 		if (this.props.comments.length === 0) return null;
 		return (
@@ -17,7 +10,11 @@ class Comments extends React.Component {
 					Останні коментарі
 				</header>
 				<ul className="comments">
-					{this.renderComments()}
+					{this.props.comments.map(item => (
+						<li data-href={"/company/"+item._company._id} key={item._id}>
+							<Comment comment={item} />
+						</li>
+					))}
 				</ul>
 			</section>
 		);

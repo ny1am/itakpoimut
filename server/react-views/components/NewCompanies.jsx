@@ -2,13 +2,6 @@ import React from 'react';
 import CompanyPreview from './CompanyPreview';
 
 class NewCompanies extends React.Component {
-	renderPreviews() {
-		return this.props.companies.map(item => (
-			<li>
-				<CompanyPreview company={item} />
-			</li>
-		));
-	}
 	render() {
 		if (this.props.companies.length === 0) return null;
 		return (
@@ -17,7 +10,11 @@ class NewCompanies extends React.Component {
 					Нові компанії
 				</header>
 				<ul className="new-companies">
-					{this.renderPreviews()}
+					{this.props.companies.map(item => (
+						<li key={item._id}>
+							<CompanyPreview company={item}/>
+						</li>
+					))}
 				</ul>
 			</section>
 		);

@@ -1,42 +1,7 @@
 import React from 'react';
 import debounce from 'throttle-debounce/debounce';
 import categories from '../../../shared/js/categories.js';
-import loyaltySingleByName from '../helpers/loyaltySingleByName';
-
-class AutocompletePopup extends React.Component {
-	renderCompanies() {
-		return this.props.companies.map(company => (
-			<li className="ac-results-row-h">
-				<a href={"/company/"+company._id} className="ac-results-row">
-				<div className="ac-row-logo">
-						<img src={company.img} />
-					</div>
-					<div className="ac-row-title">
-						{company.title}
-					</div>
-					<div className="ac-row-loyalty">
-						<div className={"loyalty-mark "+company.loyalty}>
-							{loyaltySingleByName(company.loyalty)}
-						</div>
-					</div>
-				</a>
-			</li>
-		));
-	}
-	render() {
-		if (this.props.companies.length > 0 && this.props.shown) {
-			return (
-				<div className="autocomplete-popup">
-					<ul className="autocomplete-results">
-						{this.renderCompanies()}
-					</ul>
-				</div>
-			);
-		} else {
-			return null;
-		}
-	}
-}
+import AutocompletePopup from './AutocompletePopup';
 
 class AutocompleteSearch extends React.Component {
 	constructor(props) {
@@ -80,14 +45,6 @@ class AutocompleteSearch extends React.Component {
 			success: (data)=>{this.setState({companies: data.results, shown: true})}
 		});
 	}
-	renderCategoriesOptions() {
-		if (!this.props.categories) return null;
-		return this.props.categories.map(item => (
-			<option value={item.name}>
-				{item.text}
-			</option>
-		));
-	}
 	render() {
 		//todo: remove data-ajax-autocomplete. it's needed to hide popup on blur
 		return (
@@ -101,7 +58,11 @@ class AutocompleteSearch extends React.Component {
 						<div className="search-construct-select">
 							<select name="selectedCategory" value={this.state.category} onChange={this.changeCategory} data-ajax-autocomplete>
 								<option value="">Всі сфери</option>
-								{this.renderCategoriesOptions()}
+								{this.props.categories.map(item => (
+									<option value={item.name} key={item.name}>
+										{item.text}
+									</option>
+								))}
 							</select>
 						</div>
 						<button type="submit" className="search-construct-button"></button>
