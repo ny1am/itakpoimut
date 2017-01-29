@@ -3,9 +3,21 @@ import formatDate from '../helpers/formatDate';
 import avatar from '../helpers/avatar';
 
 class Comment extends React.Component {
+	renderCompany() {
+		if (this.props.company) {
+			let company = this.props.company;
+			return (
+				<a href={'/company/'+company._id} className="comment-theme">
+					до теми {company.title}
+				</a>
+			)
+		} else {
+			return null
+		}
+	}
+
 	render() {
 		let comment = this.props.comment;
-		let company = comment._company;
 		let user = comment._user;
 		return (
 			<article className="comment">
@@ -20,9 +32,7 @@ class Comment extends React.Component {
 						<span className="comment-time">
 							{formatDate(comment.created)}
 						</span>
-						<a href={'/company/'+company._id} className="comment-theme">
-							до теми {company.title}
-						</a>
+						{this.renderCompany()}
 					</div>
 					<p className="comment-text">
 						{comment.text}
@@ -31,6 +41,11 @@ class Comment extends React.Component {
 			</article>
 		);
 	}
+}
+
+Comment.propTypes = {
+	comment: React.PropTypes.object.isRequired,
+	company: React.PropTypes.object
 }
 
 export default Comment;

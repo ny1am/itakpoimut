@@ -1,7 +1,7 @@
 import React from 'react';
 import Pagination from '../components/Pagination.jsx';
 import avatar from '../helpers/avatar';
-import formatDate from '../helpers/formatDate';
+import Comment from '../components/Comment';
 
 class CompanyComments extends React.Component {
 	renderCommentsForm() {
@@ -45,24 +45,7 @@ class CompanyComments extends React.Component {
 	renderCommentItems() {
 		return this.props.comments.map(item => (
 			<li>
-				<article className="comment">
-					<div className="comment-image">
-						<img src={avatar(item._user.picture_url, 90)} />
-					</div>
-					<div className="comment-body">
-						<div className="comment-meta">
-							<span className="comment-author">
-								{item._user.fname} {item._user.lname}
-							</span>
-							<span className="comment-time">
-								{formatDate(item.created)}
-							</span>
-						</div>
-						<p className="comment-text">
-							{item.text}
-						</p>
-					</div>
-				</article>
+				<Comment comment={item} />
 			</li>
 		));
 	}
