@@ -1,6 +1,6 @@
 var api = require('../api/addComment.js');
 var companyAPI = require('../api/company.js');
-var isomorphic = require('../config/isomorphic.js');
+var isomorphic = require('../config/isomorphic-react.js');
 
 exports.post = function(request, response, next) {
 	api.post({
