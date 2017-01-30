@@ -30,7 +30,7 @@ module.exports = function() {
 			transmissionBody: {
 				content: {
 					from: VARS.sparkpost.email,
-					subject: 'Відновлення паролю "И так поймут"',
+					subject: 'Відновлення пароля "И так поймут"',
 					html:'<html><body><p>Ви отримали цей лист, тому що ви (чи хтось інший) надіслав запит на відновлення вашого пароля.<br><br>' +
 			          'Будь ласка, натисніть на посилання, або скопіюйте його у браузер, щоб завершити процес:<br><br>' +
 			          VARS.baseUrl + '/reset/' + token + '<br><br>' +
