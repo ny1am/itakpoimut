@@ -1,4 +1,4 @@
-var rollbar = require("rollbar");
+var rollbar = require('rollbar');
 var VARS = require('./variables.js');
 
 module.exports = function(app) {
@@ -8,7 +8,7 @@ module.exports = function(app) {
 	app.use(function(error, request, response, next) {
 		if (process.env.NODE_ENV === 'production') {
 			response.status(404);
-			return response.render('misc/404', {layout: 'main--fullpage'});
+			return response.render('misc/404');
 		} else {
 			console.log(error.stack);
 			return response.send(error.stack);

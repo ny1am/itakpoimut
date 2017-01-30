@@ -1,5 +1,3 @@
 exports.show = function(req, res) {
-	res.render('pages/AdminIndex', {
-		layout: 'admin'
-	});
+	res.render('pages/AdminIndex');
 }

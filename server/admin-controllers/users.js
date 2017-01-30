@@ -31,7 +31,6 @@ exports.show = function(req, res, next) {
 		results.totalPages = Math.ceil(results.usersCount / recordsPerPage);
 		results.currentPage = currentPage;
 		var model = {
-			layout: 'admin',
 			recordsPerPage: recordsPerPage
 		};
 		_.extend(model, results);

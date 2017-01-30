@@ -1,11 +1,11 @@
 exports.about = function (req, res) {
-	res.render('pages/About', {layout: 'main--fullpage'});
+	res.render('pages/About');
 };
 
 exports.forbidden = function (req, res) {
-	res.render('misc/403', {layout: 'main--fullpage'});
+	res.render('misc/403');
 };
 
 exports.notfound = function (req, res) {
-	res.render('misc/404', {layout: 'main--fullpage'});
+	res.render('misc/404');
 };

@@ -51,7 +51,6 @@ exports.show = function (req, res) {
 			};
 			findProposals(doc, function(proposals) {
 				var result = _.extend({
-					layout: 'admin',
 					violationsList: violations.list(),
 					categoriesList: categories.list(),
 					loyaltiesList: loyalties.list(),
@@ -63,7 +62,6 @@ exports.show = function (req, res) {
 		});
 	} else {
 		return res.render(page, {
-			layout: 'admin',
 			violationsList: violations.list(),
 			categoriesList: categories.list(),
 			loyaltiesList: loyalties.list(),
@@ -80,7 +78,6 @@ exports.save = function (req, res, next) {
 		if (!validateCompany(req, res, err)){
 			findProposals(companyData, function(proposals) {
 				return res.render(page, _.extend({
-					layout: 'admin',
 					violationsList: violations.list(),
 					categoriesList: categories.list(),
 					loyaltiesList: loyalties.list(),

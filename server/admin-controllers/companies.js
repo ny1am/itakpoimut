@@ -49,7 +49,6 @@ function find(req, res, params) {
 		results.totalPages = Math.ceil(results.companiesCount / recordsPerPage);
 		results.currentPage = currentPage;
 		var model = {
-			layout: 'admin',
 			recordsPerPage: recordsPerPage,
 			title: req.query.title
 		};
