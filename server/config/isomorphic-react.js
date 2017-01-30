@@ -1,4 +1,4 @@
-require("babel-register")({
+require('babel-register')({
 	only: '/react-views/**',
 	presets: [
     'react',

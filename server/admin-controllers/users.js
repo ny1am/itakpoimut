@@ -6,37 +6,37 @@ var recordsPerPage = 20;
 
 exports.show = function(req, res, next) {
 	var currentPage = 1;
-    if (req.query.currentPage) {
-        currentPage = parseInt(req.query.currentPage);
-    }
+	if (req.query.currentPage) {
+		currentPage = parseInt(req.query.currentPage);
+	}
 	asyncjs.parallel({
-        users: function(callback) {
-            User
-            .find({})
-            .skip((currentPage - 1) * recordsPerPage)
-            .limit(recordsPerPage)
-            .sort({
-                email: 'asc'
-            })
-            .exec(function (err, docs) {
-                callback(err, docs);
-            });
-        },
-        usersCount: function(callback) {
-            User.count({}).exec(function (err, doc) {
-                callback(err, doc);
-            });
-        }
-    }, function(err, results) {
-        results.totalPages = Math.ceil(results.usersCount / recordsPerPage);
-        results.currentPage = currentPage;
-        var model = {
-        	layout: 'admin',
-	        recordsPerPage: recordsPerPage
-        };
-        _.extend(model, results);
-        res.render('pages/AdminUsers', model);
-    }); 
+		users: function(callback) {
+			User
+			.find({})
+			.skip((currentPage - 1) * recordsPerPage)
+			.limit(recordsPerPage)
+			.sort({
+				email: 'asc'
+			})
+			.exec(function (err, docs) {
+				callback(err, docs);
+			});
+		},
+		usersCount: function(callback) {
+			User.count({}).exec(function (err, doc) {
+				callback(err, doc);
+			});
+		}
+	}, function(err, results) {
+		results.totalPages = Math.ceil(results.usersCount / recordsPerPage);
+		results.currentPage = currentPage;
+		var model = {
+			layout: 'admin',
+			recordsPerPage: recordsPerPage
+		};
+		_.extend(model, results);
+		res.render('pages/AdminUsers', model);
+	}); 
 };
 
 exports.addModeratorRole = function(req, res, next) {
