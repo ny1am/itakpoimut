@@ -11,7 +11,7 @@ class Comment extends React.Component {
 		return (
 			<article className="comment">
 				<div className="comment-image">
-					<img src={avatar(user.picture_url, 90)} />
+					<img src={avatar(comment._user.picture_url, 90)} />
 				</div>
 				<div className="comment-body">
 					<div className="comment-meta">
