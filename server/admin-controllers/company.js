@@ -14,6 +14,8 @@ var dropbox = require('../config/dropbox.js');
 var path = require('path');
 var validation = require('../config/validation.js');
 
+var page = 'pages/AdminCompany';
+
 
 exports.delete = function(req, res) {
     var _id = parseInt(req.query._id);
@@ -56,11 +58,11 @@ exports.show = function (req, res) {
                     selectedCategories: doc.categories,
                     selectedViolations: selectedViolations
                 }, doc, proposals);
-                return res.render('pages/admin-company', result);
+                return res.render(page, result);
             });
     	});
     } else {
-    	return res.render('pages/admin-company', {
+    	return res.render(page, {
     		layout: 'admin',
 	        violationsList: violations.list(),
 	        categoriesList: categories.list(),
@@ -77,7 +79,7 @@ exports.save = function (req, res, next) {
         prepare(companyData);
         if (!validateCompany(req, res, err)){
             findProposals(companyData, function(proposals) {
-                return res.render('pages/admin-company', _.extend({
+                return res.render(page, _.extend({
                     layout: 'admin',
                     violationsList: violations.list(),
                     categoriesList: categories.list(),

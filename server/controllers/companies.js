@@ -21,7 +21,7 @@ function renderFilter(params, request, response, next) {
         if (err) {
             return next(err);
         } else {
-            return response.render('pages/companies', _.extend(model, params));
+            return response.render('pages/Companies', _.extend(model, params));
         }
     });
 };

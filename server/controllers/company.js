@@ -9,7 +9,7 @@ exports.get = function(request, response, next) {
 		if (err) {
 			return next(err);
 		} else {
-			return response.render('pages/company', model);
+			return response.render('pages/Company', model);
 		}
 	});
 };

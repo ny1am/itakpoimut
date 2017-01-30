@@ -35,7 +35,7 @@ exports.show = function(req, res, next) {
 	        recordsPerPage: recordsPerPage
         };
         _.extend(model, results);
-        res.render('pages/admin-users', model);
+        res.render('pages/AdminUsers', model);
     }); 
 };
 

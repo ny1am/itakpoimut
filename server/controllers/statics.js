@@ -1,5 +1,5 @@
 exports.about = function (req, res) {
-	res.render('pages/about', {layout: 'main--fullpage'});
+	res.render('pages/About', {layout: 'main--fullpage'});
 };
 
 exports.forbidden = function (req, res) {
