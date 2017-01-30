@@ -29,6 +29,8 @@ exports.setup = function (app, config) {
 			if (jsRequest(request)) {
 				this.send(model);
 			} else {
+				//todo: get rid of it
+				//http://stackoverflow.com/questions/9333385/html-anchors-not-working-correctly-in-ie9
 				_.extend(model, {
 					page_url: request.url
 				});
