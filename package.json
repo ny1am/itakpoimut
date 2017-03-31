@@ -30,22 +30,6 @@
       ]
     }
   },
-  "browserify": {
-    "transform": [
-      [
-        "browserify-shim"
-      ],
-      [
-        "babelify",
-        {
-          "presets": [
-            "react",
-            "es2015"
-          ]
-        }
-      ]
-    ]
-  },
   "dependencies": {
     "async": "^2.0.0-rc.2",
     "aws-sdk": "^2.3.13",

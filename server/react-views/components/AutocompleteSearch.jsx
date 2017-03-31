@@ -1,7 +1,7 @@
 import React from 'react';
 import debounce from 'throttle-debounce/debounce';
 import categories from '../../../shared/js/categories.js';
-import AutocompletePopup from './AutocompletePopup';
+import AutocompletePopup from './AutocompletePopup.jsx';
 
 class AutocompleteSearch extends React.Component {
 	constructor(props) {

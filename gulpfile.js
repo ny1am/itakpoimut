@@ -29,7 +29,17 @@ gulp.task('replace-version', function() {
 });
 
 gulp.task('browserify', function() {
-	return browserify('./public/js/src/browserify-react.js')
+	return browserify('./public/js/src/browserify-react.js', {
+			transform: [
+				["browserify-shim"],
+				["babelify", {
+					"presets": [
+						"react",
+						"es2015"
+					]
+				}]
+			]
+		})
 		.bundle()
 		.pipe(source('main.js'))
 		.pipe(gulp.dest('./public/js'));

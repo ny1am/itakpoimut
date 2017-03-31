@@ -1,5 +1,5 @@
 import React from 'react';
-import Comment from './Comment';
+import Comment from './Comment.jsx';
 
 class Comments extends React.Component {
 	render() {

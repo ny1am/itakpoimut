@@ -1,7 +1,7 @@
 import React from 'react';
 import Pagination from '../components/Pagination.jsx';
 import avatar from '../helpers/avatar';
-import Comment from '../components/Comment';
+import Comment from '../components/Comment.jsx';
 
 class CompanyComments extends React.Component {
 	renderCommentsForm() {

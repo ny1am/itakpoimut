@@ -1,5 +1,5 @@
 import React from 'react';
-import AutocompleteCompany from './AutocompleteCompany';
+import AutocompleteCompany from './AutocompleteCompany.jsx';
 
 class AutocompletePopup extends React.Component {
 	render() {
