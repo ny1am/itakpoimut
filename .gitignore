@@ -1,5 +1,4 @@
 node_modules
-public/js/libs
 public/js/main*.js
 public/css/main*.css
 public/css/src/*-sprite.*
