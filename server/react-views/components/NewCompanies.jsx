@@ -1,5 +1,5 @@
 import React from 'react';
-import CompanyPreview from './CompanyPreview';
+import CompanyPreview from './CompanyPreview.jsx';
 
 class NewCompanies extends React.Component {
 	render() {

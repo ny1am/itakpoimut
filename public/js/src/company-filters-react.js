@@ -10,7 +10,6 @@ var $ = require('jquery');
 
 	//todo: i don't like id here
 	publisher.subscribe('companiesRefreshed', function() {
-		var $container = $('#selectedFiltersContainer');
 		var selectedFilters = [];
 		$('[data-company-filter]:checked').each(function(index, el) {
 				selectedFilters.push(prepareSelectedFilter(el));
