@@ -1,30 +1,8 @@
 import React from 'react';
 import Pagination from '../components/Pagination.jsx';
-import loyaltySingleByName from '../helpers/loyaltySingleByName.js';
+import CompanyOverview from '../components/CompanyOverview.jsx';
 
 class CompaniesSearchResults extends React.Component {
-	renderCompanies() {
-		return this.props.companies.map(company => (
-			<div className="result-row">
-				<a href={"/company/"+company._id} className="result-row-logo">
-					<img src={company.img} />
-				</a>
-				<div className="result-row-body">
-					<a href={"/company/"+company._id}>
-						{company.title}
-					</a>
-					<p className="result-row-desc">
-						{company.description}
-					</p>
-				</div>
-				<div className="result-row-loyalty">
-					<div className={"loyalty-mark "+company.loyalty}>
-						{loyaltySingleByName(company.loyalty)}
-					</div>
-				</div>
-			</div>
-		));
-	}
 	render() {
 		const newSortOrder = (this.props.sortOrder==='asc'?'desc':'asc');
 		if (this.props.companies.length > 0) {
@@ -39,7 +17,9 @@ class CompaniesSearchResults extends React.Component {
 						</div>
 					</div>
 					<div className="search-results-items">
-						{this.renderCompanies()}
+						{this.props.companies.map(company => (
+							<CompanyOverview company={company} />
+						))}
 					</div>
 					<Pagination currentPage={this.props.currentPage} totalPages={this.props.totalPages}>
 						<button type="submit" formAction={"/companies?currentPage={{page}}&sortOrder="+this.props.sortOrder} data-ajax-formsubmit />
