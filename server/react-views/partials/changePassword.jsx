@@ -1,4 +1,5 @@
 import React from 'react';
+import Password from '../components/Password.jsx';
 
 class ChangePasswordDialog extends React.Component {
 	render() {
@@ -15,19 +16,13 @@ class ChangePasswordDialog extends React.Component {
 							<label className="row__label" htmlFor="password">
 								{this.props.errors.password || 'Існуючий пароль'}
 							</label>
-							<div className="password-holder">
-								<input id="password" className="row__input password" type="password" name="password" defaultValue={this.props.password||''} maxLength="25" />
-								<div className="password-toggle" title="Показати пароль" data-title="Показати пароль" data-shown-title="Сховати пароль" data-password-toggle="password"></div>
-							</div>
+							<Password id="password" className="row__input higher password" type="password" name="password" defaultValue={this.props.password||''} maxLength="25" />
 						</div>
 						<div className={newPasswordClass+' row'}>
 							<label className="row__label" htmlFor="newPassword">
 								{this.props.errors.newPassword || 'Новий пароль'}
 							</label>
-							<div className="password-holder">
-								<input id="newPassword" className="row__input higher password" type="password" name="newPassword" defaultValue={this.props.newPassword||''} maxLength="25" />
-								<div className="password-toggle" title="Показати пароль" data-title="Показати пароль" data-shown-title="Сховати пароль" data-password-toggle="newPassword"></div>
-							</div>
+							<Password id="newPassword" className="row__input higher password" type="password" name="newPassword" defaultValue={this.props.newPassword||''} maxLength="25" />
 						</div>
 						<button className="dialog__button" type="submit" data-ajax-submit-dialog="changePassword">Змінити</button>
 					</form>

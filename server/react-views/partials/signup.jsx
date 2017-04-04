@@ -1,5 +1,6 @@
 import React from 'react';
 import Checkbox from '../components/Checkbox.jsx';
+import Password from '../components/Password.jsx';
 
 class SignupDialog extends React.Component {
 	render() {
@@ -47,10 +48,7 @@ class SignupDialog extends React.Component {
 							<label className="row__label" htmlFor="password">
 								{this.props.errors.password || 'Пароль'}
 							</label>
-							<div className="password-holder">
-								<input id="loginPassword" className="row__input higher password" type="password" name="password" defaultValue={this.props.password||''} maxLength="25" />
-								<div className="password-toggle" title="Показати пароль" data-title="Показати пароль" data-shown-title="Сховати пароль" data-password-toggle="loginPassword"></div>
-							</div>
+							<Password id="password" className="row__input higher password" type="password" name="password" defaultValue={this.props.password||''} maxLength="25" />
 							<aside className="row--aside ">
 								<Checkbox id="rememberme" name="rememberme" value="true" defaultChecked={this.props.rememberme||false} />
 								<label htmlFor="rememberme" className="label--small">Пам'ятати мене</label>
