@@ -34,7 +34,7 @@ class CreateCompanyDialog extends React.Component {
 		return (
 			<div id="dialog" className="dialog dialog--company dialog--left">
 				<div id="dialog_content" className="dialog_content">
-					<h1 class="dialog__h1">
+					<h1 className="dialog__h1">
 						Запропонувати компанію
 					</h1>
 					{this.renderDialogError()}

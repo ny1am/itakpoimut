@@ -17,7 +17,7 @@ class UserProfilePage extends React.Component {
 	}
 	renderError() {
 		if (this.props.errors.page) {
-			<div class="dialog-error">
+			<div className="dialog-error">
 				{this.props.errors.page}
 			</div>
 		} else {
