@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../layouts/Main';
+import Layout from '../layouts/Main.jsx';
 import Checkbox from '../components/Checkbox.jsx';
 import Radio from '../components/Radio.jsx';
 import CompaniesSearchResults from '../partials/companies_searchResults.jsx';

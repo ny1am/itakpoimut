@@ -1,6 +1,6 @@
 import React from 'react';
 
-import avatar from '../../helpers/avatar';
+import avatar from '../../helpers/avatar.js';
 
 class DesktopHeader extends React.Component {
 	renderUserLinks() {

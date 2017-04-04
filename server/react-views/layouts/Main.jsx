@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-import DesktopHeader from './components/DesktopHeader';
-import MainMenu from './components/MainMenu';
-import MobileHeader from './components/MobileHeader';
-import MobileMenu from './components/MobileMenu';
-import Footer from './components/Footer';
+import DesktopHeader from './components/DesktopHeader.jsx';
+import MainMenu from './components/MainMenu.jsx';
+import MobileHeader from './components/MobileHeader.jsx';
+import MobileMenu from './components/MobileMenu.jsx';
+import Footer from './components/Footer.jsx';
 
 import VARS from '../../config/variables.js';
 

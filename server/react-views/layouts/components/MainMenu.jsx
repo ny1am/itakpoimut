@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import MenuItems from './MenuItems';
+import MenuItems from './MenuItems.jsx';
 
 class MainMenu extends Component {
 	render() {

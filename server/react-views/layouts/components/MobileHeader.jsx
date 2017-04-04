@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import avatar from '../../helpers/avatar';
+import avatar from '../../helpers/avatar.js';
 
 class MobileHeader extends Component {
 	renderUserLinks() {

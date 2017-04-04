@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MenuItems from './MenuItems';
+import MenuItems from './MenuItems.jsx';
 
 class Footer extends React.Component {
 	render() {

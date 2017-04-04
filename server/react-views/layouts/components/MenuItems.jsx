@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import roleModerator from '../../helpers/roleModerator';
+import roleModerator from '../../helpers/roleModerator.jsx';
 
 class MenuItems extends Component {
 	renderModeratorLinks() {
