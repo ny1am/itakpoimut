@@ -5,11 +5,13 @@ class Checkbox extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
-		this.state = {checked: props && props.defaultChecked};
+		this.state = {checked: props.defaultChecked || props.checked};
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.checked !== this.props.checked) {
+		if (nextProps.defaultChecked !== this.props.defaultChecked) {
+			this.setState({checked: nextProps.defaultChecked});
+		} else if (nextProps.checked !== this.props.checked) {
 			this.setState({checked: nextProps.checked});
 		}
 	}
@@ -24,7 +26,7 @@ class Checkbox extends React.Component {
 	render() {
 		return (
 			<div className="checkbox" {...this.state.checked?{'data-checked':''}:{}}>
-				<input type="checkbox" {...this.props} onChange={this.handleChange}/>
+				<input type="checkbox" {...this.props} checked={this.state.checked} onChange={this.handleChange}/>
 				<label htmlFor={this.props.id}></label>
 			</div>
 		);
