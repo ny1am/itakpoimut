@@ -20,7 +20,7 @@ class MainLayout extends Component {
 		return (
 			<html lang="uk">
 				<head>
-					<meta charset="utf-8" />
+					<meta charSet="utf-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					<title>&laquo;И так поймут&raquo; каталог ЗМІ та бізнесу</title>
 					<base href={VARS.baseUrl+"/"} />
@@ -37,7 +37,9 @@ class MainLayout extends Component {
 					<MobileMenu loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
 					<main className="site-content" id="content">
 						{this.renderDialog()}
-						{this.props.children}
+						<div id="main-content">
+							{this.props.children}
+						</div>
 					</main>
 					<Footer loggedUser={this.props.loggedUser} page_url={this.props.page_url} />
 					<script src={"js/main-"+VARS.versionHash+".js"}></script>
