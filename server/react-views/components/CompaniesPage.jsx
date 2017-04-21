@@ -16,6 +16,9 @@ class CompaniesPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.refresh = this.refresh.bind(this);
+		this.search = this.search.bind(this);
+		this.sort = this.sort.bind(this);
+		this.changePage = this.changePage.bind(this);
 		this.handleLoyaltyChange = this.handleLoyaltyChange.bind(this);
 		this.handleCategoryChange = this.handleCategoryChange.bind(this);
 		this.handleViolationChange = this.handleViolationChange.bind(this);
@@ -39,7 +42,7 @@ class CompaniesPage extends React.Component {
 		return (
 			<div className="pattern-content">
 				<div className="container">
-					<form action="/companies" method="POST" ref="form" onSubmit={this.refresh}>
+					<form action="/companies" method="POST" ref="form" onSubmit={this.search}>
 						<div className="search-bar">
 							<div className="search-construct search-construct--highlight">
 								<div className="search-construct-input">
@@ -88,6 +91,8 @@ class CompaniesPage extends React.Component {
 								currentPage={this.state.currentPage} 
 								totalPages={this.state.totalPages} 
 								sortOrder={this.state.sortOrder} 
+								sort={this.sort}
+								changePage={this.changePage}
 							/>
 						</div>
 					</form>
@@ -117,15 +122,30 @@ class CompaniesPage extends React.Component {
 		});
 	}
 
+	search(evt) {
+		if (evt) {
+			evt.preventDefault();
+		}
+		this.setState({currentPage: 1}, this.refresh);
+	}
+
+	sort(sortOrder) {
+		this.setState({sortOrder}, this.refresh);
+	}
+
+	changePage(currentPage) {
+		this.setState({currentPage}, this.refresh);
+	}
+
 	handleRemoveFilter(id) {
 		if (id) {
 			let filter = this.state.selectedFilters.find(el => el.id === id);
 			if (filter) {
 				if (filter.type === 'loyalty') {
-					this.setState({selectedLoyalty: null}, this._calculateSelectedFilters);
+					this.setState({selectedLoyalty: null, currentPage: 1}, this._calculateSelectedFilters);
 				}
 				if (filter.type === 'category') {
-					this.setState({selectedCategory: null}, this._calculateSelectedFilters);
+					this.setState({selectedCategory: null, currentPage: 1}, this._calculateSelectedFilters);
 				}
 				if (filter.type === 'violation') {
 					let selectedViolations = this.state.selectedViolations;
@@ -133,7 +153,7 @@ class CompaniesPage extends React.Component {
 					if (index > -1) {
 						selectedViolations.splice(index, 1);
 					}
-					this.setState({selectedViolations}, this._calculateSelectedFilters);
+					this.setState({selectedViolations, currentPage: 1}, this._calculateSelectedFilters);
 				}
 			}
 		} else {
@@ -141,19 +161,20 @@ class CompaniesPage extends React.Component {
 				selectedLoyalty: null,
 				selectedCategory: null,
 				selectedViolations: [],
-				selectedFilters: []
+				selectedFilters: [],
+				currentPage: 1
 			}, this._calculateSelectedFilters);
 		}
 	}
 
 	handleLoyaltyChange(el) {
 		let selectedLoyalty = el.target.checked?el.target.value:null;
-		this.setState({selectedLoyalty}, this._calculateSelectedFilters);
+		this.setState({selectedLoyalty, currentPage: 1}, this._calculateSelectedFilters);
 	}
 
 	handleCategoryChange(el) {
 		let selectedCategory = el.target.checked?el.target.value:null;
-		this.setState({selectedCategory}, this._calculateSelectedFilters);
+		this.setState({selectedCategory, currentPage: 1}, this._calculateSelectedFilters);
 	}
 
 	handleViolationChange(el) {
@@ -166,7 +187,7 @@ class CompaniesPage extends React.Component {
 				selectedViolations.splice(index, 1);
 			}
 		}
-		this.setState({selectedViolations}, this._calculateSelectedFilters);
+		this.setState({selectedViolations, currentPage: 1}, this._calculateSelectedFilters);
 	}
 
 	_calculateSelectedFilters() {

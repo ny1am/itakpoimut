@@ -20,6 +20,11 @@ class Pagination extends React.Component {
 
 	renderChildElement(page, innerText) {
 		let props = fixProps(this.props.children.props, page);
+		if (this.props.changePage) {
+			props.onClick = (evt) => {
+				this.props.changePage(evt, page);
+			}
+		}
 		return React.cloneElement(this.props.children, props, innerText);
 	}
 	renderPrevPage() {
