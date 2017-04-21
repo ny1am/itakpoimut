@@ -23,7 +23,7 @@ class Pagination extends React.Component {
 		return React.cloneElement(this.props.children, props, innerText);
 	}
 	renderPrevPage() {
-		let privPage = this.props.currentPage - 1;
+		let privPage = Number(this.props.currentPage) - 1;
 		privPage = privPage<1?1:privPage;
 		return (
 			<li className="prev">
@@ -32,7 +32,7 @@ class Pagination extends React.Component {
 		)
 	}
 	renderNextPage() {
-		let nextPage = this.props.currentPage + 1;
+		let nextPage = Number(this.props.currentPage) + 1;
 		nextPage = nextPage>this.props.totalPages?this.props.totalPages:nextPage;
 		return (
 			<li className="next">
@@ -41,8 +41,8 @@ class Pagination extends React.Component {
 		)
 	}
 	renderPages() {
-		let startPage = this.props.currentPage - Math.floor(this.size / 2);
-		let endPage = this.props.currentPage + Math.floor(this.size / 2);
+		let startPage = Number(this.props.currentPage) - Math.floor(this.size / 2);
+		let endPage = Number(this.props.currentPage) + Math.floor(this.size / 2);
 		if (startPage <= 0) {
 			endPage -= (startPage - 1);
 			startPage = 1;
@@ -59,7 +59,7 @@ class Pagination extends React.Component {
 		for (let i = startPage; i <= endPage; i++) {
 			pages.push({
 				index: i,
-				active: (i===this.props.currentPage)
+				active: (i===Number(this.props.currentPage))
 			});
 		}
 		return pages.map(page => (

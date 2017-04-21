@@ -11,4 +11,5 @@ require('./file_upload.js');
 require('./ajax-react.js');
 
 require('./autocomplete-react.js');
-require('./company-filters-react.js');
+require('./companies-react.js');
+// require('./company-filters-react.js');

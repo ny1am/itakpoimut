@@ -3,15 +3,16 @@ import Pagination from '../components/Pagination.jsx';
 import CompanyOverview from '../components/CompanyOverview.jsx';
 
 class CompaniesSearchResults extends React.Component {
+
 	render() {
 		const newSortOrder = (this.props.sortOrder==='asc'?'desc':'asc');
 		if (this.props.companies.length > 0) {
 			return (
-				<div id="search-results" className="search-results">
+				<div className="search-results">
 					<div className="search-results-header clearfix">
 						Підібрано {this.props.companiesCount} з {this.props.allCompaniesCount} компаній
 						<div className="right">
-							<button type="submit" className={"plain sort-"+newSortOrder} formAction={"/companies?sortOrder="+newSortOrder} data-ajax-formsubmit>
+							<button type="submit" className={"plain sort-"+newSortOrder} formAction={"/companies?sortOrder="+newSortOrder}>
 								За алфавітом
 							</button>
 						</div>
@@ -22,13 +23,13 @@ class CompaniesSearchResults extends React.Component {
 						))}
 					</div>
 					<Pagination currentPage={this.props.currentPage} totalPages={this.props.totalPages}>
-						<button type="submit" formAction={"/companies?currentPage={{page}}&sortOrder="+this.props.sortOrder} data-ajax-formsubmit />
+						<button type="submit" formAction={"/companies?currentPage={{page}}&sortOrder="+this.props.sortOrder}/>
 					</Pagination>
 				</div>
 			)
 		} else {
 			return (
-				<div id="search-results" className="search-results">
+				<div className="search-results">
 					За заданими вами параметрами нічого не знайдено.
 				</div>
 			)

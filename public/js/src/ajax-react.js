@@ -102,7 +102,6 @@ var $ = require('jquery');
 	});
 
 	$(document.body).on('click', '[data-ajax-formsubmit]', function (evt) {
-		console.log('formsubmit');
 		var $this = $(this);
 		var $form = $this.closest('form');
 		var callbackEventName = $(this).attr('data-ajax-callback-event');
