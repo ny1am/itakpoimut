@@ -4,8 +4,10 @@ import $ from 'jquery';
 
 import Checkbox from '../components/Checkbox.jsx';
 import Radio from '../components/Radio.jsx';
-import CompaniesSearchResults from '../partials/companies_searchResults.jsx';
-import CompaniesSelectedFilters from '../partials/companies_selected_filters.jsx';
+import ShowHideWrapper from '../components/ShowHideWrapper.jsx';
+
+import CompaniesSearchResults from '../components/CompaniesSearchResults.jsx';
+import CompaniesSelectedFilters from '../components/CompaniesSelectedFilters.jsx';
 
 import loyalties from '../../../shared/js/loyalties.js';
 import categories from '../../../shared/js/categories.js';
@@ -68,10 +70,9 @@ class CompaniesPage extends React.Component {
 									<h3 className="search-subtitle">
 										Сфера
 									</h3>
-									<ul id="categoriesList" className="search-chk-group">
+									<ShowHideWrapper size={5}>
 										{this.renderCategoriesList()}
-									</ul>
-									<div data-show-more="categoriesList" data-show-more-value={5} data-close></div>
+									</ShowHideWrapper>
 
 									<h3 className="search-subtitle">
 										Порушення
@@ -130,7 +131,7 @@ class CompaniesPage extends React.Component {
 	}
 
 	sort(sortOrder) {
-		this.setState({sortOrder}, this.refresh);
+		this.setState({sortOrder, currentPage: 1}, this.refresh);
 	}
 
 	changePage(currentPage) {
@@ -230,14 +231,12 @@ class CompaniesPage extends React.Component {
 	}
 	renderCategoriesList() {
 		return this.props.categoriesList.map(category => (
-			<li className="row">
-				<div className="check-row">
-					<Radio id={"ctg_"+category.name} name="selectedCategory" value={category.name} defaultChecked={category.name===this.state.selectedCategory} onChange={this.handleCategoryChange} />
-					<label htmlFor={"ctg_"+category.name}>
-						{category.text}
-					</label>
-				</div>
-			</li>
+			<div className="check-row" key={"ctg_"+category.name} checked={category.name===this.state.selectedCategory}>
+				<Radio id={"ctg_"+category.name} name="selectedCategory" value={category.name} defaultChecked={category.name===this.state.selectedCategory} onChange={this.handleCategoryChange} />
+				<label htmlFor={"ctg_"+category.name}>
+					{category.text}
+				</label>
+			</div>
 		))
 	}
 	renderViolationsList() {
