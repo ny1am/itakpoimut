@@ -13,7 +13,7 @@ module.exports = {
 
 	elasticsearch: {
 		host: process.env.elasticsearch_host,
-		apiVersion: '2.3'
+		apiVersion: '2.4'
 	},
 
 	mongoUrl: process.env.MONGODB_URL,

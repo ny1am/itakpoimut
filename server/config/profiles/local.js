@@ -13,7 +13,7 @@ module.exports = {
 
 	elasticsearch: {
 		host: 'https://site:679f4f318ae05ba90b83f13d314353bc@dori-us-east-1.searchly.com',
-		apiVersion: '2.3'
+		apiVersion: '2.4'
 	},
 
 	mongoUrl: 'mongodb://itakpoimut:start123@ds013991.mlab.com:13991/itp',
