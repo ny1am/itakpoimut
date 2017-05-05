@@ -22,4 +22,8 @@ import CompaniesPage from '../../../server/react-views/components/CompaniesPage.
 			contentType: 'application/json'
 		});
 	}
+
+	if (window.location.pathname.indexOf('/company/') === 0) {
+		//todo
+	}
 }());

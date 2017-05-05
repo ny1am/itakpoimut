@@ -2,27 +2,41 @@ import React from 'react';
 import Pagination from '../components/Pagination.jsx';
 import avatar from '../helpers/avatar';
 import Comment from '../components/Comment.jsx';
+import AddCommentForm from '../components/AddCommentForm.jsx';
 
 class CompanyComments extends React.Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			commentsCount: props.commentsCount,
+			comments: props.comments,
+			currentPage: props.currentPage,
+			totalPages: props.totalPages
+		}
+	}
+
 	renderCommentsForm() {
 		if (this.props.loggedUser) {
-			return (
-				<form action="/addComment" className="add-comment" method="post" data-ajax-zone="company-comments" data-ajax-tmpl="company_comments" data-ajax-anchor="company-comments">
-					<input type="hidden" name="_company" value={this.props.company._id}></input>
-					<h2>
-						Додати коментар
-					</h2>
-					<div className="comment-row">
-						<div className="add-comment-image">
-							<img src={avatar(this.props.loggedUser.picture_url)} />
-						</div>
-						<textarea placeholder="Введіть ваш коментар" name="text" maxLength="500"></textarea>
-					</div>
-					<div className="right-content">
-						<button className="dialog__button" type="submit" data-ajax-formsubmit>Додати коментар</button>
-					</div>
-				</form>
-			)
+			// return (
+			// 	<form action="/addComment" className="add-comment" method="post" data-ajax-zone="company-comments" data-ajax-tmpl="company_comments" data-ajax-anchor="company-comments">
+			// 		<input type="hidden" name="_company" value={this.props.company._id}></input>
+			// 		<h2>
+			// 			Додати коментар
+			// 		</h2>
+			// 		<div className="comment-row">
+			// 			<div className="add-comment-image">
+			// 				<img src={avatar(this.props.loggedUser.picture_url)} />
+			// 			</div>
+			// 			<textarea placeholder="Введіть ваш коментар" name="text" maxLength="500"></textarea>
+			// 		</div>
+			// 		<div className="right-content">
+			// 			<button className="dialog__button" type="submit" data-ajax-formsubmit>Додати коментар</button>
+			// 		</div>
+			// 	</form>
+			// )
+			return <AddCommentForm companyId={this.props.company._id} user={this.props.loggedUser}/>
 		} else {
 			return (
 				<div className="guest-add-comment">

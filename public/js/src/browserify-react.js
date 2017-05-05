@@ -10,4 +10,4 @@ require('./file_upload.js');
 require('./ajax-react.js');
 
 require('./autocomplete-react.js');
-require('./companies-react.js');
+require('./routes-react.js');
