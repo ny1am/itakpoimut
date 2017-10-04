@@ -69,6 +69,13 @@ module.exports = function (app) {
 
 	app.get('/404', statics.notfound);
 
+	app.get('/.well-known/acme-challenge/:id', function(request, response) {
+		var LETSCRYPT_FIRST_PART = request.params.id;
+		var LETSCRYPT_SECOND_PART = process.env.LETSCRYPT_SECOND_PART;
+		response.send(LETSCRYPT_FIRST_PART+'.'+LETSCRYPT_SECOND_PART);
+	});
+
+
 	app.use(statics.notfound)
 
 };
