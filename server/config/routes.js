@@ -16,47 +16,46 @@ var resetPassword = require('../controllers/resetPassword');
 
 module.exports = function (app) {
 
-	app.get('/', landing.get);
+  app.get('/', landing.get);
 
-	app.get('/login', auth.show);
-	app.post('/login', auth.authenticate);
+  app.post('/login', auth.authenticate);
 
-	app.get('/auth/facebook', auth.fbAuthenticate);
-	app.get('/auth/facebook/callback', auth.fbAuthenticateCb);
+  app.get('/auth/facebook', auth.fbAuthenticate);
+  app.get('/auth/facebook/callback', auth.fbAuthenticateCb);
 
-	app.get('/auth/google', auth.googleAuthenticate);
-	app.get('/auth/google/callback', auth.googleAuthenticateCb);
+  app.get('/auth/google', auth.googleAuthenticate);
+  app.get('/auth/google/callback', auth.googleAuthenticateCb);
 
-	app.get('/logout', auth.logout);
+  app.get('/logout', auth.logout);
 
-	app.post('/signup', userSignup.post);
+  app.post('/signup', userSignup.post);
 
-	app.post('/forgot', forgotPassword.post);
+  app.post('/forgot', forgotPassword.post);
 
-	app.get('/reset/:token', resetPassword.get);
-	app.post('/reset', resetPassword.post);
+  app.get('/reset/:token', resetPassword.get);
+  app.post('/reset', resetPassword.post);
 
-	app.get('/userProfile', auth.roleUser, userProfile.get);
-	app.post('/userProfile', auth.roleUser, userProfile.post);
+  app.get('/userProfile', auth.roleUser, userProfile.get);
+  app.post('/userProfile', auth.roleUser, userProfile.post);
 
-	app.post('/changePassword', auth.roleUser, changePassword.post);
+  app.post('/changePassword', auth.roleUser, changePassword.post);
 
-	app.get('/createCompany', auth.roleUser, addСompany.get);
-	app.post('/createCompany', auth.roleUser, addСompany.post);
+  app.get('/createCompany', auth.roleUser, addСompany.get);
+  app.post('/createCompany', auth.roleUser, addСompany.post);
 
-	app.get('/company/:id', company.get);
+  app.get('/company/:id', company.get);
 
-	app.post('/addComment', auth.roleUser, addComment.post);
+  app.post('/addComment', auth.roleUser, addComment.post);
 
-	app.get('/addViolation', auth.roleUser, addViolation.get);
-	app.post('/addViolation', auth.roleUser, addViolation.post);
+  app.get('/addViolation', auth.roleUser, addViolation.get);
+  app.post('/addViolation', auth.roleUser, addViolation.post);
 
-	app.get('/addCategory', auth.roleUser, addCategory.get);
-	app.post('/addCategory', auth.roleUser, addCategory.post);
+  app.get('/addCategory', auth.roleUser, addCategory.get);
+  app.post('/addCategory', auth.roleUser, addCategory.post);
 
-	app.get('/companies', companies.get);
-	app.post('/companies', companies.post);
+  app.get('/companies', companies.get);
+  app.post('/companies', companies.post);
 
-	app.get('/autocomplete', autocomplete.get);
+  app.get('/autocomplete', autocomplete.get);
 
 };

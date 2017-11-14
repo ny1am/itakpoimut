@@ -53,6 +53,6 @@ function find(req, res, params) {
 			title: req.query.title
 		};
 		_.extend(model, results);
-		res.render('pages/AdminCompanies', model);
+		res.send(model);
 	}); 
 } 

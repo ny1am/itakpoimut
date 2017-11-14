@@ -34,7 +34,7 @@ exports.show = function(req, res, next) {
 			recordsPerPage: recordsPerPage
 		};
 		_.extend(model, results);
-		res.render('pages/AdminUsers', model);
+		res.send(model);
 	}); 
 };
 
@@ -43,7 +43,7 @@ exports.addModeratorRole = function(req, res, next) {
 	User.findOne({_id: id}).exec(function(err, user) {
 		user.addRole('moderator');
 		user.save(function() {
-			return res.redirect('/admin/users');
+			return res.send({result: 'success'});
 		});
 	});
 };
@@ -52,11 +52,11 @@ exports.removeModeratorRole = function(req, res, next) {
 	var id = parseInt(req.query.id);
 	User.findOne({_id: id}).exec(function(err, user) {
 		if (user.isAdmin()) {
-			return res.redirect('/admin/users');
+			return res.send({result: 'success'});
 		} else {
 			user.removeRole('moderator');
 			user.save(function() {
-				return res.redirect('/admin/users');
+				return res.send({result: 'success'});
 			});
 		}
 	});

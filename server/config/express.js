@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var compress = require('compression');
-var flash = require('connect-flash');
 var favicon = require('serve-favicon');
 var VARS = require('./variables.js');
 
@@ -22,5 +21,4 @@ module.exports = function (app, config) {
     resave: false,
     saveUninitialized: false
   }));
-  app.use(flash());
 };

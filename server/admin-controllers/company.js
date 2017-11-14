@@ -31,7 +31,7 @@ exports.delete = function(req, res) {
 		Proposed.find({company_id: doc._id}).remove().exec();
 		Comment.find({_company: doc._id}).remove().exec();
 		doc.remove(function() {
-			res.redirect('/admin/companies');
+			res.send({result: 'success'});
 		});
 	});
 };
@@ -57,11 +57,11 @@ exports.show = function (req, res) {
 					selectedCategories: doc.categories,
 					selectedViolations: selectedViolations
 				}, doc, proposals);
-				return res.render(page, result);
+				return res.send(result);
 			});
 		});
 	} else {
-		return res.render(page, {
+		return res.send({
 			violationsList: violations.list(),
 			categoriesList: categories.list(),
 			loyaltiesList: loyalties.list(),
@@ -75,25 +75,23 @@ exports.save = function (req, res, next) {
 		var companyData = req.body;
 		companyData.file = req.file;
 		prepare(companyData);
-		if (!validateCompany(req, res, err)){
-			findProposals(companyData, function(proposals) {
-				return res.render(page, _.extend({
-					violationsList: violations.list(),
-					categoriesList: categories.list(),
-					loyaltiesList: loyalties.list(),
-				}, proposals));
-			});
+		var validateResult = validateCompany(req, res, err);
+		if (!validateResult.result){
+			res.send({
+				result: 'error',
+				errors: validateResult.errors
+			})
 		} else {
 			if (companyData._id) {
 				Company.findOne({_id: companyData._id}).exec(function(err, doc) {
 					saveCompany(doc, companyData, function() {
-						res.redirect('/admin/companies');
+						res.send({result: 'success'});
 					});
 				});
 			} else {
 				var model = {};
 				saveCompany(model, companyData, function() {
-					res.redirect('/admin/companies');
+					res.send({result: 'success'});
 				});
 			}
 		}
@@ -175,21 +173,25 @@ function prepare(companyData) {
 function validateCompany(request, response, err) {
 	var companyData = request.body;
 	var result = true;
+	var errors = {};
 	if(companyData.title === '') {
-		response.addError('title', 'Введіть назву компанії');
+		errors.title = 'Введіть назву компанії';
 		result = false;
 	}
 	if (companyData.company_site && !validation.validateUrl(companyData.company_site)) {
-		response.addError('company_site', 'Введіть коректний URL');
+		errors.company_site = 'Введіть коректний URL';
 		result = false;
 	}
 	if (err || (!request.file && !companyData._id)) {
 		var error = 'Додайте лого компанії (JPG або PNG розміром до 1MB)';
-		response.addError('attachment', error);
-		response.addError('dialog', error);
+		errors.attachment = error;
+		errors.dialog = error;
 		result = false;
 	}
-	return result;
+	return {
+		result: result,
+		errors: errors
+	};
 };
 
 function findProposals(company, callback) {
