@@ -1,8 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var compress = require('compression');
-var favicon = require('serve-favicon');
-var VARS = require('./variables.js');
 
 module.exports = function (app, config) {
 

@@ -1,8 +1,6 @@
 module.exports = {
 	baseUrl: 'http://localhost:5000',
 
-	versionHash: '',
-
 	sessionSecret: 'they will guess',
 
 	cloudinary: {
