@@ -1,14 +1,13 @@
 var passport = require('passport');
-var validation = require('./validation.js');
-var rememberMe = require('./passport-remember-me.js');
 var url = require('url');
+var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
+var validation = require('./validation.js');
+var VARS = require('./variables.js');
 
-function success(request, response) {
-  return response.send({result: 'success'});
-}
+var User = mongoose.model('User');
 
 exports.logout = [
-  rememberMe.clearCookieMiddleware,
   function out(req, res) {
     req.logout();
   }
@@ -30,65 +29,63 @@ exports.authenticate = [
   },
 
   function auth(request, response, next) {
-    passport.authenticate('local', function(err, user) {
-      if (err) {
-        return next(err);
-      } else if (!user) {
-        return response.send({
-          result: 'error',
-          errors: {
-            password: 'Неправильний пароль'
-          }
+    var username = request.body.username;
+    var password = request.body.password;
+    User.findOne({username:username}).exec(function(err, user) {
+      if (user && user.authenticate(password)) {
+        var payload = {id: user._id};
+        var token = jwt.sign(payload, VARS.sessionSecret);
+        response.send({
+          result: 'success', 
+          token: token
         });
       } else {
-        request.login(user, function(err) {
-          if (err) {
-            return next(err);
-          } else {
-            next();
+        response.status(401).send({
+          result: 'error',
+          errors: {
+            username: 'Неправильний пароль'
           }
         });
       }
-    })(request, response, next);
+    });
   },
-  rememberMe.addCookieMiddleware,
-  success
-];
-
-exports.fbAuthenticate = passport.authenticate('facebook', { scope: 'email'});
-
-exports.fbAuthenticateCb = [
-  passport.authenticate('facebook', {failureRedirect: '/login' }),
-  success
-];
-
-exports.googleAuthenticate = passport.authenticate('google', { scope: ['profile', 'email'] });
-
-exports.googleAuthenticateCb = [
-  passport.authenticate('google', {failureRedirect: '/login' }),
-  success
 ];
 
 exports.roleUser = function (request, response, next) {
-  if (!request.user) {
-    return response.send({result: 'dialog', template: 'pleaseSignup'});
-  } else {
-    next();
-  }
+  return passport.authenticate('jwt', { session: false }, function(err, user) {
+    if (!user) {
+      return response.status(401).send({
+        result: 'dialog',
+        template: 'pleaseSignup'
+      });
+    }
+    request.login(user, function(err) {
+      if (err) { return next(err); }
+      next();
+    });
+  })(request, response, next);
 };
 
 exports.roleModerator = function (request, response, next) {
-  if (!request.user || request.user.roles.indexOf('moderator') === -1) {
-    return response.status(401).send({});
-  } else {
-    next();
-  }
+  return passport.authenticate('jwt', { session: false }, function(err, user) {
+    if (!user || user.roles.indexOf('moderator') === -1) {
+      return response.status(403).send({});
+    }
+    request.login(user, function(err) {
+      if (err) { return next(err); }
+      next();
+    });
+  })(request, response, next);
 };
 
 exports.roleAdmin = function (request, response, next) {
-  if (!request.user || request.user.roles.indexOf('admin') === -1) {
-    return response.status(401).send({});
-  } else {
-    next();
-  }
+  return passport.authenticate('jwt', { session: false }, function(err, user) {
+    if (!user || user.roles.indexOf('admin') === -1) {
+      return response.status(403).send({});
+    }
+    request.login(user, function(err) {
+      if (err) { return next(err); }
+      next();
+    });
+  })(request, response, next);
 };

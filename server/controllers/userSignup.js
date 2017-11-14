@@ -1,5 +1,4 @@
 var api = require('../api/userSignup.js');
-var rememberMe = require('../config/passport-remember-me.js');
 
 exports.post = [
   function create(request, response, next) {
@@ -20,8 +19,6 @@ exports.post = [
       }
     });
   },
-
-  rememberMe.addCookieMiddleware,
 
   function result(request, response) {
     return response.send({result: 'success'});

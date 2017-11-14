@@ -15,7 +15,6 @@ module.exports = function() {
   require('../models/User');
   require('../models/Company');
   require('../models/Comment');
-  require('../models/RememberMeToken');
   require('../models/ResetPasswordToken');
   require('../models/Proposed');
 };

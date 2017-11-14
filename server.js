@@ -1,15 +1,15 @@
 var express = require('express');
 var app = express();
 
+require('./server/config/mongoose.js')();
+
+require('./server/config/passport.js')(app);
+
 require('./server/config/cloudinary.js')();
 
 require('./server/config/express.js')(app, {
 	rootPath: __dirname
 });
-
-require('./server/config/mongoose.js')();
-
-require('./server/config/passport.js')(app);
 
 require('./server/config/elasticsearch.js')();
 

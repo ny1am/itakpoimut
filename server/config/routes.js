@@ -20,12 +20,6 @@ module.exports = function (app) {
 
   app.post('/login', auth.authenticate);
 
-  app.get('/auth/facebook', auth.fbAuthenticate);
-  app.get('/auth/facebook/callback', auth.fbAuthenticateCb);
-
-  app.get('/auth/google', auth.googleAuthenticate);
-  app.get('/auth/google/callback', auth.googleAuthenticateCb);
-
   app.get('/logout', auth.logout);
 
   app.post('/signup', userSignup.post);
