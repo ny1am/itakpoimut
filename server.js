@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var isomorphic = require('./server/config/isomorphic-react.js');
 
 require('./server/config/cloudinary.js')();
 
@@ -9,10 +8,6 @@ require('./server/config/express.js')(app, {
 });
 
 require('./server/config/validation.js').setup(app);
-
-isomorphic.setup(app, {
-	rootPath: __dirname
-});
 
 require('./server/config/mongoose.js')();
 

@@ -12,7 +12,6 @@ var landing = require('../controllers/landing');
 var autocomplete = require('../controllers/autocomplete');
 var forgotPassword = require('../controllers/forgotPassword');
 var resetPassword = require('../controllers/resetPassword');
-var statics = require('../controllers/statics');
 
 
 module.exports = function (app) {
@@ -30,10 +29,8 @@ module.exports = function (app) {
 
 	app.get('/logout', auth.logout);
 
-	app.get('/signup', userSignup.get);
 	app.post('/signup', userSignup.post);
 
-	app.get('/forgot', forgotPassword.get);
 	app.post('/forgot', forgotPassword.post);
 
 	app.get('/reset/:token', resetPassword.get);
@@ -42,7 +39,6 @@ module.exports = function (app) {
 	app.get('/userProfile', auth.roleUser, userProfile.get);
 	app.post('/userProfile', auth.roleUser, userProfile.post);
 
-	app.get('/changePassword', auth.roleUser, changePassword.get);
 	app.post('/changePassword', auth.roleUser, changePassword.post);
 
 	app.get('/createCompany', auth.roleUser, addСompany.get);
@@ -62,13 +58,5 @@ module.exports = function (app) {
 	app.post('/companies', companies.post);
 
 	app.get('/autocomplete', autocomplete.get);
-
-	app.get('/about', statics.about);
-
-	app.get('/403', statics.forbidden);
-
-	app.get('/404', statics.notfound);
-
-	app.use(statics.notfound)
 
 };

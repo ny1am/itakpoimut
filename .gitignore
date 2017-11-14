@@ -1,12 +1,6 @@
 node_modules
-public/js/main*.js
-public/css/main*.css
-public/css/src/*-sprite.*
-public/img/*-sprite.*
 .env
 Dockerfile
 docker-compose.yml
-.sass-cache
-public/uploads
 npm-debug.log
 server/config/variables.js
