@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var compress = require('compression');
+var cors = require('cors')
 
 module.exports = function (app, config) {
 
@@ -11,4 +12,7 @@ module.exports = function (app, config) {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+
+  app.use(cors())
+  
 };
