@@ -33,11 +33,19 @@ exports.authenticate = [
     var password = request.body.password;
     User.findOne({username:username}).exec(function(err, user) {
       if (user && user.authenticate(password)) {
-        var payload = {id: user._id};
-        var token = jwt.sign(payload, VARS.sessionSecret);
+        const payload = {id: user._id};
+        const token = jwt.sign(payload, VARS.sessionSecret);
+        const userPublicData = {
+          _id: user._id,
+          fname: user.fname,
+          lname: user.lname,
+          picture_url: user.picture_url,
+          roles: user.roles,
+        };
         response.send({
           result: 'success', 
-          token: token
+          token: token,
+          user: userPublicData
         });
       } else {
         response.status(401).send({
