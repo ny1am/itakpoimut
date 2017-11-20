@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 var validation = require('./validation.js');
 var VARS = require('./variables.js');
+var userPublicData = require('../utils/userPublicData');
 
 var User = mongoose.model('User');
 
@@ -35,18 +36,10 @@ exports.authenticate = [
       if (user && user.authenticate(password)) {
         const payload = {id: user._id};
         const token = jwt.sign(payload, VARS.sessionSecret);
-        const userPublicData = {
-          _id: user._id,
-          fname: user.fname,
-          lname: user.lname,
-          picture_url: user.picture_url,
-          roles: user.roles,
-          provider: user.provider,
-        };
         response.send({
           result: 'success', 
           token: token,
-          user: userPublicData
+          user: userPublicData(user)
         });
       } else {
         response.status(401).send({

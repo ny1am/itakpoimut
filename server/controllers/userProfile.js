@@ -1,6 +1,7 @@
 var api = require('../api/userProfile.js');
 var _ = require('lodash');
 var upload = require('../config/upload.js');
+var userPublicData = require('../utils/userPublicData');
 
 exports.get = function(request, response, next) {
   api.get({
@@ -38,9 +39,9 @@ exports.post = function(request, response, next) {
           return response.send(model);
         } else {
           request.user = model.user;
-          var model = {successSave: true};
-          _.extend(model, request.body);
-          return response.send(model);
+          var data = {successSave: true};
+          _.extend(data, {user: userPublicData(model.user)});
+          return response.send(data);
         }
       });
     }
