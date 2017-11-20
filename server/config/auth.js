@@ -41,6 +41,7 @@ exports.authenticate = [
           lname: user.lname,
           picture_url: user.picture_url,
           roles: user.roles,
+          provider: user.provider,
         };
         response.send({
           result: 'success', 
