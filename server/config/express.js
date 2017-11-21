@@ -5,7 +5,7 @@ var cors = require('cors')
 
 module.exports = function (app, config) {
 
-  app.set('port', (process.env.PORT || 5000));
+  app.set('port', (process.env.PORT || 5001));
   app.use(compress());
 
   app.use(bodyParser.json());
