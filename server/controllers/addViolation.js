@@ -24,10 +24,7 @@ exports.post = function (request, response, next) {
     } else if (model.result === 'error') {
       return response.send(model);
     } else {
-      return response.send({result: 'dialog', template: 'success', 
-        dialog_title: 'Дякуємо!',
-        dialog_body: 'Запит на додання порушення надіслано. Адміністратор розгляне його найближчим часом.'
-      });
+      return response.send({result: 'success'});
     }
   });
 };
