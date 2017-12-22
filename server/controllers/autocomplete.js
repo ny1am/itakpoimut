@@ -3,7 +3,7 @@ var rollbar = require('rollbar');
 
 
 exports.get = function(request, response) {
-  api.get({term: request.query.term, category: request.query.category}, function(err, results) {
+  api.get({title: request.query.title, category: request.query.category}, function(err, results) {
     if (err) {
       rollbar.handleError(err, request);
       results = [];

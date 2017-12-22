@@ -2,7 +2,7 @@ var elasticsearch = require('elasticsearch');
 var Company = require('mongoose').model('Company');
 
 exports.get = function(params, callback) {
-    if (!params.term) {
+    if (!params.title) {
         var findQuery = {'published': true};
         if (params.category) {
             findQuery.categories = params.category;
@@ -12,7 +12,7 @@ exports.get = function(params, callback) {
         .select('_id title img loyalty')
         .limit(5).exec(callback);
     } else {
-         elasticsearch.autocomplete(params, function(results, err) {
+         elasticsearch.autocomplete({term: params.title, category: params.category}, function(results, err) {
             if (err) {
                 return callback(err);
             } else {
