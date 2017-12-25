@@ -1,5 +1,5 @@
 var api = require('../api/addComment.js');
-var companyAPI = require('../api/company.js');
+var commentsAPI = require('../api/comments.js');
 
 exports.post = function(request, response, next) {
   api.post({
@@ -11,7 +11,7 @@ exports.post = function(request, response, next) {
       return next(err);
     } else {
       var comment = model.comment;
-      companyAPI.get({
+      commentsAPI.get({
         companyId: comment._company
       }, function(err, companyModel) {
         if (err) {

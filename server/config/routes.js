@@ -2,6 +2,7 @@ var auth = require('./auth');
 var userSignup = require('../controllers/userSignup');
 var companies = require('../controllers/companies');
 var company = require('../controllers/company');
+var comments = require('../controllers/comments');
 var addСompany = require('../controllers/addСompany');
 var addComment = require('../controllers/addComment');
 var addViolation = require('../controllers/addViolation');
@@ -39,6 +40,7 @@ module.exports = function (app) {
 
   app.get('/company/:id', company.get);
 
+  app.get('/comments/:id', comments.get);
   app.post('/addComment', auth.roleUser, addComment.post);
 
   app.get('/addViolation', auth.roleUser, addViolation.get);
