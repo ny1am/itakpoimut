@@ -21,7 +21,7 @@ function renderFilter(params, request, response, next) {
     if (err) {
       return next(err);
     } else {
-      return response.send(_.extend(params, model));
+      return response.send(model);
     }
   });
 };

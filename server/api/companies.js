@@ -45,7 +45,6 @@ exports.get = function(params, callback) {
 			model.violationsList = violations.list();
         	model.loyaltiesList = loyalties.list();
         	model.categoriesList = categories.list();
-        	model.selectedFilters = prepareSelectedFilters(filters);
 			callback(null, model);	
     	}
     });
@@ -77,35 +76,4 @@ function buildFilterQuery(filters) {
         });
     }
     return query;
-};
-
-function prepareSelectedFilters(params) {
-    var result = [];
-    if (params.selectedLoyalty) {
-        var loyalty = loyalties.getByName(params.selectedLoyalty);
-        if (loyalty) {
-            result = result.concat([{
-                name: loyalty.name,
-                text: loyalty.text
-            }]);
-        }
-    }
-    if (params.selectedCategory) {
-        var category = categories.getByName(params.selectedCategory);
-        if (category) {
-            result = result.concat([{
-                name: category.name,
-                text: category.text
-            }]);
-        }
-    }
-    if (params.selectedViolations) {
-        result = result.concat(violations.getByNames(params.selectedViolations).map(function(obj) {
-            return {
-                name: obj.name,
-                text: obj.text
-            };
-        }));
-    }
-    return result;
 };
