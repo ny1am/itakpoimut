@@ -18,7 +18,7 @@ exports.authenticate = [
   function validate(request, response, next) {
     var userData = request.body;
     if (!validation.validateEmail(userData.username)) {
-      return response.send({
+      return response.status(401).send({
         result: 'error',
         errors: {
           username: 'Неправильний логін'

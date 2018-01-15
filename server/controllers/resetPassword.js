@@ -13,7 +13,7 @@ exports.post = [
      if (err) {
       return next(err);
     } else if (model.result === 'error') {
-      return res.send(model);
+      return res.status(400).send(model);
     } else {
       next();
     }

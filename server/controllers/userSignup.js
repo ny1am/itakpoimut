@@ -6,7 +6,7 @@ exports.post = [
       if (err) {
         return next(err);
       } else if (model.result === 'error') {
-        return response.send(model);
+        return response.status(400).send(model);
       } else {
         user = model.user;
         request.login(user, function(err) {

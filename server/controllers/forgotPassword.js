@@ -7,7 +7,7 @@ exports.post = function(req, res, next) {
     if (err) {
       return next(err);
     } else if (model.result === 'error') {
-      return res.send(model);
+      return res.status(400).send(model);
     } else {
       return res.send({result: 'dialog', template: 'success', 
         dialog_title: 'Запит надіслано',

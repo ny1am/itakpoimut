@@ -22,7 +22,7 @@ exports.post = function (request, response, next) {
       if (err) {
         return next(err);
       } else if (model.result === 'error') {
-        return response.send(model);
+        return response.status(400).send(model);
       } else {
         return response.send({ result: 'success' });
       }

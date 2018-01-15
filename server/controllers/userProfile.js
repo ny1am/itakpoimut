@@ -25,7 +25,7 @@ exports.post = function(request, response, next) {
           userpic: 'Ваше фото не задовільняє вимогам',
         }
       }
-      return response.send(model);
+      return response.status(400).send(model);
     } else {
       api.post({
         userId: request.user._id,
@@ -36,7 +36,7 @@ exports.post = function(request, response, next) {
         if (err) {
           return next(err);
         } else if (model.result === 'error') {
-          return response.send(model);
+          return response.status(400).send(model);
         } else {
           request.user = model.user;
           var data = {successSave: true};
