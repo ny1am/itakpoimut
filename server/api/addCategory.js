@@ -2,20 +2,6 @@ var Company = require('mongoose').model('Company');
 var Proposed = require('mongoose').model('Proposed');
 var async = require('async');
 
-exports.get = function(params, callback) {
-  var company_id = params.company_id;
-  Company.findOne({_id: company_id, published: true}).select('categories').exec(function(err, doc) {
-    if (err) {
-      return callback(err);
-    } else {
-      return callback(null, {
-        company_id: company_id,
-        companyCategories: doc.categories,
-      });
-    }
-  });
-};
-
 exports.post = function(params, callback) {
   var selectedCategories = params.selectedCategories;
   var company_id = params.company_id;

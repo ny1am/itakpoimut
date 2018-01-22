@@ -1,16 +1,5 @@
 var api = require('../api/addCategory.js');
 
-exports.get = function (request, response, next) {
-  var company_id = request.body.company_id || request.query.company_id;
-  api.get({company_id: company_id}, function(err, model) {
-    if (err) {
-      return next(err);
-    } else {
-      return response.send(model);
-    }
-  });
-};
-
 exports.post = function (request, response, next) {
   var data = request.body;
   var proposedValues = data.selectedCategories;

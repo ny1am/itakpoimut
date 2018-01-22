@@ -48,7 +48,6 @@ module.exports = function (app) {
   app.get('/addViolation', auth.roleUser, addViolation.get);
   app.post('/addViolation', auth.roleUser, addViolation.post);
 
-  app.get('/addCategory', auth.roleUser, addCategory.get);
   app.post('/addCategory', auth.roleUser, addCategory.post);
 
   app.get('/companies', companies.get);
