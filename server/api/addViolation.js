@@ -4,23 +4,6 @@ var violations = require('../../shared/js/violations.js');
 var async = require('async');
 var _ = require('lodash');
 
-exports.get = function(params, callback) {
-	var company_id = params.company_id;
-	Company.findOne({_id: company_id, published: true}).select('violations').exec(function(err, doc) {
-		if (err) {
-			return callback(err);
-		} else {
-			var companyViolations = doc.violations.map(function(el) {
-				return el.name;
-			});
-			return callback(null, {
-				company_id: company_id,
-				violationsList: _.difference(violations.names(), companyViolations)
-			});
-		}
-	});
-};
-
 exports.post = function(params, callback) {
 	var selectedViolations = params.selectedViolations;
 	var company_id = params.company_id;

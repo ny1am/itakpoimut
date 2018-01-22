@@ -11,6 +11,7 @@ var userProfile = require('../controllers/userProfile');
 var changePassword = require('../controllers/changePassword');
 var landing = require('../controllers/landing');
 var categories = require('../controllers/categories');
+var violations = require('../controllers/violations');
 var autocomplete = require('../controllers/autocomplete');
 var forgotPassword = require('../controllers/forgotPassword');
 var resetPassword = require('../controllers/resetPassword');
@@ -20,6 +21,7 @@ module.exports = function (app) {
 
   app.get('/', landing.get);
   app.get('/categories', categories.get);
+  app.get('/violations', violations.get);
 
   app.post('/login', auth.authenticate);
 
@@ -45,7 +47,6 @@ module.exports = function (app) {
   app.get('/comments/:id', comments.get);
   app.post('/addComment', auth.roleUser, addComment.post);
 
-  app.get('/addViolation', auth.roleUser, addViolation.get);
   app.post('/addViolation', auth.roleUser, addViolation.post);
 
   app.post('/addCategory', auth.roleUser, addCategory.post);
