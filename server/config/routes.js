@@ -10,6 +10,7 @@ var addCategory = require('../controllers/addCategory');
 var userProfile = require('../controllers/userProfile');
 var changePassword = require('../controllers/changePassword');
 var landing = require('../controllers/landing');
+var categories = require('../controllers/categories');
 var autocomplete = require('../controllers/autocomplete');
 var forgotPassword = require('../controllers/forgotPassword');
 var resetPassword = require('../controllers/resetPassword');
@@ -18,6 +19,7 @@ var resetPassword = require('../controllers/resetPassword');
 module.exports = function (app) {
 
   app.get('/', landing.get);
+  app.get('/categories', categories.get);
 
   app.post('/login', auth.authenticate);
 

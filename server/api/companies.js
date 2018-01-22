@@ -1,7 +1,6 @@
 var Company = require('mongoose').model('Company');
 var violations = require('../../shared/js/violations.js');
 var loyalties = require('../../shared/js/loyalties.js');
-var categories = require('../../shared/js/categories.js');
 var asyncjs = require('async');
 var _ = require('lodash');
 
@@ -44,7 +43,6 @@ exports.get = function(params, callback) {
 			// todo: separate function should not be in the api
 			model.violationsList = violations.list();
         	model.loyaltiesList = loyalties.list();
-        	model.categoriesList = categories.list();
 			callback(null, model);	
     	}
     });

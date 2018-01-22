@@ -1,8 +1,6 @@
 var Company = require('mongoose').model('Company');
 var Proposed = require('mongoose').model('Proposed');
-var categories = require('../../shared/js/categories.js');
 var async = require('async');
-var _ = require('lodash');
 
 exports.get = function(params, callback) {
   var company_id = params.company_id;
@@ -13,7 +11,6 @@ exports.get = function(params, callback) {
       return callback(null, {
         company_id: company_id,
         companyCategories: doc.categories,
-        categoriesList: _.difference(categories.names(), doc.categories)
       });
     }
   });
