@@ -39,7 +39,6 @@ module.exports = function (app) {
 
   app.post('/changePassword', auth.roleUser, changePassword.post);
 
-  app.get('/createCompany', auth.roleUser, addСompany.get);
   app.post('/createCompany', auth.roleUser, addСompany.post);
 
   app.get('/company/:id', company.get);

@@ -1,19 +1,10 @@
 var Company = require('mongoose').model('Company');
 var async = require('async');
-var violations = require('../../shared/js/violations.js');
-var categories = require('../../shared/js/categories.js');
 var _ = require('lodash');
 var validation = require('../config/validation.js');
 var cloudinary = require('cloudinary');
 var dropbox = require('../config/dropbox.js');
 var path = require('path');
-
-exports.get = function(params, callback) {
-  callback(null, {
-    violationsList: violations.list(),
-    categoriesList: categories.list()
-  });
-};
 
 exports.post = function(params, callback) {
   var userId = params.userId;
