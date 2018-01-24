@@ -1,5 +1,4 @@
 var Company = require('mongoose').model('Company');
-var violations = require('../../shared/js/violations.js');
 var loyalties = require('../../shared/js/loyalties.js');
 var asyncjs = require('async');
 var _ = require('lodash');
@@ -40,9 +39,6 @@ exports.get = function(params, callback) {
 			model.recordsPerPage = recordsPerPage;
 			model.totalPages = Math.ceil(model.companiesCount / model.recordsPerPage);
             model.sortOrder = sortOrder;
-			// todo: separate function should not be in the api
-			model.violationsList = violations.list();
-        	model.loyaltiesList = loyalties.list();
 			callback(null, model);	
     	}
     });
