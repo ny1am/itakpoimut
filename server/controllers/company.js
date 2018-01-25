@@ -13,20 +13,18 @@ exports.get = function(request, response, next) {
       //todo: change in database or whatever
       const modelViolations = model.company.violations.map(item => item.name) || [];
       var newModel = {
-        company: {
-          _id: model.company._id,
-          img: model.company.img,
-          title: model.company.title,
-          company_site: model.company.company_site,
-          description: model.company.description,
-          loyalty: model.company.loyalty,
-          categories: categories.list().filter(category => (
-            modelCategories.indexOf(category.name) !== -1
-          )),
-          violations: violations.list().filter(violation => (
-            modelViolations.indexOf(violation.name) !== -1
-          ))
-        },
+        _id: model.company._id,
+        img: model.company.img,
+        title: model.company.title,
+        company_site: model.company.company_site,
+        description: model.company.description,
+        loyalty: model.company.loyalty,
+        categories: categories.list().filter(category => (
+          modelCategories.indexOf(category.name) !== -1
+        )),
+        violations: violations.list().filter(violation => (
+          modelViolations.indexOf(violation.name) !== -1
+        ))
       };
       return response.send(newModel);
     }
