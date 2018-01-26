@@ -9,7 +9,8 @@ var addViolation = require('../controllers/addViolation');
 var addCategory = require('../controllers/addCategory');
 var userProfile = require('../controllers/userProfile');
 var changePassword = require('../controllers/changePassword');
-var landing = require('../controllers/landing');
+var lastComments = require('../controllers/lastComments');
+var newCompanies = require('../controllers/newCompanies');
 var categories = require('../controllers/categories');
 var violations = require('../controllers/violations');
 var autocomplete = require('../controllers/autocomplete');
@@ -19,7 +20,8 @@ var resetPassword = require('../controllers/resetPassword');
 
 module.exports = function (app) {
 
-  app.get('/', landing.get);
+  app.get('/lastComments', lastComments.get);
+  app.get('/newCompanies', newCompanies.get);
   app.get('/categories', categories.get);
   app.get('/violations', violations.get);
 

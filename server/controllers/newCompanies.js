@@ -1,7 +1,7 @@
-var api = require('../api/landing.js');
+var api = require('../api/newCompanies.js');
 
 exports.get = function (request, response, next) {
-  api.get({}, function(err, model) {
+  api.get(function(err, model) {
     if (err) {
       return next(err);
     } else {
