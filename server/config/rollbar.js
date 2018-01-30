@@ -7,11 +7,10 @@ module.exports = function(app) {
   }
   app.use(function(error, request, response, next) {
     if (process.env.NODE_ENV === 'production') {
-      response.status(404);
-      return response.render('misc/404');
+      return response.status(500).send({});
     } else {
       console.log(error.stack);
-      return response.send(error.stack);
+      return response.status(500).send({error: error.stack});
     }
   });
 };
