@@ -14,27 +14,22 @@ exports.post = function(params, callback) {
 			next();
 		},
 		function validate(next) {
-			var errors = [];
+			var errors = {};
+			var hasErrors = false;
 			if (user.provider !== 'local') {
-				errors.push({
-					field: 'password',
-					message: 'Неправильний пароль'
-				});
+				errors.password = 'Неправильний пароль';
+				hasErrors = true;
 			} else {
 				if (!user.authenticate(password)) {
-					errors.push({
-						field: 'password',
-						message: 'Неправильний пароль'
-					});
+					errors.password = 'Неправильний пароль';
+					hasErrors = true;
 				}
 				if(newPassword.length < 6) {
-					errors.push({
-						field: 'newPassword',
-						message: 'Введіть пароль, не менше шести символів'
-					});
-		        }
+					errors.newPassword = 'Введіть пароль, не менше шести символів';
+					hasErrors = true;
+		    }
 			}
-			if (errors.length) {
+			if (hasErrors) {
 				return callback(null, {result: 'error', errors: errors});
 			} else {
 				next();

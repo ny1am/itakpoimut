@@ -12,10 +12,7 @@ exports.post = function(request, response, next) {
       return response.status(400).send(model);
     } else {
       request.user = model.user;
-      return response.send({result: 'dialog', template: 'success', 
-        dialog_title: 'Вітаємо!',
-        dialog_body: 'Ваш пароль успішно змінено.'
-      });
+      return response.send({});
     }
   })
 };
