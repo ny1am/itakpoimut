@@ -5,20 +5,20 @@ exports.createFbUser = function(profile, cb) {
 	var userData = {
 		username: 'fb_'+profile.id,
 		roles: ['user'],
-		fname: profile._json.first_name,
-		lname: profile._json.last_name,
-		email: profile._json.email,
+		fname: profile.first_name,
+		lname: profile.last_name,
+		email: profile.email,
 		provider: 'facebook',
 		facebook_id: profile.id
 	};
-	if (profile.photos && profile.photos.length) {
-		userData.picture=profile.photos[0].value;
+	if (profile.picture && profile.picture.data && profile.picture.data.url) {
+		userData.picture_url=profile.picture.data.url;
 	}
 	User.create(userData, function(err, user) {
 		if (user) {
-			return cb(null, user);
+			return cb(user);
 		} else {
-			return cb(null, false);
+			return cb(null);
 		}
 	});
 };

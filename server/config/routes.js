@@ -26,6 +26,7 @@ module.exports = function (app) {
   app.get('/violations', violations.get);
 
   app.post('/login', auth.authenticate);
+  app.post('/fb-login', auth.facebookAuth);
 
   app.get('/logout', auth.logout);
 
