@@ -27,6 +27,7 @@ module.exports = function (app) {
 
   app.post('/login', auth.authenticate);
   app.post('/fb-login', auth.facebookAuth);
+  app.post('/google-login', auth.googleAuth);
 
   app.get('/logout', auth.logout);
 

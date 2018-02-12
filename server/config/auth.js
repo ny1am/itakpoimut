@@ -63,9 +63,9 @@ exports.facebookAuth = function(request, response, next) {
   var socialToken = request.body.socialToken;
   const done = (user) => {
     if (user) {
-      response.send(tokenModel(user));
+      return response.send(tokenModel(user));
     } else {
-      response.status(401).send({
+      return response.status(401).send({
         result: 'error',
         errors: {
           global: 'Не вдалося створити користувача'
@@ -98,6 +98,56 @@ function validateWithProvider(socialToken) {
     request({
         url: 'https://graph.facebook.com/me',
         qs: {access_token: socialToken, fields: 'id,first_name,last_name,email,picture.type(large)'}
+      },
+      function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          resolve(JSON.parse(body));
+        } else {
+          reject(error);
+        }
+      }
+    );
+  });
+}
+
+exports.googleAuth = function(request, response, next) {
+  var socialToken = request.body.socialToken;
+  const done = (user) => {
+    if (user) {
+      return response.send(tokenModel(user));
+    } else {
+      return response.status(401).send({
+        result: 'error',
+        errors: {
+          global: 'Не вдалося створити користувача'
+        }
+      });
+    }
+  }
+  validateWithGoogleProvider(socialToken).then(function (profile) {
+    User.findOne({google_id:profile.id}).exec(function(err, user) {
+        if (user) {
+          return done(user);
+        } else {
+          userService.createGoogleUser(profile, done);
+        }
+      });
+  }).catch(function (err) {
+    response.status(401).send({
+      result: 'error',
+      errors: {
+        global: 'Не вдалося створити користувача'
+      }
+    });
+  });
+
+}
+
+function validateWithGoogleProvider(socialToken) {
+  return new Promise(function (resolve, reject) {
+    request({
+        url: 'https://www.googleapis.com/plus/v1/people/me',
+        qs: {access_token: socialToken}
       },
       function (error, response, body) {
         if (!error && response.statusCode == 200) {

@@ -33,14 +33,14 @@ exports.createGoogleUser = function(profile, cb) {
 		provider: 'google',
 		google_id: profile.id
 	};
-	if (profile.photos && profile.photos.length) {
-		userData.picture=profile.photos[0].value;
+	if (profile.image && profile.image.url) {
+		userData.picture_url=profile.image.url;
 	}
 	User.create(userData, function(err, user) {
 		if (user) {
-			return cb(null, user);
+			return cb(user);
 		} else {
-			return cb(null, false);
+			return cb(null);
 		}
 	});
 };

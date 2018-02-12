@@ -29,8 +29,8 @@ module.exports = {
 	},
 
 	google: {
-		clientID: '132410874020-d81ogpl4udegrgoe3nnesh379p56gqho.apps.googleusercontent.com',
-		clientSecret: '6owkLDeDsMQUo-URfWQBkQ7y'
+		clientID: '132410874020-p7hkqq8u1kfl5cfflv9fgsk3kiqqj2nf.apps.googleusercontent.com',
+		clientSecret: 'IoYHRwk1TxpnI03YAgD-6nUw'
 	},
 
 	dropbox: {
