@@ -19,8 +19,8 @@ module.exports = {
 	rollbar: '32b6e4137ad04cbba15c635f751014e8',
 
 	sparkpost: {
-		key: '8df86e7c68f82a3c9349e749d34bbd930882aae4',
-		email: 'info@sparkpostbox.com'
+		key: 'e509e5e6d0a8175f0e2dd891c202680b7655bf3b',
+		email: 'info@local.itakpoimut.info'
 	},
 
 	facebook: {
