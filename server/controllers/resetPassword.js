@@ -21,6 +21,6 @@ exports.post = [
   },
 
   function result(req, res) {
-    return res.send({message: 'Пароль успішно змінено!'});
+    return res.send({});
   }
 ];

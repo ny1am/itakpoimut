@@ -17,20 +17,17 @@ exports.post = function(params, callback) {
 			Token.findOne({token: tokenString, expires: { $gt: Date.now() }}).exec(next);
 		},
 		function validate(token, next) {
-			var errors = [];
+			var errors = {};
+			var hasErrors = false;
 			if(password.length < 6) {
-				errors.push({
-					field: 'password',
-					message: 'Введіть пароль, не менше шести символів'
-				});
-	        }
-	        if (!token) {
-	        	errors.push({
-					field: 'dialog',
-					message: 'Термін дії посилання закінчився. Подайте ще один запит на зміну пароля.'
-				});
-	        }
-	        if (errors.length) {
+				errors.password = 'Введіть пароль, не менше шести символів';
+				hasErrors = true;
+	    }
+      if (!token) {
+      	errors.expired = true;
+      	hasErrors = true;
+      }
+	    if (hasErrors) {
 				return callback(null, {result: 'error', errors: errors});
 			} else {
 				next(null, token);
