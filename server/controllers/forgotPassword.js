@@ -9,10 +9,7 @@ exports.post = function(req, res, next) {
     } else if (model.result === 'error') {
       return res.status(400).send(model);
     } else {
-      return res.send({result: 'dialog', template: 'success', 
-        dialog_title: 'Запит надіслано',
-        dialog_body: 'Запит на зміну паролю надіслано. &#13;&#10; Перевірте, будь ласка, поштову скриньку.'
-      });
+      return res.send({});
     }
   });
 };

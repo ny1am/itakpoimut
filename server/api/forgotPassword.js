@@ -10,32 +10,27 @@ exports.post = function(params, callback) {
 	var email = params.email;
 	async.waterfall([
 		function prevalidate(next) {
-			var errors = [];
+			var errors = {};
 			if(!validation.validateEmail(email)) {
-				errors.push({
-					field: 'email',
-					message: 'Неправильний e-mail'
-				});
+				errors.email = 'Неправильний e-mail';
 				next(null, errors);
-	        } else {
-	        	User.find({email: email, provider: 'local'}).exec(function(err, users) {
-	        		if (err) {
-	        			next(err);
-	        		} else if (users.length === 0) {
-	        			errors.push({
-							field: 'email',
-							message: 'Даний e-mail не зареєстрований в системі'
-						});
+      } else {
+      	User.find({email: email, provider: 'local'}).exec(function(err, users) {
+      		if (err) {
+      			errors.email = 'Даний e-mail не зареєстрований в системі';
 						next(null, errors);
-	        		} else {
-	        			next(null, []);
-	        		}
-	        	});
-	        }
+      		} else if (users.length === 0) {
+      			errors.email = 'Даний e-mail не зареєстрований в системі';
+						next(null, errors);
+      		} else {
+      			next(null, {});
+      		}
+      	});
+      }
 			
 		},
 		function validate(errors, next) {
-			if (errors.length) {
+			if (!(Object.keys(errors).length === 0 && errors.constructor === Object)) {
 				return callback(null, {result: 'error', errors: errors});
 			} else {
 				next();
