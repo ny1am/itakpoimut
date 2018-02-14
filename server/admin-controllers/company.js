@@ -50,13 +50,25 @@ exports.show = function (req, res) {
 				});
 			};
 			findProposals(doc, function(proposals) {
-				var result = _.extend({
+				const company = {
+					_id: doc._id,
+					title: doc.title,
+					company_site: doc.company_site,
+					description: doc.description,
+					img: doc.img,
+					loyalty: doc.loyalty,
+					published: doc.published,
+					categories: doc.categories,
+					violations: doc.violations,
+					proposals: doc.proposals,
+				}
+				const result = Object.assign({
 					violationsList: violations.list(),
 					categoriesList: categories.list(),
 					loyaltiesList: loyalties.list(),
 					selectedCategories: doc.categories,
 					selectedViolations: selectedViolations
-				}, doc, proposals);
+				}, company, proposals);
 				return res.send(result);
 			});
 		});
@@ -77,12 +89,16 @@ exports.save = function (req, res, next) {
 		prepare(companyData);
 		var validateResult = validateCompany(req, res, err);
 		if (!validateResult.result){
-			res.send({
+			res.status(400).send({
 				result: 'error',
-				errors: validateResult.errors
+				errors: validateResult.errors,
+				violationsList: violations.list(),
+				categoriesList: categories.list(),
+				loyaltiesList: loyalties.list(),
 			})
 		} else {
-			if (companyData._id) {
+			const id = Number(companyData._id);
+			if (id) {
 				Company.findOne({_id: companyData._id}).exec(function(err, doc) {
 					saveCompany(doc, companyData, function() {
 						res.send({result: 'success'});
@@ -182,7 +198,8 @@ function validateCompany(request, response, err) {
 		errors.company_site = 'Введіть коректний URL';
 		result = false;
 	}
-	if (err || (!request.file && !companyData._id)) {
+	const id = Number(companyData._id);
+	if (err || (!request.file && !id)) {
 		var error = 'Додайте лого компанії (JPG або PNG розміром до 1MB)';
 		errors.attachment = error;
 		errors.dialog = error;
