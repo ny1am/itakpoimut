@@ -4,7 +4,8 @@
   "description": "itakpoimut: api server",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start-dev": "env-cmd ./.env.local node server.js"
   },
   "cacheDirectories": [
     "node_modules"
@@ -19,6 +20,7 @@
     "crypto": "0.0.3",
     "dbox": "^0.6.4",
     "elasticsearch": ">=1.1.0",
+    "env-cmd": "^7.0.0",
     "express": "4.13.3",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.11.1",
