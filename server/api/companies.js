@@ -19,7 +19,7 @@ exports.get = function(params, callback) {
         companies: function(next) {
             Company
             .find(query)
-            .select('_id title description img loyalty violations')
+            .select('_id title description img loyalty violations categories')
             .skip((currentPage - 1) * recordsPerPage)
             .limit(recordsPerPage)
             .sort({sort_title: sortOrder})
