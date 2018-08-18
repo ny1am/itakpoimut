@@ -12,15 +12,15 @@ exports.post = function(params, callback) {
 		function prevalidate(next) {
 			var errors = {};
 			if(!validation.validateEmail(email)) {
-				errors.email = 'Неправильний e-mail';
+				errors.email = 'FORGOT_PASSWORD_WRONG';
 				next(null, errors);
       } else {
       	User.find({email: email, provider: 'local'}).exec(function(err, users) {
       		if (err) {
-      			errors.email = 'Даний e-mail не зареєстрований в системі';
+      			errors.email = 'FORGOT_PASSWORD_DUPLICATION';
 						next(null, errors);
       		} else if (users.length === 0) {
-      			errors.email = 'Даний e-mail не зареєстрований в системі';
+      			errors.email = 'FORGOT_PASSWORD_DUPLICATION';
 						next(null, errors);
       		} else {
       			next(null, {});

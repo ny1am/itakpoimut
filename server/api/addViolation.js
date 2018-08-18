@@ -1,6 +1,5 @@
 var Company = require('mongoose').model('Company');
 var Proposed = require('mongoose').model('Proposed');
-var violations = require('../../shared/js/violations.js');
 var async = require('async');
 var _ = require('lodash');
 

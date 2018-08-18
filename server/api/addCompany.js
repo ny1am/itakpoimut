@@ -37,15 +37,15 @@ exports.post = function(params, callback) {
       var errors = {};
       var hasErrors = false;
       if(companyData.title === '') {
-        errors.title = 'Введіть назву компанії';
+        errors.title = 'ADD_COMPANY_TITLE';
         hasErrors = true;
       }
       if (companyData.company_site && !validation.validateUrl(companyData.company_site)) {
-        errors.company_site = 'Введіть коректний URL';
+        errors.company_site = 'ADD_COMPANY_INCORRECT_URL';
         hasErrors = true;
       }
       if (!companyData.logoFile) {
-        var error = 'Додайте лого компанії (JPG або PNG розміром до 1MB)';
+        var error = 'ADD_COMPANY_LOGO_FILE';
         errors.attachment = error;
         errors.dialog = error;
         hasErrors = true;
@@ -70,7 +70,7 @@ exports.post = function(params, callback) {
       Company.create(companyData, function (err, doc) {
         if (err && err.toString().indexOf('E11000') > -1) {
           const errors = {
-            title: 'Компанія з такою назвою уже зареєстрована',
+            title: 'ADD_COMPANY_DUPLICATION',
           }
           return callback(null, {result: 'error', errors});
         } else if (err) {

@@ -25,11 +25,11 @@ exports.post = function(params, callback) {
       var errors = {};
       var hasError = false;
       if(userData.fname === '') {
-        errors.fname = 'Введіть ім\'я';
+        errors.fname = 'USER_PROFILE_FNAME';
         hasError = true;
       }
       if(userData.lname === '') {
-        errors.lname = 'Введіть прізвище';
+        errors.lname = 'USER_PROFILE_LNAME';
         hasError = true;
       }
       if (hasError) {

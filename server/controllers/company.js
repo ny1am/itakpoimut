@@ -1,4 +1,5 @@
 var api = require('../api/company.js');
+//todo i18n
 var categories = require('../../shared/js/categories.js');
 var violations = require('../../shared/js/violations.js');
 

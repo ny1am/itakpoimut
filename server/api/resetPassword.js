@@ -20,7 +20,7 @@ exports.post = function(params, callback) {
 			var errors = {};
 			var hasErrors = false;
 			if(password.length < 6) {
-				errors.password = 'Введіть пароль, не менше шести символів';
+				errors.password = 'RESET_PASSWORD_SHORT';
 				hasErrors = true;
 	    }
       if (!token) {

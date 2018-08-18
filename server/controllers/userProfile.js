@@ -21,8 +21,8 @@ exports.post = function(request, response, next) {
       var model = {
         result: 'error',
         errors: {
-          page: 'Ваше фото не задовільняє вимогам',
-          userpic: 'Ваше фото не задовільняє вимогам',
+          page: 'USER_PROFILE_USERPIC',
+          userpic: 'USER_PROFILE_USERPIC',
         }
       }
       return response.status(400).send(model);

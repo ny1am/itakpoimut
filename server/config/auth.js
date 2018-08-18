@@ -33,7 +33,7 @@ exports.authenticate = [
       return response.status(401).send({
         result: 'error',
         errors: {
-          username: 'Неправильний логін'
+          username: 'LOGIN_USERNAME'
         }
       });
     } else {
@@ -51,7 +51,7 @@ exports.authenticate = [
         response.status(401).send({
           result: 'error',
           errors: {
-            username: 'Неправильний пароль'
+            username: 'LOGIN_PASSWORD'
           }
         });
       }
@@ -68,7 +68,7 @@ exports.facebookAuth = function(request, response, next) {
       return response.status(401).send({
         result: 'error',
         errors: {
-          global: 'Не вдалося створити користувача'
+          global: 'LOGIN_COULDNT_CREATE'
         }
       });
     }
@@ -85,7 +85,7 @@ exports.facebookAuth = function(request, response, next) {
     response.status(401).send({
       result: 'error',
       errors: {
-        global: 'Не вдалося створити користувача'
+        global: 'LOGIN_COULDNT_CREATE'
       }
     });
   });
@@ -119,7 +119,7 @@ exports.googleAuth = function(request, response, next) {
       return response.status(401).send({
         result: 'error',
         errors: {
-          global: 'Не вдалося створити користувача'
+          global: 'LOGIN_COULDNT_CREATE'
         }
       });
     }
@@ -136,7 +136,7 @@ exports.googleAuth = function(request, response, next) {
     response.status(401).send({
       result: 'error',
       errors: {
-        global: 'Не вдалося створити користувача'
+        global: 'LOGIN_COULDNT_CREATE'
       }
     });
   });

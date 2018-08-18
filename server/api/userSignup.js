@@ -26,19 +26,19 @@ exports.post = function(params, callback) {
       var errors = {};
       var hasErrors = false;
       if(userData.fname === '') {
-        errors.fname = 'Введіть ім\'я';
+        errors.fname = 'SIGNUP_FNAME';
         hasErrors = true;
       }
       if(userData.lname === '') {
-        errors.lname = 'Введіть прізвище';
+        errors.lname = 'SIGNUP_LNAME';
         hasErrors = true;
       }
       if(!validation.validateEmail(userData.email)) {
-        errors.email = 'Неправильний e-mail';
+        errors.email = 'SIGNUP_EMAIL';
         hasErrors = true;
       }
       if(userData.password.length < 6) {
-        errors.password = 'Введіть пароль, не менше шести символів';
+        errors.password = 'SIGNUP_PASSWORD';
         hasErrors = true;
       }
       if (hasErrors) {
@@ -55,7 +55,7 @@ exports.post = function(params, callback) {
           return callback(null, {
             result: 'error',
             errors: {
-              email: 'Користувач з таким e-mail уже зареєстрований в системі'
+              email: 'SIGNUP_DUPLICATION'
             }
           });
         } else if (err) {

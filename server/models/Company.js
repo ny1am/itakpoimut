@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var violations = require('../../shared/js/violations.js');
-var categories = require('../../shared/js/categories.js');
 var autoIncrement = require('mongoose-auto-increment');
 
 var Violation = mongoose.Schema({
@@ -9,7 +8,7 @@ var Violation = mongoose.Schema({
 });
 Violation.path('name').validate(function(element) {
     return violations.isValid(element);
-}, "Сталася помилка! Попробуйте оновити сторінку.");
+}, "SOMETHING_WENT_WRONG");
 
 var Company = mongoose.Schema({
     id: Number,

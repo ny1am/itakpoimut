@@ -17,15 +17,15 @@ exports.post = function(params, callback) {
 			var errors = {};
 			var hasErrors = false;
 			if (user.provider !== 'local') {
-				errors.password = 'Неправильний пароль';
+				errors.password = 'CHANGE_PASSWORD_WRONG';
 				hasErrors = true;
 			} else {
 				if (!user.authenticate(password)) {
-					errors.password = 'Неправильний пароль';
+					errors.password = 'CHANGE_PASSWORD_WRONG';
 					hasErrors = true;
 				}
 				if(newPassword.length < 6) {
-					errors.newPassword = 'Введіть пароль, не менше шести символів';
+					errors.newPassword = 'CHANGE_PASSWORD_SHORT';
 					hasErrors = true;
 		    }
 			}
